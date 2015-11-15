@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+           http://www.springframework.org/schema/security
+              http://www.springframework.org/schema/security/spring-security-3.1.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd"
+       default-init-method="init">
+    
+      
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jspx/"/>
+        <property name="suffix" value=".jspx"/>
+        <property name="order" value="2"/>
+    </bean>
+
+    <context:component-scan base-package="com.bewill">
+        <context:include-filter type="regex" expression=".web" />
+        <context:include-filter type="regex" expression=".mobile" />
+    </context:component-scan>
+    
+    <!-- I18N Configuration -->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+        <property name="defaultLocale" value="en_US"/>
+    </bean>
+    
+    <mvc:interceptors>
+        <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="lang"/>
+        </bean>
+        
+    </mvc:interceptors>
+    
+    
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>i18n_labels</value>
+                <value>i18n_countries</value>
+                <value>i18n_languages</value>
+                <value>messages</value>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="rootPlaceholderConfig"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:/steven-web.properties</value>
+            </list>
+        </property>
+        <property name="ignoreResourceNotFound" value="true"/>
+    </bean>
+
+    <bean id="themeSource" class="org.springframework.ui.context.support.ResourceBundleThemeSource">
+        <property name="basenamePrefix" value="theme-" />
+    </bean>
+
+    <bean id="themeResolver" class="org.springframework.web.servlet.theme.SessionThemeResolver">
+        <property name="defaultThemeName" value="${bewill.st.web.theme}" />
+    </bean>
+
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10000000"/>
+    </bean>
+
+    <!-- Spring Securiy configuration -->
+    
+    <security:http pattern="/**" auto-config="true">
+        <security:form-login login-page="/login.spr?action=login"
+                             authentication-failure-url="/login.spr?error=1"
+                             default-target-url="/user/main.spr"
+                             authentication-success-handler-ref="myAuthenticationSuccessHandler"/>
+        <security:logout invalidate-session="true" logout-success-url="/login.spr"/>
+        <!--<security:intercept-url pattern="/conference/**" access="ROLE_PARTICIPANT"/>-->
+        <security:intercept-url pattern="/user/**" access="ROLE_SUPER,ROLE_SOCIO" />
+        <security:intercept-url pattern="/materia/**" access="ROLE_USER,ROLE_SUPER,ROLE_SOCIO" />
+        <security:intercept-url pattern="/institution/**" access="ROLE_USER,ROLE_SUPER,ROLE_SOCIO" />
+        <security:intercept-url pattern="/admin/**" access="ROLE_ADMIN,ROLE_SUPER,ROLE_SOCIO" />
+        <security:intercept-url pattern="/chief/**" access="ROLE_CHIEF,ROLE_SUPER,ROLE_SOCIO" />
+        <security:intercept-url pattern="/administrator/**" access="ROLE_ADMINISTRATOR,ROLE_SUPER,ROLE_SOCIO" />
+        <security:intercept-url pattern="/functionary/**" access="ROLE_FUNCTIONARY,ROLE_SUPER,ROLE_SOCIO" />
+        <security:intercept-url pattern="/teacher/**" access="ROLE_TEACHER,ROLE_SUPER,ROLE_SOCIO" />
+        <security:intercept-url pattern="/father/**" access="ROLE_FATHER,ROLE_SUPER,ROLE_SOCIO" />
+        <security:intercept-url pattern="/seccion/**" access="ROLE_ADMIN,ROLE_SUPER,ROLE_SOCIO" />
+        <security:intercept-url pattern="/student/**" access="ROLE_ADMIN,ROLE_SUPER,ROLE_SOCIO,ROLE_STUDENT" />
+        <security:session-management>
+            <security:concurrency-control max-sessions="1" expired-url="/login.spr" />
+        </security:session-management>
+        
+        <!--security:custom-filter position="BASIC_AUTH_FILTER" ref="mobileAuthenticationFilter" /-->
+    </security:http>
+    
+    <bean id="myAuthenticationSuccessHandler"
+          class="com.bewill.st.controllers.security.UrlAuthenticationSuccessHandler" />
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider ref="daoAuthenticationProvider"/>
+    </security:authentication-manager>
+    
+
+    <aop:aspectj-autoproxy />
+
+    <mvc:annotation-driven />
+    
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**" />
+            <bean class="com.bewill.st.web.support.interceptor.InterceptorSecurity" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+    
+    
+</beans>

@@ -70,6 +70,7 @@
 		<module>steven-thread</module>
 		<module>steven-ui</module>
 		<module>steven-web</module>
+		<module>steven-ws</module>
     </modules>
     
     <dependencies>
