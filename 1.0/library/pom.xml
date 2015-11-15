@@ -1,0 +1,127 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+    <modelVersion>4.0.0</modelVersion>
+  
+    <groupId>com.stevenprogramming</groupId>
+    <artifactId>library</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    
+    <name>Steven Mendez Brenes innovate</name>
+    <url>http://maven.apache.org</url>
+  
+    <!-- Repositorios de donde se descargan los fuentes -->
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <layout>default</layout>
+            <url>http://repo1.maven.org/maven2</url>
+        </repository>
+
+        <repository>
+            <id>java.net</id>
+            <name>java.net Maven Repository</name>
+            <url>http://download.java.net/maven/2</url>
+        </repository>
+
+        <repository>
+            <id>jboss.org</id>
+            <name>Jboss Maven 2 Repository</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public</url>
+        </repository>
+
+        <repository>
+            <id>codehaus-snapshots</id>
+            <name>Codehaus Snapshots Repository</name>
+            <url>http://snapshots.repository.codehaus.org/</url>
+        </repository>
+    </repositories>
+    
+    <developers>
+        <developer>
+            <name>Steven Ricardo Mendez Brenes</name>
+            <email>ricardostev@gmail.com</email>
+            <roles>
+                <role>Java Senior Developer</role>
+            </roles>
+        </developer>
+    </developers>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Project properties -->
+        <project.version>2.0</project.version>
+        <project.app.id>stevenprogramming</project.app.id>
+    </properties>
+
+    <modules>
+		<module>steven-android</module>
+        <module>steven-core</module>
+		<module>steven-collections</module>
+		<module>steven-cq5</module>
+		<module>steven-generics</module>
+		<module>steven-io</module>
+		<module>steven-patterns</module>
+		<module>steven-security</module>
+		<module>steven-spring</module>
+		<module>steven-thread</module>
+		<module>steven-ui</module>
+		<module>steven-web</module>
+    </modules>
+    
+    <dependencies>
+        
+    </dependencies>
+
+    <build>
+		<!-- https://maven.apache.org/guides/mini/guide-configuring-plugins.html -->
+        <plugins>
+            <plugin>
+				<!-- https://maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+					<!-- Set to true to show messages about what the compiler is doing. -->
+					<verbose>true</verbose>
+					<!--
+					Una bifurcación o fork, cuando se aplica en el contexto de un lenguaje de programación o un sistema operativo, 
+					hace referencia a la creación de una copia de sí mismo por parte de un programa, que entonces actúa como un "proceso hijo" 
+					del proceso originario, ahora llamado "padre". Los procesos resultantes son idénticos,
+					salvo que tienen distinto número de proceso (PID).
+					-->
+					<fork>true</fork>
+					<executable>${JAVA_HOME}/bin/javac</executable>
+					<!-- Version of the compiler to use, ex. "1.3", "1.5", if fork is set to true. -->
+					<compilerVersion>1.3</compilerVersion>
+                    <source>1.7</source>
+					<target>1.7</target>
+                </configuration>
+                <version>3.3</version>
+            </plugin>
+            <plugin>
+				<!--
+				The Surefire Plugin is used during the test phase of the build lifecycle to execute the unit tests of an application. 
+				It generates reports in two different file formats:
+				Plain text files (*.txt)
+				XML files (*.xml)
+				By default, these files are generated at ${basedir}/target/surefire-reports.
+				-->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19</version>
+                <configuration>
+                    <systemProperties>
+                        <property>
+                            <name>java.util.logging.config.file</name>
+                            <value>${project.build.directory}/src/test/resources/log4j.properties</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
