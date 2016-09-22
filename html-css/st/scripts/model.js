@@ -1,13 +1,31 @@
 function Person(name, email, message, website){
-    this.name=name;
-    this.email=email;
-    this.message=message;
-    this.website = website;
+        this.name = name;
+        this.email = email;
+        this.message = message;
+        this.website = website;
 };
+        
 
-function printPerson(person){
-    console.log("name " + person.name + " email " + person.email + " website " + person.website + " message " + person.message);
-};
+Person.prototype = {
+        type: 'O positive',
+        printPerson: function(){
+            console.log("Printing values name " + this.name + " email " + this.email + 
+                        " website " + this.website + " message " + this.message);
+        },
+        printPersonName: function(){
+            console.log("Printing values name >> " + this.getName() + " email " + this.email + 
+                        " website " + this.website + " message " + this.message);
+        },
+        getName: function () {
+            return this.name; 
+        },
+        getEmail: function () {
+            return this.email; 
+        },
+        getType: function () {
+            return Person.type; 
+        }
+}
 
 
 
