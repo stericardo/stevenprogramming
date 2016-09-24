@@ -96,7 +96,8 @@ $(document).ready(function(){
     };
     arr4[3].saluda4();
     arr4[4].saluda3();
-    arr4[4].saluda4();
+    arr4[4].saluda4();// That not work because is not part of prototype. 
+    //Only of object>>> arr4[3]
     
     
 });
