@@ -45,7 +45,7 @@ var Saludator2 = function(nom) {
     }
 }
 
-var arr = [];
+    var arr = [];
     var arr2 = [];
     
     
