@@ -1,0 +1,7 @@
+/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/build/CMakeFiles/rebuild_cache.dir
+/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/build/CMakeFiles/install.dir
+/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/build/CMakeFiles/list_install_components.dir
+/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/build/CMakeFiles/cinit.dir
+/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/build/CMakeFiles/edit_cache.dir
+/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/build/CMakeFiles/install/strip.dir
+/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/build/CMakeFiles/install/local.dir

@@ -1,0 +1,4 @@
+[Project]
+Name=cinit
+Manager=KDevCMakeManager
+VersionControl=kdevgit

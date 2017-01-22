@@ -1,0 +1,1 @@
+/usr/bin/cc  -g   CMakeFiles/cinit.dir/main.o CMakeFiles/cinit.dir/second.o CMakeFiles/cinit.dir/functions/functions.o  -o cinit -rdynamic 

@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/functions/functions.c
+functions.h
+/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/functions/functions.h
+stdio.h
+-
+stdlib.h
+-
+
+/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/functions/functions.h
+
+/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/main.c
+stdio.h
+-
+functions/functions.h
+/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/functions/functions.h
+
+/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/second.c
+stdio.h
+-
+

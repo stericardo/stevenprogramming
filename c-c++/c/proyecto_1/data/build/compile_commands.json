@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/build",
+  "command": "/usr/bin/cc    -g   -o CMakeFiles/cinit.dir/main.o   -c /home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/main.c",
+  "file": "/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/main.c"
+},
+{
+  "directory": "/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/build",
+  "command": "/usr/bin/cc    -g   -o CMakeFiles/cinit.dir/second.o   -c /home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/second.c",
+  "file": "/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/second.c"
+},
+{
+  "directory": "/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/build",
+  "command": "/usr/bin/cc    -g   -o CMakeFiles/cinit.dir/functions/functions.o   -c /home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/functions/functions.c",
+  "file": "/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/functions/functions.c"
+}
+]
