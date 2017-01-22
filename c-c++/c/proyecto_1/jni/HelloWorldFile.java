@@ -8,7 +8,7 @@ class HelloWorldFile {
      private native void print(int number, String value);
  
      public static void main(String[] args) {
-		 int number = 10;
+		 int number = 70;
 		 String value = "Steven data ";
          new HelloWorldFile().print(number, value);
      }
