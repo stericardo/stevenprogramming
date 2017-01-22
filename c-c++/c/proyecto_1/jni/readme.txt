@@ -25,9 +25,23 @@ You can see something like that: 624011d8 T _Java_HelloJNI_sayHello@8
 java.lang.UnsatisfiedLinkError: C:\cygwin\home\steven.mendez\development\c-c++\jni\hello.dll: Can't load IA 32-bit .dll on a AMD 64-bit platform
 Se debe compilar con cualquier version del JDK pero se debe correr con el JRE 32 bits
 
+Tambien muy importante los nombres.
 
-Then solution:
+Otro ejemplo
+
+javac HelloWorldFile.java
+javah -jni HelloWorldFile
+gcc -shared -fpic -I"/usr/java/jdk1.8.0_91/include" -I"/usr/java/jdk1.8.0_91/include/linux" HelloWorldFile.c -o libHelloWorldFile.so
+java -Djava.library.path=. HelloWorldFile
+
+Listo:
+
+[steven@localhost jni]$ java -Djava.library.path=. HelloWorldFile
+.
+Hello World ccccccccc!
+Hello valor 10
+Hello text @�u�
+
+Hello Steven data 
 
 
-
-/cygdrive/c/cygwin/home/steven.mendez/development/c-c++/jni
