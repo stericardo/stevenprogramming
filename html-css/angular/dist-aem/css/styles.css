@@ -1,0 +1,15 @@
+.headernav {
+    background-color: #151449;
+    overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #262281;
+    font-family: Arial,sans-serif;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.section_content {
+    padding: 15px;
+}

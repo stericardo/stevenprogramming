@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="metroApp">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <title>Legacy Module (header, footer)</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Vendors -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
+
+    <!-- App -->
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <section class="headernav section_content">
+                <div class="col-xs-3 p0">
+                    <img src="https://www.metropcs.com/content/dam/mpcs/images/homepage/Metro_PCS_logo_new.png" alt="MetroPCS" title="MetroPCS" />
+                </div>
+            </section>
+            <ul class="list-unstyled list-inline">
+                <li><a href="#" ui-sref="home">Home</a></li>
+                <li><a href="#" ui-sref="view1">View 1</a></li>
+                <li><a href="#" ui-sref="view2">View 2</a></li>
+            </ul>
+        </header>
+        <div class="row" ui-view></div>
+        <footer class="section_content">
+            <p>Copyright 2016</p>
+        </footer>
+    </div>
+</body>
+</html>

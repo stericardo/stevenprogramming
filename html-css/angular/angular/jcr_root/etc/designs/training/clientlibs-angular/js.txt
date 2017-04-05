@@ -1,0 +1,4 @@
+#base=js
+angular.min.js
+angular-ui-router.min.js
+app.js

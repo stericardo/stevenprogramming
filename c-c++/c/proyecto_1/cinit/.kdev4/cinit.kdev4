@@ -1,0 +1,32 @@
+[Buildset]
+BuildItems=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x01\x00\x00\x00\n\x00c\x00i\x00n\x00i\x00t)
+
+[CMake]
+Build Directory Count=1
+Current Build Directory Index=0
+
+[CMake][CMake Build Directory 0]
+Build Directory Path=/home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/build
+Build Type=Debug
+CMake Binary=/usr/bin/cmake
+Environment Profile=
+Extra Arguments=
+Install Directory=/usr/local
+
+[Launch]
+Launch Configurations=Launch Configuration 0
+
+[Launch][Launch Configuration 0]
+Configured Launch Modes=execute
+Configured Launchers=nativeAppLauncher
+Name=cinit
+Type=Native Application
+
+[Launch][Launch Configuration 0][Data]
+Configured from ProjectItem=cinit,cinit
+Project Target=cinit,cinit
+Working Directory=file:///home/steven/development/stevenprogramming_git/stevenprogramming/c-c++/c/proyecto_1/cinit/build/
+isExecutable=false
+
+[Project]
+VersionControlSupport=kdevgit

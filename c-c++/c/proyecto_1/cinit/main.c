@@ -9,7 +9,7 @@ void holamundo2();
 int main(void)
 {
 	int suma = sumar(5, 3); /* ERROR, sumar no ha sido declarada aún */
-	printf("La suma es: %d ", suma);
+	printf("La suma es otrass: %d ", suma);
     holamundo2(); /* llamada a la función holamundo */
     holamundo(); /* llamada a la función holamundo */
     int a;
