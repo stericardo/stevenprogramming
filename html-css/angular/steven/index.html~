@@ -27,13 +27,8 @@
 			<h2>{{name}}</h2>
 		</div>
 
-		<div ng-controller="CountryController">
-   		<p>List of Countries with locale:</p>
-   		<ol>
-      		<li ng-repeat = "country in countries">
-         		{{ 'Country: ' + country.name + ', Locale: ' + country.locale }}
-      		</li>
-   		</ol>
+		<div ng-controller="countryController" "countries = [{locale:'en-US',name:'United States'}, {locale:'en-GB',name:'United Kingdom'}, {locale:'en-FR',name:'France'}]">
+   
 		</div>		
 		
 	</body>
