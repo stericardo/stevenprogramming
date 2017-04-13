@@ -185,17 +185,6 @@ y = 6;<br>
 z = x + y;
 </code>
 
-<form action="/action_page.php">
-  <input list="browsers">
-  <datalist id="browsers">
-    <option value="Internet Explorer">
-    <option value="Firefox">
-    <option value="Chrome">
-    <option value="Opera">
-    <option value="Safari">
-  </datalist> 
-</form>
-
 <p>Text</p>
 <a href="#C4">Jump to Chapter 4</a>
 
