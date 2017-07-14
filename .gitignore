@@ -1,1 +1,14 @@
 /netbeans-tests/tests_code/target/
+/1.0/library/steven-android/target/
+/1.0/library/steven-core/target/
+/1.0/library/steven-security/target/
+/1.0/library/steven-thread/target/
+/1.0/library/steven-collections/target/
+/1.0/library/steven-io/target/
+/1.0/library/steven-spring/target/
+/1.0/library/steven-patterns/target/
+/1.0/library/steven-generics/target/
+/1.0/library/steven-ui/target/
+/1.0/library/steven-cq5/target/
+/1.0/library/steven-web/target/
+/1.0/library/steven-ws/target/

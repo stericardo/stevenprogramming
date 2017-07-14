@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title of the document</title>
+  <style>
+    ul{
+    list-style-image: url("test.gif");
+  }
+  .text{
+  color: #b2b4ae;
+  }
+    .container{
+	background-color: #545857;
+	width:200px;
+	height: 75 px;
+  }
+  .c-tagcrumb .c-tagcrumb-tooltip {
+	position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.c-tagcrumb .c-tagcrumb-tooltip .c-tagcrumb-tooltiptext {
+      visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #555759;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+  </style>
+</head>
+
+<body>
+<div class="container">
+<h2 class="text">Top Tooltip</h2>
+</div>
+<p>Move the mouse over the text below:</p>
+
+<div class="tooltip">Hover over me
+  <span class="tooltiptext">Tooltip text</span>
+</div>
+
+<div class="container c-tagcrumb page-section">
+    <div data-sly-list.listCategories="${tagcrumbs.tagListCategories}" data-sly-unwrap>
+      <ul data-group="${listCategories.label}" class="c-tagcrumb-list col-xs-12 col-md-7">
+        <li>
+		  <div class="c-tagcrumb-tooltip">
+			 <span class="c-tagcrumb-tooltiptext">Algun texto</span>
+             <img class="c-tagcrumb-img" src="/etc/designs/stryker/images/general/icon_information.gif" title="labeltitle"/>
+		  </div>
+		  <ul  >
+            <li data-category="li" class="c-tagcrumb-item"><a href="li">Li</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+<ul class="tab-list">
+						<li role="presentation"><a href="#welcome">Welcome</a></li>
+						<li role="presentation"><a href="#carousel">Carousel</a></li>
+</ul>
+
+
+</body>
+
+</html>

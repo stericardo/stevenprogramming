@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+	<title>Spot the errors</title>
+	<link rel="stylesheet" type="text/css" href="static/css/fun.css">
+</head>
+<body>
+	
+	<nav class="navbar navbar-default">
+	  	<div class="container-fluid">
+		    <div class="navbar-header">
+			    <a class="navbar-brand" href="#">Cool Stuff&ensp;&mdash;&ensp;<small>fun JS</small></a>
+		    </div>
+		</div><!-- /.container-fluid -->
+	</nav>
+	<img src="test.png" alt="Smiley face" height="42" width="42">
+	<section class="container-fluid">
+		<div class="row">
+			<aside class="col-md-3">
+				<div class="nav-tabs-container">
+					<ul class="tab-list">
+						<li role="presentation"><a href="#welcome">Welcome</a></li>
+						<li role="presentation"><a href="#carousel">Carousel</a></li>
+					</ul>
+				</div>
+			</aside>
+			<article class="col-md-8">
+				<div class="tab-content">
+					<div id="welcome">
+						<div class="welcome-container">
+							<h1>Welcome</h1>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							<div class="row">
+								<div class="col-md-6">
+									<h2>Enroll</h2>
+									<form id="fun-form" method="get" action="">
+									  	<div class="form-group">
+									    	<label for="cname">Name</label>
+									    	<input class="form-control" id="cname" name="name" minlength="2" type="text" placeholder="Name" required>
+									  	</div>
+									  	<div class="form-group">
+									    	<label for="frm-email">Email</label>
+									    	<input class="form-control" placeholder="Email" id="cemail" type="email" name="email" required>
+									  	</div>
+									  	<button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="carousel">
+						<div class="col-md-6 col-md-offset-3">
+							<div class="carousel-container">
+								<div class="carousel-slides">
+									<div class="slide">
+										<img src="static/img/img-01.png" class="img-responsive">
+									</div>
+									<div class="slide">
+										<img src="static/img/img-02.png" class="img-responsive">
+									</div>
+									<div class="slide">
+										<img src="static/img/img-03.png" class="img-responsive">
+									</div>
+								</div>
+								<div class="carousel-indicators"></div>
+								<div class="carousel-controls">
+									<div class="prev"></div>
+									<div class="next"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+		</div>
+	</section>
+	
+</body>
+<script type="text/javascript" scr="static/js/fun.js"></script>
+</html>
