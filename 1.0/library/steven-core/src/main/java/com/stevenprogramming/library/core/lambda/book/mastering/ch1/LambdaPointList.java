@@ -11,7 +11,9 @@ import java.util.function.Consumer;
 
 /**
  *
- * @author Steven Mendez
+ * @author steven.mendez
+ * @since Jul 28 2017
+ * @version 1.0
  */
 public class LambdaPointList {
 
@@ -38,7 +40,7 @@ public class LambdaPointList {
     ArrayList pointList2 = new ArrayList();
     pointList2.forEach(new TranslateByOneConsumer());
 
-    ArrayList pointListInnerClass = new ArrayList();
+    List pointListInnerClass = new ArrayList();
     pointListInnerClass.forEach(new Consumer<Point>() {
       public void accept(Point p) {
         p.translate(1, 1);

@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 /**
  *
  * @author steven.mendez
+ * @since Jul 28 2017
+ * @version 1.0
  */
 public class LambdaStreams {
 

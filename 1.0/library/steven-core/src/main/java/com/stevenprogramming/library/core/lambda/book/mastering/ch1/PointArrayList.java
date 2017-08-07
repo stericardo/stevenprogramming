@@ -6,6 +6,8 @@ import java.util.ArrayList;
 /**
  *
  * @author steven.mendez
+ * @since Jul 28 2017
+ * @version 1.0
  */
 public class PointArrayList extends ArrayList<Point> {
 
