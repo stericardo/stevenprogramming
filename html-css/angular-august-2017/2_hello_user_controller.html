@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Example - August 2017</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+    <script src="js/2_hello_user_controller.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/2_hello_user_controller.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </head>
+  <body >
+    <div ng-app="HelloUserApp">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 left">
+            <p>.col-4</p>
+            <div ng-controller="HelloUserController">
+              <input ng-model="name" ng-keyup="NameChange()">
+              <h1>{{greeting}}</h1>
+              <h2>{{name}}</h2>
+            </div>
+            <div>
+              <input ng-model="a">
+              <input ng-model="b">
+              <h1>{{ a + b }}</h1>
+            </div>
+            <div ng-controller="AddNumbersController">
+              <input ng-model="c" ng-keyup="AddNumbers()">
+              <input ng-model="d" ng-keyup="AddNumbers()">
+              <h1>{{ sum }}</h1>
+            </div>
+            <div>
+              <input ng-model="e" type="number">
+              <input ng-model="f" type="number">
+              <h1>{{ e + f }}</h1>
+            </div>
+            <div>
+              <button ng-init="counter = 0" ng-click="counter = counter + 1">Increment</button>
+              {{counter}}
+            </div>
+            <div>
+              <div ng-init="counter2 = 0"></div>
+              <button class="btn btn-success" ng-click="counter2 = counter2 + 1">Increment</button>
+              <button class="btn btn-danger" ng-click="counter2 = counter2 - 1">Decrement</button>
+              {{counter2}}
+            </div>
+            <div ng-controller="CounterController">
+              <button class="btn btn-success" ng-click="counter3 = counter3 + 1">Increment</button>
+              <button class="btn btn-danger" ng-click="decrement()">Decrement</button>
+              {{counter3}}
+            </div>
+            <div ng-controller="CounterController2">
+              {{counter4}}
+            </div>
+          </div>
+
+          <div class="col-sm-4 center">
+            <p>.col-4</p>
+            <div ng-controller="CounterController3">
+              {{counter5}}
+              <button ng-click="stopCounter()">Stop</button>
+            </div>
+            <div ng-controller="CounterController4">
+              {{counter6}}
+              <button ng-click="stopCounter()">Stop</button>
+              <button ng-click="startCounter()">Start</button>
+            </div>
+            <div ng-controller="CalculatorController">
+              <p><input type="number" ng-model="a"></p>
+              <p><input type="number" ng-model="b"></p>
+              <p><select ng-model="operator">
+                  <option>+</option>
+                  <option>*</option>
+                  <option>-</option>
+                  <option>/</option>
+                </select></p>
+              <p>{{ result() }}</p>
+            </div>
+
+          </div>
+          <div class="col-sm-4 right">
+            <p>.col-4</p>
+            <div ng-controller="todoController" class="form-group">
+              <div class="input-group">
+                <input type="text"  ng-model="title" class="form-control">
+                <div class="input-group-addon"><button class="btn btn-primary" ng-click="add()">Add</button></div>
+              </div>
+              <ul>
+                <li ng-repeat="t in tasks">{{ t }}</li>
+              </ul>
+              <form ng-submit="add2()">
+                <button class="btn btn-primary">Add2</button>
+                <input ng-model="title2">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
