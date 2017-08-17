@@ -73,12 +73,36 @@ angular.module('HelloUserApp', [])
         })
         .controller('todoController', function ($scope) {
           $scope.tasks = [];
+          $scope.tasks2 = [];
           $scope.add = function () {
             $scope.tasks.push($scope.title);
             $scope.title = ""; 
           },
           $scope.add2 = function () {
-            $scope.tasks.push($scope.title2);
+            $scope.tasks2.push($scope.title2);
             $scope.title2 = ""; 
+          },
+          $scope.delete = function() {
+            $scope.tasks2.splice(this.$index, 1);
+          },
+          $scope.delete2 = function() {
+            $scope.tasks.splice(this.$index, 1);
           }
-        });
+        })
+        .controller('DemoController', function($scope, $log) {
+          var build_tree = function(depth) {
+              $log.log('build_tree', depth);
+              var leaf = [
+                      {
+                          title: "Level " + depth
+                      }
+                  ]
+              if (depth > 1) {
+                  leaf[0].tree = build_tree(depth-1);
+              }
+              return leaf;
+          }
+
+          $scope.tree = build_tree(10);
+          $log.log($scope.tree);
+      });

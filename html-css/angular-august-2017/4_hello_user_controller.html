@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Example - August 2017</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+    <script src="js/4_hello_user_controller.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/4_hello_user_controller.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/ng-template" id="tree_view">
+      {{ node.title }}
+      <ul ng-if="node.tree">
+      <li ng-repeat="node in node.tree" ng-include="'tree_view'">
+      </li>
+      </ul>
+    </script>
+
+  </head>
+  <body >
+    <div ng-app="phonecatApp">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 left">
+            <p>.col-4</p>
+            <div ng-app="myApp" ng-controller="namesCtrl">
+              <p>Order by country:</p>
+              <ul>
+                <li ng-repeat="x in names | orderBy:'country'">
+                  {{ x.name + ', ' + x.country }}
+                </li>
+              </ul>
+            </div>
+            <div ng-controller="costCtrl">
+              <h1>Price: {{ price | currency }}</h1>
+            </div>
+          </div>
+          <div class="col-sm-4 center">
+            <p>.col-4</p>
+            <div ng-controller="namesCtrlShort">
+              <ul>
+                <li ng-repeat="x in names | filter : 'i'">
+                  {{ x }}
+                </li>
+              </ul>
+            </div>
+            <div ng-controller="namesCtrl2">
+              <p>Type a letter in the input field:</p>
+              <p><input type="text" ng-model="test"></p>
+              <ul>
+                <li ng-repeat="x in names | filter:test">
+                  {{ x }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-4 right">
+            <p>.col-4</p>
+            <div ng-controller="myCtrl">
+              <p>The url of this page is:</p>
+              <h3>{{myUrl}}</h3>
+            </div>
+            <div ng-controller="myCtrl2"> 
+              <p>Today's welcome message is:</p>
+              <h1>{{myWelcome}}</h1>
+            </div>
+            <div ng-controller="myCtrl3"> 
+              <p>Today's welcome message is:</p>
+              <h1>{{hex}}</h1>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

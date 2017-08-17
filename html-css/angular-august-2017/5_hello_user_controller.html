@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Example - August 2017</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+    <script src="js/5_hello_user_controller.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/5_hello_user_controller.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/ng-template" id="tree_view">
+      {{ node.title }}
+      <ul ng-if="node.tree">
+      <li ng-repeat="node in node.tree" ng-include="'tree_view'">
+      </li>
+      </ul>
+    </script>
+
+  </head>
+  <body >
+    <div ng-app="phonecatApp">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 left">
+            <p>.col-4</p>
+            <ul ng-controller="namesCtrl">
+              <li ng-repeat="x in names">
+                {{x | myFormat}}
+              </li>
+            </ul>
+
+            <div ng-controller="namesCtrl2">
+              <h1>{{data | myFormat2}}</h1>
+            </div>
+
+          </div>
+          <div class="col-sm-4 center">
+            <p>.col-4</p>
+            <div ng-controller="myCtrl3">
+              <p>Use a filter when displaying the array [255, 251, 200]:</p>
+              <ul>
+                <li ng-repeat="x in counts">{{x | myFormat3}}</li>
+              </ul>
+            </div>
+            <div ng-controller="namesCtrl">
+              <select ng-model="selectedCar4" ng-options="y.brand for (x, y) in cars3">
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-4 right">
+            <p>.col-4</p>
+            <div ng-controller="namesCtrl">
+              <select ng-model="selectedName" ng-options="x for x in names">
+              </select>
+              <select>
+                <option ng-repeat="x in names">{{x}}</option>
+              </select>
+              <br>
+              <select ng-model="selectedCar">
+                <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>
+              </select>
+
+              <h3>You selected: {{selectedCar}}</h3>
+              <select ng-model="selectedCar2" ng-options="x.model for x in cars">
+              </select><br>
+              <h3>You selected: {{selectedCar2.model}}</h3>
+              <p>Its color is: {{selectedCar2.color}}</p>
+              <br>
+              <select ng-model="selectedCar3" ng-options="x for (x, y) in cars2">
+              </select>
+              <h1>You selected: {{selectedCar3}}</h1>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
