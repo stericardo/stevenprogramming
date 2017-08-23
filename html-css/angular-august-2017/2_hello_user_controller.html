@@ -3,19 +3,21 @@
   <head>
     <meta charset="UTF-8">
     <title>Example - August 2017</title>
+    <script src="http://tether.io/dist/js/tether.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+
     <script src="js/2_hello_user_controller.js"></script>
     <link rel="stylesheet" type="text/css" href="css/2_hello_user_controller.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script type="text/ng-template" id="tree_view">
-    {{ node.title }}
+      {{ node.title }}
       <ul ng-if="node.tree">
-          <li ng-repeat="node in node.tree" ng-include="'tree_view'">
-          </li>
+      <li ng-repeat="node in node.tree" ng-include="'tree_view'">
+      </li>
       </ul>
     </script>
-  
+
   </head>
   <body >
     <div ng-app="HelloUserApp">
@@ -66,8 +68,8 @@
           <div class="col-sm-4 center">
             <p>.col-4</p>
             <div ng-controller="DemoController">
-            <ul>
-              <li ng-repeat="node in tree" ng-include="'tree_view'"></li>
+              <ul>
+                <li ng-repeat="node in tree" ng-include="'tree_view'"></li>
               </ul>
             </div>
             <div ng-controller="CounterController3">

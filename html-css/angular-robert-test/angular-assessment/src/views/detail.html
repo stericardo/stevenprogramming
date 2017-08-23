@@ -1,0 +1,20 @@
+<div ng-controller="detailController as controller" class="form-group list-group ">
+    <h2>Detail Product</h2>
+
+    <div class="row detail">
+        <div class="col-md-6">ID</div>
+        <div class="col-md-6"> {{ product.id }}</div>
+    </div>
+
+    <div class="row detail">
+        <div class="col-md-6">Company</div>
+        <div class="col-md-6"> {{ product.company }}</div>
+    </div>
+    
+        <div class="row detail">
+        <div class="col-md-6">Phone</div>
+        <div class="col-md-6"> {{ product.phoneName }}</div>
+    </div>
+
+    <a href="#!/products" class="btn btn-info detail-button" role="button">Return products</a>
+</div>
