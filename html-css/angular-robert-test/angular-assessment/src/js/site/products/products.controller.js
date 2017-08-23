@@ -4,15 +4,15 @@
  * @description Products controller
  */
 angular.module('stevenApp.products').controller("productsController", function ($scope, $log, productService) {
-
-    var promise = productService.getProducts();
-    promise.then(
-            function (response) {
-                $scope.products = response.data.products;
-            },
-            function (errorResponse) {
-                $log.error('failure loading products', errorResponse);
+    var vm = this;
+    productService.getProducts()
+            .then(function (data) {
+                vm.products = data.products;
+            })
+            .catch(function (err) {
+                // Tratar el error
             });
+
 
 });
 

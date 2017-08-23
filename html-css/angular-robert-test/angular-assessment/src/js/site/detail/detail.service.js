@@ -4,26 +4,31 @@
  * @description Products Service
  */
 angular.module('stevenApp.detail').service('detailService',
-        function detailServiceMethod($http, $log) {
+        function detailServiceMethod($http, $log, $q) {
 
-            function getProductId(id, scopeController) {
-                var promise = $http.get('http://stevenprogramming.com/servicesjson/angular-products.php');
-                promise.then(
-                        function (response) {
+            function getProductId(id) {
+                var defered = $q.defer();
+                var promise = defered.promise;
+                $http.get('http://stevenprogramming.com/servicesjson/angular-products.php')
+                        .then(function mySuccess(response) {
                             var listProducts = response.data.products;
+                            var product;
+                            id = id.substring(1);
                             listProducts.forEach(function (key) {
-                                console.log(key, listProducts[key]);
+                                if(key.id === id){
+                                    product = key;
+                                }
                             });
-                            scopeController.product = listProducts[0];
-                        },
-                        function (errorResponse) {
-                            $log.error('failure loading products', errorResponse);
+                            defered.resolve(product);
+                        }, function myError(err) {
+                            defered.reject(err);
                         });
+                return promise;
             }
 
             return {
-                getProduct: function (id, scopeController) {
-                    getProductId(id, scopeController);
+                getProduct: function (id) {
+                    return getProductId(id);
                 }
             };
         }

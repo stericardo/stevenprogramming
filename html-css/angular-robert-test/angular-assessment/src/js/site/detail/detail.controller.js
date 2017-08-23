@@ -5,6 +5,13 @@
  */
 angular.module('stevenApp.detail').controller("detailController", function ($scope, $log, $routeParams, detailService) {
     var currentId = $routeParams.id;
-    detailService.getProduct(currentId, $scope);
+    var vm = this;
+    detailService.getProduct(currentId)
+            .then(function (product) {
+                vm.product = product;
+            })
+            .catch(function (err) {
+                // Tratar el error
+            });
 });
 

@@ -4,10 +4,18 @@
  * @description Products Service
  */
 angular.module('stevenApp.products').factory('productService',
-        function productsFactory($http) {
+        function productsFactory($http, $q) {
 
             function getListProducts() {
-                return $http.get('http://stevenprogramming.com/servicesjson/angular-products.php');
+                var defered = $q.defer();
+                var promise = defered.promise;
+                $http.get('http://stevenprogramming.com/servicesjson/angular-products.php')
+                        .then(function mySuccess(response) {
+                            defered.resolve(response.data);
+                        }, function myError(err) {
+                            defered.reject(err);
+                        });
+                return promise;
             }
 
             function getProductId(id) {

@@ -7,11 +7,13 @@ angular.module('stevenApp').config(function ($routeProvider) {
           })
           .when("/products", {
             templateUrl: "views/products.html",
-            controller: "productsController"
+            controller: "productsController",
+            controllerAs:"controller"
           })
           .when('/products/details/:id', {
             templateUrl: "views/detail.html",
-            controller: "detailController"
+            controller: "detailController",
+            controllerAs:"controller"
           })
           .otherwise({
             template: "<h1>None</h1><p>Nothing has been selected</p>"
