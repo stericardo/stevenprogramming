@@ -1,20 +1,30 @@
 <div class="form-group list-group ">
-    <h2>Detail Product</h2>
 
-    <div class="row detail">
-        <div class="col-md-6">ID</div>
-        <div class="col-md-6"> {{ controller.product.id }}</div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="detail-header"> {{ controller.product.company }} - {{ controller.product.phoneName }}</h2>
+        </div>
     </div>
 
-    <div class="row detail">
-        <div class="col-md-6">Company</div>
-        <div class="col-md-6"> {{ controller.product.company }}</div>
-    </div>
-    
-        <div class="row detail">
-        <div class="col-md-6">Phone</div>
-        <div class="col-md-6"> {{ controller.product.phoneName }}</div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="detail">
+                <img class="image-detail img-responsive" src="{{ controller.product.image }}" alt=""/>
+            </div>
+        </div>
+    </div>    
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="detail detail-footer">
+                {{ controller.product.description }}
+            </div>
+        </div>
     </div>
 
-    <a href="#!/products" class="btn btn-info detail-button" role="button">Return products</a>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="#!/products" class="btn btn-info detail-button" role="button">Return products</a>
+        </div>
+    </div>
 </div>
