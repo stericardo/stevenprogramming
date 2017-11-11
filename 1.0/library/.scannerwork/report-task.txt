@@ -1,0 +1,5 @@
+projectKey=Steven-Programming
+serverUrl=http://localhost:9000
+dashboardUrl=http://localhost:9000/dashboard/index/Steven-Programming
+ceTaskId=AV6CTEvJyimyHQvLNzCO
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AV6CTEvJyimyHQvLNzCO

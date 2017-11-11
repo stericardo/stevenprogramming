@@ -38,7 +38,24 @@
       <name>Codehaus Snapshots Repository</name>
       <url>http://snapshots.repository.codehaus.org/</url>
     </repository>
-  </repositories>
+        <repository>
+            <id>adobe</id>
+            <name>Adobe Public Repository</name>
+            <url>https://repo.adobe.com/nexus/content/groups/public/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>adobe</id>
+            <name>Adobe Public Repository</name>
+            <url>https://repo.adobe.com/nexus/content/groups/public/</url>
+            <layout>default</layout>
+        </pluginRepository>
+    </pluginRepositories>
+  
+  
+  
     
   <developers>
     <developer>
@@ -61,7 +78,7 @@
     <module>steven-android</module>
     <module>steven-core</module>
     <module>steven-collections</module>
-    <module>steven-cq5</module>
+    <module>steven-aem</module>
     <module>steven-generics</module>
     <module>steven-io</module>
     <module>steven-patterns</module>
