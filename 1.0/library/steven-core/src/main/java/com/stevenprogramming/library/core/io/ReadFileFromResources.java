@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
 /**
@@ -22,7 +23,7 @@ public class ReadFileFromResources {
     }
 
     public String getStringFromInputStream(InputStream is) {
-        String result = new BufferedReader(new InputStreamReader(is))
+        String result = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))
                 .lines().collect(Collectors.joining("\n"));
         return result;
     }
@@ -32,17 +33,28 @@ public class ReadFileFromResources {
     }
 
     public String getStringParallelFromFile(String fileName) {
-        String result = new BufferedReader(new InputStreamReader(readFile(fileName)))
-                .lines().collect(Collectors.joining("\n"));
-        return result;
+        InputStreamReader inputStreamReader = new InputStreamReader(readFile(fileName), StandardCharsets.UTF_8);
+        if (null != inputStreamReader) {
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            if (null != bufferedReader) {
+                String result = bufferedReader.lines().collect(Collectors.joining("\n"));
+                try {
+                    bufferedReader.close();
+                } catch (IOException ignored) {
+                }
+                return result;
+            }
+        }
+        return "NULL";
     }
 
     public StringBuilder getStringBuilderFromFile(String fileName, String encoding) {
         final StringBuilder out = new StringBuilder();
+        Reader in = null;
         try {
             final int bufferSize = 1024;
             final char[] buffer = new char[bufferSize];
-            Reader in = new InputStreamReader(readFile(fileName), encoding);
+            in = new InputStreamReader(readFile(fileName), encoding);
             for (;;) {
                 int rsz = in.read(buffer, 0, buffer.length);
                 if (rsz < 0) {
@@ -52,9 +64,16 @@ public class ReadFileFromResources {
             }
 
         } catch (UnsupportedEncodingException ignored) {
-            System.out.println(UnsupportedEncodingException.class.getName() + "\t" +ignored.toString());
+            System.out.println(UnsupportedEncodingException.class.getName() + "\t" + ignored.toString());
         } catch (IOException ignored) {
-            System.out.println(IOException.class.getName() + "\t" +ignored.toString());
+            System.out.println(IOException.class.getName() + "\t" + ignored.toString());
+        } finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            } catch (IOException ignored) {
+            }
         }
         return out;
     }
@@ -64,6 +83,6 @@ public class ReadFileFromResources {
         System.out.println(readFileFromResources.getStringFromFile("read.txt"));
         System.out.println(readFileFromResources.getStringParallelFromFile("read.txt"));
         System.out.println(readFileFromResources.getStringBuilderFromFile("read.txt", "UTF-8"));
-        
+
     }
 }

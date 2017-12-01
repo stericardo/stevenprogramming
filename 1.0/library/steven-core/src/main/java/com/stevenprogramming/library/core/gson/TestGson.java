@@ -33,16 +33,16 @@ public class TestGson {
         System.out.println(obj.toString());
         Map<String, Object> map = new HashMap<>();
         map.put(tabName, new JsonObject());
-        JsonObject jsonObjectTemp = (JsonObject)map.get(tabName);
+        //JsonObject jsonObjectTemp = (JsonObject)map.get(tabName);
         boolean isJson = GsonUtil.isJsonObject(tabName);
-        Gson gson2 = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+        //Gson gson2 = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
         System.out.println(isJson);
         isJson = GsonUtil.isJsonObject(GsonConstants.ARRAY_INTERNAL_GSON);
         System.out.println(isJson);
         isJson = GsonUtil.isJsonObject(GsonConstants.FIRST_GSON);
         System.out.println(isJson);
         JsonObject jsonObjectGenerated = generateGson(GsonConstants.SIMPLE_JSON);
-        String result = jsonObjectGenerated.get("siteconfigkey").getAsString();
+        //String result = jsonObjectGenerated.get("siteconfigkey").getAsString();
         System.out.println(jsonObjectGenerated.toString());
         GsonUtil.demostration(); 
     }

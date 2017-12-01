@@ -8,7 +8,7 @@ package com.stevenprogramming.library.core.lambda.book.mastering.ch1;
  */
 public class Solution {
 
-    public static String PrintFizzBuzz(int input) {
+    public static String printFizzBuzz(int input) {
         if (input % 5 == 0) {
             return "FizzBuzz";
         }

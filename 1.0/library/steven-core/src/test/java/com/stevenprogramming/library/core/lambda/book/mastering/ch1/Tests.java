@@ -16,6 +16,6 @@ public class Tests {
     public void testMethod() {
         Solution solution = new Solution();
 
-        assertEquals(solution.PrintFizzBuzz(15), "FizzBuzz");
+        assertEquals(solution.printFizzBuzz(15), "FizzBuzz");
     }
 }

@@ -14,7 +14,7 @@ public final class GsonUtil {
 
     public static void demostration() {
         JsonObject keyValuePairJson = generateGsonToObject(GsonConstants.SIMPLE_JSON);
-        String siteConfigKey = keyValuePairJson.get(GsonConstants.SITE_CONFIG_KEY).getAsString();
+        //String siteConfigKey = keyValuePairJson.get(GsonConstants.SITE_CONFIG_KEY).getAsString();
         String siteConfigURL = keyValuePairJson.get(GsonConstants.SITE_CONFIG_URL).getAsString();
         keyValuePairJson.addProperty(GsonConstants.NEW_PROPERTY, GsonConstants.NEW_PROPERTY);
         JsonArray resultArrayValue = generateGsonArray(GsonConstants.ARRAY_GSON);
@@ -26,9 +26,9 @@ public final class GsonUtil {
         if ("".equals(json) || " ".equals(json)) {
             return false;
         }
-        Gson gson = new Gson();
+        //Gson gson = new Gson();
         try {
-            JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
+            //JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
             return true;
         } catch (com.google.gson.JsonSyntaxException ex) {
             return false;
@@ -39,9 +39,9 @@ public final class GsonUtil {
         if ("".equals(json) || " ".equals(json)) {
             return false;
         }
-        Gson gson = new Gson();
+        //Gson gson = new Gson();
         try {
-            JsonArray jsonArray = gson.fromJson(json, JsonArray.class);
+            //JsonArray jsonArray = gson.fromJson(json, JsonArray.class);
             return true;
         } catch (com.google.gson.JsonSyntaxException ex) {
             return false;
