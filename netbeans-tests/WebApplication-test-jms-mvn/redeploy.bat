@@ -1,0 +1,1 @@
+mvn clean package glassfish:redeploy --debug

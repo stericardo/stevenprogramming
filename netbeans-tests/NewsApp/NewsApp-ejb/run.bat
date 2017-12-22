@@ -1,0 +1,1 @@
+mvn install:install-file -DgeneratePom=true -Dfile=dist\NewsApp-ejb.jar -DgroupId=com.stevenprogramming.netbeans -DartifactId=news-ejb -Dversion=1.0-SNAPSHOT -Dpackaging=jar
