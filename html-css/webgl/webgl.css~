@@ -1,0 +1,30 @@
+header, footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+
+aside {
+    float: left;
+    max-width: 160px;
+    width: 140px;
+    margin: 0;
+    padding: 1em;
+}
+
+aside canvas{
+    width: 140px;
+}
+
+article {
+    margin-left: 10px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+
+article canvas{
+    width: 240px;
+}
