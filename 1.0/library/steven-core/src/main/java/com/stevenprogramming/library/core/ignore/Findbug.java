@@ -1,4 +1,4 @@
-package com.stevenprogramming.library.core;
+package com.stevenprogramming.library.core.ignore;
 
 /**
  *

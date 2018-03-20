@@ -1,4 +1,4 @@
-package com.stevenprogramming.library.core.gson;
+package com.stevenprogramming.library.core.ignore.gson;
 
 /**
  *

@@ -1,4 +1,4 @@
-package com.stevenprogramming.library.core.gson;
+package com.stevenprogramming.library.core.ignore.gson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
