@@ -1,4 +1,4 @@
-package com.stevenprogramming.library.core.io;
+package com.stevenprogramming.library.core.ignore.io;
 
 import java.io.Externalizable;
 import java.io.IOException;

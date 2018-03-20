@@ -18,21 +18,21 @@ import org.powermock.modules.junit4.PowerMockRunner;
  * @since Oct 11 2017
  * @version 1.0
  */
-@RunWith(PowerMockRunner.class)
+//@RunWith(PowerMockRunner.class)
 public class BaseControllerPowerMockTest {
 
-    @InjectMocks
-    private ConfigurationService mockSiteConfigService = new ConfigurationServiceImpl();
+    //@InjectMocks
+    //private ConfigurationService mockSiteConfigService = new ConfigurationServiceImpl();
 
     @Before
     public void setUp() throws Exception {
-        Dictionary<String, Object> props = new Hashtable<String, Object>();
-        props.put("api.end.point.baseurl", "/api");
-        ComponentContext context = PowerMockito.mock(ComponentContext.class);
-        Method activate = mockSiteConfigService.getClass().getDeclaredMethod("activate", ComponentContext.class);
-        activate.setAccessible(true);
-        PowerMockito.when(context.getProperties()).thenReturn(props);
-        activate.invoke(mockSiteConfigService, context);
+        //Dictionary<String, Object> props = new Hashtable<String, Object>();
+        //props.put("api.end.point.baseurl", "/api");
+        //ComponentContext context = PowerMockito.mock(ComponentContext.class);
+        //Method activate = mockSiteConfigService.getClass().getDeclaredMethod("activate", ComponentContext.class);
+        //activate.setAccessible(true);
+        //PowerMockito.when(context.getProperties()).thenReturn(props);
+        //activate.invoke(mockSiteConfigService, context);
 
     }
 
