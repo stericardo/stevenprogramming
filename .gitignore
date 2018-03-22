@@ -16,6 +16,7 @@
 /html-css/angular-robert-test/angular-assessment/node_modules
 /html-css/angular-robert-test/angular-assessment/dist
 build/
+target/
 bin/
 .gradle/
 .settings/
