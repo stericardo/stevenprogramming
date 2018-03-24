@@ -10,6 +10,11 @@ public class ReadmeSpringBootHW {
 	/**
 	 * Commands needed on core folder
 	 * swith to <mainClass>com.stevenprogramming.library.core.sprintboot.Application</mainClass> on pom.xml
+	 * 
+	 * 
+	 * java -jar target\steven-core-1.0-SNAPSHOT.jar
+	 * http://localhost:8080/
+	 * 
 	 */
 
 }
