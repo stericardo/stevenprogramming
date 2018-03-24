@@ -87,15 +87,14 @@
 				<executions>
 					<execution>
 						<id>copy-dependencies</id>
-						<phase>prepare-package</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
 							<outputDirectory>${project.build.directory}/lib</outputDirectory>
 							<overWriteReleases>false</overWriteReleases>
-							<overWriteSnapshots>false</overWriteSnapshots>
-							<overWriteIfNewer>true</overWriteIfNewer>
+							<overWriteSnapshots>true</overWriteSnapshots>
 						</configuration>
 					</execution>
 				</executions>
@@ -109,10 +108,8 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<mainClass>com.stevenprogramming.library.core.sprintboot.Application</mainClass>
+							<classpathPrefix>lib/</classpathPrefix>
 						</manifest>
-						<manifestEntries>
-							<Class-Path>lib/</Class-Path>
-						</manifestEntries>
 					</archive>
 				</configuration>
 			</plugin>
