@@ -1,0 +1,33 @@
+apply plugin: 'application'
+apply plugin: 'java'
+
+mainClassName = 'com.stevenprogramming.app.HelloApp'
+
+dependencies {
+	  compile files(fileTree(dir: 'lib', includes: ['*.jar']))
+      compile project(':core')
+      compile 'org.apache.commons:commons-lang3:3.4'
+      compile 'org.apache.logging.log4j:log4j-core:2.6.2'
+}
+
+jar {
+		from {
+        	(configurations.runtime).collect {
+            	it.isDirectory() ? it : zipTree(it)
+        	}
+    	}
+   		baseName = 'Steven-MB-Library'
+    	manifest {
+        	attributes 'Implementation-Title': 'Steven MB Library Gradle Based Project',
+                   'Implementation-Version': version,
+                   'Main-Class': 'com.stevenprogramming.app.HelloApp'
+		}
+}
+
+task runApp(type: JavaExec) {
+  classpath = sourceSets.main.runtimeClasspath
+
+  main = mainClassName
+
+  args 'test', 'test 2'
+}

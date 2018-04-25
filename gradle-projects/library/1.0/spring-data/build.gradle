@@ -1,0 +1,40 @@
+apply plugin: 'application'
+apply plugin: 'java'
+
+mainClassName = 'com.stevenprogramming.springdata.HelloApp'
+
+dependencies {
+	  compile files(fileTree(dir: 'lib', includes: ['*.jar']))
+      compile project(':core')
+      compile 'org.apache.commons:commons-lang3:3.4'
+      compile 'org.apache.logging.log4j:log4j-core:2.6.2'
+      compile 'org.springframework.data:spring-data-jdbc:1.0.0.M2'
+}
+
+repositories {
+    maven {
+        url 'https://repo.spring.io/libs-milestone'
+    }
+}
+
+jar {
+		from {
+        	(configurations.runtime).collect {
+            	it.isDirectory() ? it : zipTree(it)
+        	}
+    	}
+   		baseName = 'Steven-Ricardo-Mendez-Brenes-SpringData-Library'
+    	manifest {
+        	attributes 'Implementation-Title': 'Steven Ricardo Mendez Brenes SpringData Library Gradle Based Project',
+                   'Implementation-Version': version,
+                   'Main-Class': 'com.stevenprogramming.app.HelloApp'
+		}
+}
+
+task runApp(type: JavaExec) {
+  classpath = sourceSets.main.runtimeClasspath
+
+  main = mainClassName
+
+  args 'test', 'test 2'
+}

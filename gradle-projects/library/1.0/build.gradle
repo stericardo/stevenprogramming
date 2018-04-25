@@ -1,28 +1,46 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'application'
-
-mainClassName = 'hello.Application'
-
-// tag::repositories[]
-repositories {
-    mavenCentral()
+allprojects {
+  //Put instructions for all projects
+  task hello << { task -> println "I'm $task.project.name" }
+  
 }
-// end::repositories[]
+subprojects {
+    apply plugin: 'java'
+	apply plugin: 'eclipse'
+	
+	 configurations {
+        provided
+    }
+	
+	eclipse {
+            classpath { plusConfigurations += configurations.provided 
+            }
+        }
 
-// tag::jar[]
-jar {
-    baseName = 'gs-gradle'
-    version =  '0.1.0'
-}
-// end::jar[]
+    repositories {
+        mavenCentral()
+    }
+    
+    sourceSets {
+		   main {
+				java.srcDirs = ["src/main/java"]
+				resources.srcDirs = ["src/main/resources"]
+				compileClasspath += configurations.provided // include dependencies in provided scope
+			    // runtimeClasspath += configurations.provided // include dependencies in provided scope - it could be required to run tests
+			}
+			test {
+				java { srcDirs = ["src/test/java"]}
+				resources { srcDirs = ["src/test/resources"]}
+				compileClasspath += configurations.provided // include dependencies in provided scope
+			   // runtimeClasspath += configurations.provided // include dependencies in provided scope - it could be required to run tests
+			}
+		}
+    
+    dependencies {
+        testCompile 'junit:junit:4.12'
+    }
 
-// tag::dependencies[]
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+    version = '1.0'
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
 
-dependencies {
-	compile 'org.springframework:spring-context:5.0.4.RELEASE'
-    compile "joda-time:joda-time:2.2"
-    testCompile "junit:junit:4.12"
 }

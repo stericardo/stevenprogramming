@@ -43,8 +43,10 @@ public class Example2Comparator {
 
         List<Integer> counts = Arrays.asList(1, 2, 3);
         Stream<Integer> asStream = counts.stream();
-        asStream.forEach(x -> System.out.print(x * 2));
-        asStream.forEach(System.out::print);
+        asStream.forEach(x -> System.out.println(x * 2));
+        System.out.println("\n\n********\n");
+        asStream = counts.stream();
+        asStream.forEach(System.out::println);
 
         // In sorted method p can be whatever and body as well ( p.distance(0, 0))
         // because we are using generics
