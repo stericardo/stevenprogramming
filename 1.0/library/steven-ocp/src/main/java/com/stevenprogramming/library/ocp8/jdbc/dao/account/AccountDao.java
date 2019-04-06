@@ -16,5 +16,7 @@ public interface AccountDao {
     void printDatabaseMetaData();
     
     void createStatementInsentiveUpdatable();
+
+    void runQueries(String query, int option);
     
 }

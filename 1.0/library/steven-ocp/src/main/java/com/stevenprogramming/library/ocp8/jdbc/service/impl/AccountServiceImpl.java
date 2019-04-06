@@ -46,10 +46,25 @@ public class AccountServiceImpl implements AccountService {
     public static void testMovementAndConcurrency(){
         AccountDaoImpl.getInstance().createStatementInsentiveUpdatable();
     }
+
+    public static void runQueries(){
+        AccountDaoImpl.getInstance().runQueries("select * FROM account", 1);
+        AccountDaoImpl.getInstance().runQueries("select * FROM account", 2);
+        AccountDaoImpl.getInstance().runQueries("select * FROM account", 3);
+        AccountDaoImpl.getInstance().runQueries("select * FROM account where username='axc'", 4);
+        AccountDaoImpl.getInstance().runQueries("select count(*) FROM account where username='axc'", 5);
+        AccountDaoImpl.getInstance().runQueries("select * FROM account", 6);
+
+        AccountDaoImpl.getInstance().runQueries("update account set username='A' where username='axc'", 1);
+        AccountDaoImpl.getInstance().runQueries("update account set username='A' where username='axc'", 2);
+        AccountDaoImpl.getInstance().runQueries("update account set username='A' where username='axc'", 3);
+
+    }
     
     public static void main(String[] args) {
         validateMovementAndConcurrency();
         firstMethodNormalResultset();
         testMovementAndConcurrency();
+        runQueries();
     }
 }
