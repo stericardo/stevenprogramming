@@ -20,7 +20,10 @@ package com.stevenprogramming.library.core.ignore.lambda.book.deitel;
  * (x, y) -> {return x + y;}
  * (x, y) -> x + y
  * 
+ * We can ignore parenthesis when exist only 1 parameter
  * valor -> System.out.printf("%d ", valor)
+ * 
+ * Or when we have empty parameter we should use parenthesis empty
  * () -> System.out.println("Bienvenido a los lambdas!")
  *
  * @author steven.mendez
