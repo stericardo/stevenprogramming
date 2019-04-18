@@ -1,9 +1,6 @@
 package com.stevenprogramming.library.ocp8.ch4.time;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 public class TimePractice
@@ -44,6 +41,12 @@ public class TimePractice
 
         Duration durationResult = Duration.between( eclipseDateTime, eclipseDateTimePlus );
         System.out.println(durationResult.toDays());
+
+        //Instant
+
+                //Period
+
+
 
     }
 
