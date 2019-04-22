@@ -46,6 +46,17 @@ public class TimePractice
 
                 //Period
 
+        eclipseTime = "2017-08-15 13:20:20 PM";
+        dateTimeFormatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd HH:mm:ss a" );
+        eclipseDateTime = LocalDateTime.parse( eclipseTime, dateTimeFormatter );
+        System.out.println(eclipseDateTime);
+
+
+        LocalDate dateToday=LocalDate.now();
+        System.out.println(dateToday);
+        DateTimeFormatter formatDateToday=DateTimeFormatter.ofPattern("EEEE MMM dd ");
+        System.out.format("Formatted current date is %s\n" , dateToday.format(formatDateToday));
+
 
 
     }

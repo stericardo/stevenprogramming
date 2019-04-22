@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/steven-aem" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/steven-android" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/steven-collections" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/steven-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/steven-generics" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/steven-io" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/steven-ocp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/steven-patterns" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/steven-security" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/steven-spring" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/steven-thread" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/steven-ui" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/steven-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/steven-ws" charset="UTF-8" />
+  </component>
+</project>

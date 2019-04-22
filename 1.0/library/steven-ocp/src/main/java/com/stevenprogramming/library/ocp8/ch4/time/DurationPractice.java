@@ -1,6 +1,8 @@
 package com.stevenprogramming.library.ocp8.ch4.time;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
@@ -57,6 +59,12 @@ public class DurationPractice
         duration = Duration.ofMinutes( 3500 );
         System.out.println( "******** Response PT58H20M" );
         System.out.println( duration );
+
+        LocalDate localDate = null;
+        Duration d = Duration.between(localDate, localDate);
+
+        LocalDateTime localDate2 = null;
+        Duration d2 = Duration.between(localDate2, localDate2);
 
 
     }
