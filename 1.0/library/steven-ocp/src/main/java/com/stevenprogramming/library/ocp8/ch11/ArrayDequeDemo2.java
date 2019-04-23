@@ -103,8 +103,44 @@ public class ArrayDequeDemo2 {
         Integer poll = deque.poll();
         printValues(deque, "after poll");
        /*
-            
+            Called:::after poll
+            10 20 30 40 50 60
         */
+       
+        //E pollFirst(): Retrieves and removes the first element of this deque, or returns null if this deque is empty.
+        Integer pollFirst = deque.pollFirst();
+        printValues(deque, "after pollFirst");
+       /*
+            Called:::after pollFirst
+            20 30 40 50 60
+        */
+       
+       
+        //E pollLast(): Retrieves and removes the last element of this deque, or returns null if this deque is empty.
+        Integer pollLast = deque.pollLast();
+        printValues(deque, "after pollLast");
+       /*
+            Called:::after pollLast
+            20 30 40 50
+        */
+       
+       //E  pop() Pops an element from the stack represented by this deque.
+       Integer pop = deque.pop();
+       printValues(deque, "after pop");
+       /*
+            Called:::after pop
+            30 40 50
+       */
+
+       //void  push() Pushes an element onto the stack represented by this deque.
+       deque.push(20);
+       printValues(deque, "after push");
+       /*
+           Called:::after push
+           20 30 40 50
+       */
+
+       
         
     }
 }
