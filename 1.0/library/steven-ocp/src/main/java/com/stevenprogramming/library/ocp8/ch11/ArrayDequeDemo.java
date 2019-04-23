@@ -9,18 +9,26 @@ import java.util.Iterator;
  * @author steven mendez brenes
  */
 public class ArrayDequeDemo {
-    
+
+    public static void printValues(Deque<Integer> de_que, String method){
+        System.out.println("\nCalled:::" + method);
+        de_que.stream().forEach(v -> System.out.print(" " + v));
+    }
+
     public static void main(String[] args) 
     { 
         // Intializing an deque 
-        Deque<Integer> de_que = new ArrayDeque<Integer>(10); 
+        Deque<Integer> de_que = new ArrayDeque<>(10);
    
         // add() method to insert 
         de_que.add(10); 
         de_que.add(20); 
-        de_que.add(30); 
-        
-        de_que.stream().forEach(v -> System.out.print(" " + v));
+        de_que.add(30);
+        de_que.push(40);
+        de_que.push(50);
+        de_que.push(60);
+
+        printValues(de_que, "init");
    
         System.out.println("\nUsing clear() "); 
   
@@ -84,12 +92,13 @@ public class ArrayDequeDemo {
         de_que.push(22); 
           
         // remove() method : to get head 
-        de_que.stream().forEach(v -> System.out.print(" " + v));
-        System.out.println("\nHead element remove : " + de_que.remove()); 
-        
-        de_que.stream().forEach(v -> System.out.print(" " + v));
-          
-        System.out.println("\nThe final array is: "+de_que); 
+        printValues(de_que, "prior remove");
+        System.out.println("\nHead element remove : " + de_que.remove());
+        printValues(de_que, "after remove");
+
+        de_que.pop();
+        printValues(de_que, " After pop");
+
     } 
 } 
 

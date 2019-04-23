@@ -20,3 +20,5 @@ target/
 bin/
 .gradle/
 .settings/
+.idea/
+.data/
