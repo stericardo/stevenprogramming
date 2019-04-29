@@ -193,63 +193,106 @@ public class PathPractice
         System.out.println(path1.relativize( path2 ));
         System.out.println(path2.relativize( path1 ));
         Path path3 = Paths.get( "./home/smendez/../development/" );
+        
+        
         System.out.println( "\n\nNormalizing:::\n");
-        System.out.println(path3.normalize());
+        System.out.println(path3.normalize()); //  home/development
+        
         Path path4 = Paths.get( "/home/./smendez/../development/" );
-        System.out.println(path4.normalize());
+        System.out.println(path4.normalize()); //  /home/development
+        
         Path path5 = Paths.get( "/home/./smendez/development/../apath" );
-        System.out.println(path5.normalize());
+        System.out.println(path5.normalize()); //  /home/smendez/apath
 
         Path path6 = Paths.get( "development" );
         Path path7 = Paths.get( "./development" );
         Path path8 = Paths.get( "myDirectory", "..", "development" );
-        System.out.println(path8.normalize());
+        System.out.println(path8.normalize());  // development
 
         String buildProject = "/build_project/scripts";
         String upToDirectories = "../..";
         String myProject = "/My_project/source";
         Path pathsBuild = Paths.get(buildProject,upToDirectories, myProject);
-        System.out.println("Original " + pathsBuild +" BuildProject " + pathsBuild.normalize());
+        System.out.println("Original " + pathsBuild +" BuildProject " + pathsBuild.normalize()); //  /My_project/source
 
     }
 
+    /**
+     * Resolve should be read as "resolve path2 within path1 directory" 
+     */
     private void resolvePath(){
         Path path1 = Paths.get( "/home/smendez" );
         Path path2 = Paths.get( "/home/smendez/development/" );
-        System.out.println(path1.resolve( path2 ));
-        System.out.println(path2.resolve( path1 ));
+        System.out.println(path1.resolve( path2 )); ///home/smendez/development
+        System.out.println(path2.resolve( path1 )); ///home/smendez
+        
+        
         //System.out.println(path2.resolve( (String) null )); // Throws Null pointer but compiles
         Path pathNull = null;
         //System.out.println(path2.resolve( pathNull ));  // Throws Null pointer but compiles
+        //System.out.println(path2.resolve( null ));  // Does not compile
+        
+        
+        Path path11 = Paths.get( "/home/smendez" );
+        Path path22 = Paths.get( "development/data.pdf" );
+        System.out.println(path11.resolve( path22 )); // /home/smendez/development/data.pdf
+        
+        Path absolute = Paths.get("/home/smendez");
+        Path relative = Paths.get("development");
+        Path file = Paths.get("file.txt");
+        System.out.println(absolute.resolve(relative));
+        System.out.println(absolute.resolve(file));
+        System.out.println(relative.resolve(file));
+        System.out.println("BAD " + relative.resolve(absolute)); // BAD
+        System.out.println("BAD " + file.resolve(absolute)); // BAD
+        System.out.println("BAD " + file.resolve(relative)); // BAD
+        /**
+            /home/smendez/development
+            /home/smendez/file.txt
+            development/file.txt
+            BAD /home/smendez
+            BAD /home/smendez
+            BAD file.txt/development
+         */
+        
+        
     }
 
     private void relativizePath(){
         Path path1 = Paths.get( "/home/smendez" );
         Path path2 = Paths.get( "/home/smendez/development/" );
         Path pathResult = path2.relativize( path1 );
-        System.out.println(pathResult);
-        pathResult = path1.relativize( path2 );
-        System.out.println(pathResult);
+        System.out.println(pathResult); // ...
+        
+        
+        pathResult = path1.relativize( path2 ); 
+        System.out.println(pathResult);  // development
+        
         path1 = Paths.get( "/home/smendez" );
         path2 = Paths.get( "/root/smendez/development/" );
         pathResult = path2.relativize( path1 );
-        System.out.println(pathResult);
+        System.out.println(pathResult); // ../../../home/smendez
+        
         pathResult = path1.relativize( path2 );
-        System.out.println(pathResult);
+        System.out.println(pathResult); //../../root/smendez/development
 
     }
 
     public static void main( String[] args )
     {
         PathPractice pathPractice = new PathPractice();
+        
         pathPractice.pathUses();
+        System.out.println( "\n\n\t\t\t******** createDirectories");
         pathPractice.createDirectories();
-        System.out.println( "\n\n");
+        System.out.println( "\n\n\t\t\t******** copyFiles");
         pathPractice.copyFiles();
+        System.out.println( "\n\n\t\t\t******** getInformationPath");
         pathPractice.getInformationPath();
-        System.out.println( "\n\n");
+        //Resolve should be read as "resolve path2 within path1 directory"
+        System.out.println( "\n\n\t\t\t******** resolvePath>>> Resolve should be read as \"resolve path2 within path1 directory");
         pathPractice.resolvePath();
-        System.out.println( "\n\n");
+        System.out.println( "\n\n\t\t\t******** relativizePath");
         pathPractice.relativizePath();
     }
 
