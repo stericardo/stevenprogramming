@@ -193,6 +193,20 @@ public class PathPractice
         System.out.println(path1.relativize( path2 ));
         System.out.println(path2.relativize( path1 ));
         Path path3 = Paths.get( "./home/smendez/../development/" );
+        /**
+            file1.txt
+            smendez
+            home
+            5
+            /home/smendez/development/apath
+            /
+            home/smendez/development
+            ..
+            development
+            development
+            ..
+         */
+        
         
         
         System.out.println( "\n\nNormalizing:::\n");
