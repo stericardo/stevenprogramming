@@ -43,6 +43,10 @@ public class ArrayDequeDemo2 {
         // This method is equivalent to add.
         deque.addLast(40);
         printValues(deque, "after add Last");
+        /*
+        Called:::after add Last
+                 10 20 30 40
+        */
         
         // E element(): Retrieves, but does not remove, the head of the queue represented by this deque.
         // differs from peek only in that it throws an exception if this deque is empty.

@@ -61,15 +61,17 @@ public class DurationPractice
         System.out.println( duration );
 
         LocalDate localDate = null;
-        Duration d = Duration.between(localDate, localDate);
+        //Duration d = Duration.between(localDate, localDate);
 
         LocalDateTime localDate2 = null;
-        Duration d2 = Duration.between(localDate2, localDate2);
+        //Duration d2 = Duration.between(localDate2, localDate2);
 
 
     }
     public static void main(String[] args){
         durationFirstExample();
+        Duration d = Duration.ofMinutes(100);
+        System.out.println(d);
     }
 
 }

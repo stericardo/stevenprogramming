@@ -22,3 +22,5 @@ bin/
 .settings/
 .idea/
 .data/
+.class/
+*.class

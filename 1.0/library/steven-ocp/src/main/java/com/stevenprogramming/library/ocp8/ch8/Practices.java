@@ -7,8 +7,13 @@ package com.stevenprogramming.library.ocp8.ch8;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 /**
  *
@@ -46,7 +51,57 @@ public class Practices {
          
          double r = lista.stream().collect(Collectors.averagingDouble(Integer::doubleValue));
          System.out.println("1) Again " + r); 
-
+         
+         IntStream is1 = IntStream.range(1, 3);
+        IntStream is2 = IntStream.rangeClosed(1, 3);
+        IntStream is3 = IntStream.concat(is1, is2);
+        Object val = is3.boxed().collect(Collectors.groupingBy(k->k)).get(3);
+        System.out.println(val);
+        
+        is1 = IntStream.range(1, 3);
+        is2 = IntStream.rangeClosed(1, 3);
+        IntStream is4 = IntStream.concat(is1, is2);
+        Map<Integer, List<Integer>> listaBoxed = is4.boxed().collect(Collectors.groupingBy(k->k));
+        listaBoxed.forEach( (k,v) -> System.out.println(k + " --- " + v));
+        
+        Stream.of("one", "two", "three", "four")
+         .filter(e -> e.length() > 3)
+         .peek(e -> System.out.println("Filtered value: " + e))
+         .map(String::toUpperCase)
+         .peek(e -> System.out.println("Mapped value: " + e))
+         .collect(Collectors.toList());
+        
+        boolean resultBol = Stream.of("one", "two", "three", "four")
+                .peek(e -> System.out.println("22 Filtered value: " + e))
+         .filter(e -> e.length() < 2 )
+          .peek(e -> System.out.println("2233 Filtered value: " + e))
+         .anyMatch(v -> v.equals("three"));
+        System.out.println(resultBol);
+        
+        resultBol = Stream.of("one", "two", "three", "four")
+                .peek(e -> System.out.println("aa22 Filtered value: " + e))
+         .filter(e -> e.length() <= 3 )
+          .peek(e -> System.out.println("aa2233 Filtered value: " + e))
+         .anyMatch(v -> v.equals("one"));
+        System.out.println(resultBol);
+        
+        
+        double doubleResulta = Stream.of(100, 110, 120, 130)
+                .peek(e -> System.out.println("value: " + e))
+         .filter(e -> e < 120 )
+          .peek(e -> System.out.println("value>>>: " + e))
+                .mapToDouble(e-> e)
+         .sum();
+        System.out.println(doubleResulta);
+        
+        Map m;
+        List o;
+        NavigableMap l ;
+        TreeMap tr;
+        //Collections.rotate(lista, result);
+        
+       
+        
     }
 
 }

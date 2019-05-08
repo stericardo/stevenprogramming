@@ -2,6 +2,9 @@ package com.stevenprogramming.library.ocp8.ch4.time;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
+import java.util.stream.IntStream;
 
 public class TimePractice
 {
@@ -66,5 +69,15 @@ public class TimePractice
         printCertDate();
         printCertTime();
         printFormatDate();
+        
+                IntStream is1;
+        Period h;
+        TemporalUnit k;
+        
+        
+        
+        Instant  now = Instant.now();
+        Instant now2 = now.truncatedTo(ChronoUnit.DAYS);
+        System.out.println(now2);
     }
 }
