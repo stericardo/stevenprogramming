@@ -75,6 +75,7 @@
   </properties>
 
   <modules>
+    <module>steven-liquidbase</module>
     <module>steven-android</module>
     <module>steven-core</module>
     <module>steven-collections</module>
