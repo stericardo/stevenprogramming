@@ -1,10 +1,10 @@
 package com.stevenprogramming.library.ocp8.ch4.time;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
+import java.util.stream.IntStream;
 
 public class TimePractice
 {
@@ -45,6 +45,23 @@ public class TimePractice
         Duration durationResult = Duration.between( eclipseDateTime, eclipseDateTimePlus );
         System.out.println(durationResult.toDays());
 
+        //Instant
+
+                //Period
+
+        eclipseTime = "2017-08-15 13:20:20 PM";
+        dateTimeFormatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd HH:mm:ss a" );
+        eclipseDateTime = LocalDateTime.parse( eclipseTime, dateTimeFormatter );
+        System.out.println(eclipseDateTime);
+
+
+        LocalDate dateToday=LocalDate.now();
+        System.out.println(dateToday);
+        DateTimeFormatter formatDateToday=DateTimeFormatter.ofPattern("EEEE MMM dd ");
+        System.out.format("Formatted current date is %s\n" , dateToday.format(formatDateToday));
+
+
+
     }
 
     public static void main(String[] args){
@@ -52,5 +69,15 @@ public class TimePractice
         printCertDate();
         printCertTime();
         printFormatDate();
+        
+                IntStream is1;
+        Period h;
+        TemporalUnit k;
+        
+        
+        
+        Instant  now = Instant.now();
+        Instant now2 = now.truncatedTo(ChronoUnit.DAYS);
+        System.out.println(now2);
     }
 }

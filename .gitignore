@@ -22,3 +22,7 @@ bin/
 .settings/
 .classpath
 .project
+.idea/
+.data/
+.class/
+*.class
