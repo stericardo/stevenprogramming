@@ -34,6 +34,8 @@ HELP.md
 ### STS ###
 .apt_generated
 .classpath
+*.classpath
+*.project
 .factorypath
 .project
 .settings
