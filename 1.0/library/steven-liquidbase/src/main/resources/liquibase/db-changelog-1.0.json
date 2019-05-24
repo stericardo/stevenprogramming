@@ -51,7 +51,7 @@
         {
             "changeSet": {
                 "id": "2",
-                "author": "nvoxland",
+                "author": "Steven Mendez",
                 "changes": [
                     {
                         "addColumn": {
@@ -73,7 +73,7 @@
         {
             "changeSet": {
                 "id": "3",
-                "author": "nvoxland",
+                "author": "Steven Mendez",
                 "changes": [
                     {
                         "addLookupTable": {
