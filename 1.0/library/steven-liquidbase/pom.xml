@@ -54,7 +54,7 @@
 				<version>3.6.3</version>
 				<configuration>
 					<propertyFile>liquibase/liquibase.properties</propertyFile>
-					<changeLogFile>liquibase/db-changelog-master.xml</changeLogFile>
+					<changeLogFile>liquibase/db-changelog-master.json</changeLogFile>
 				</configuration>
 				<!-- I personally prefer run it manually <executions> <execution> <phase>process-resources</phase> 
 					<goals> <goal>update</goal> </goals> </execution> </executions> -->
