@@ -1,4 +1,4 @@
-package com.stevenprogramming.liquidbase;
+package com.stevenprogramming.liquibase;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
