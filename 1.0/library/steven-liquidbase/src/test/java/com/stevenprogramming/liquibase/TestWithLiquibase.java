@@ -34,5 +34,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class TestWithLiquibase {
 
+    @Test
+    public void contextLoads() {
+    }
 
 }
