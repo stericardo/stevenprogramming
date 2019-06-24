@@ -1,39 +1,61 @@
 package com.stevenprogramming.liquibase.config;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.env.Environment;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.sql.DataSource;
-import java.util.Properties;
 
 /**
  *
  * @author Steven Ricardo Mendez Brenes
  */
-@SpringBootConfiguration
-@RunWith( SpringRunner.class)
-@SpringBootTest()
-@ActiveProfiles( "test")
-@TestPropertySource("liquibase/liquibase-test.properties")
+//@SpringBootConfiguration
+//@RunWith( SpringRunner.class)
+//@SpringBootTest()
+//@ActiveProfiles( "test")
+//@TestPropertySource("liquibase/liquibase-test.properties")
 //@TestPropertySource("liquibase/liquibase-test.properties")
 //@TestPropertySource( locations = {"classpath:liquibase/liquibase-test.properties" })
 //@EnableTransactionManagement
 //@ComponentScan({ "com.stevenprogramming.liquibase" })
 //@ActiveProfiles("test")
+//@RunWith( JUnitPlatform.class)
+@RunWith( SpringRunner.class)
+@SpringJUnitConfig( classes = { SimpleTestConfig.class, ServiceConfig.class })
+@DisplayName( "ConfigurationTest" )
+@ActiveProfiles("test")
 public class ConfigurationTest {
 
+    @Value("${subscriber:admin@example.com}")
+    private String theSubscriber;
+
+    private static Logger logger = LoggerFactory.getLogger( ConfigurationTest.class );
+
+    @BeforeAll
+    static void setup(){
+        logger.info( "\n\n#### Running \n\n\n" );
+    }
+
+    @BeforeEach
+    void init(){
+        logger.info( "\n\n%%%% BeforeEach \n\n\n" );
+    }
+
+    @Test
+    @DisplayName( "Context Test" )
+    public void contextTest(){
+
+        logger.info( "\n\n ----Running contextTest ---- \n\n\n" );
+    }
+
+/*
     @Autowired
     private Environment env;
 
@@ -67,5 +89,5 @@ public class ConfigurationTest {
             }
         };
     }
-
+*/
 }
