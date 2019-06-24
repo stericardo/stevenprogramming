@@ -16,17 +16,6 @@ import org.springframework.test.context.junit4.SpringRunner;
  *
  * @author Steven Ricardo Mendez Brenes
  */
-//@SpringBootConfiguration
-//@RunWith( SpringRunner.class)
-//@SpringBootTest()
-//@ActiveProfiles( "test")
-//@TestPropertySource("liquibase/liquibase-test.properties")
-//@TestPropertySource("liquibase/liquibase-test.properties")
-//@TestPropertySource( locations = {"classpath:liquibase/liquibase-test.properties" })
-//@EnableTransactionManagement
-//@ComponentScan({ "com.stevenprogramming.liquibase" })
-//@ActiveProfiles("test")
-//@RunWith( JUnitPlatform.class)
 @RunWith( SpringRunner.class)
 @SpringJUnitConfig( classes = { SimpleTestConfig.class, ServiceConfig.class })
 @DisplayName( "ConfigurationTest" )
