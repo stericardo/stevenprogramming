@@ -1,9 +1,13 @@
 package com.stevenprogramming.liquibase.config;
 
+import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +15,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  *
@@ -44,39 +51,17 @@ public class ConfigurationTest {
         logger.info( "\n\n ----Running contextTest ---- \n\n\n" );
     }
 
-/*
-    @Autowired
-    private Environment env;
-
-    @Value("${hibernate.hbm2ddl.auto}")
-    private String autoDdl;
-
-    @Bean
-    public LocalSessionFactoryBean sessionFactory() {
-        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(restDataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.stevenprogramming.liquibase.model" });
-        sessionFactory.setHibernateProperties(hibernateProperties());
-        return sessionFactory;
+    @ParameterizedTest
+    @CsvFileSource(resources = "/Configuration.csv", numLinesToSkip = 1)
+    void testWithCsvFileSource(String name, String last) {
+        //Values one by one
+        assertNotNull(name);
     }
 
-    @Bean
-    public DataSource restDataSource() {
-        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        EmbeddedDatabase db = builder
-                .setType( EmbeddedDatabaseType.HSQL)
-                .build();
-        return db;
+    @ParameterizedTest
+    @MethodSource("provideStringsForIsBlank")
+    void isBlank_ShouldReturnTrueForNullOrBlankStrings(String input, boolean expected) {
+        assertEquals(expected, Strings.isBlank(input));
     }
 
-    Properties hibernateProperties() {
-        return new Properties() {
-            {
-                setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-                setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
-                setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
-            }
-        };
-    }
-*/
 }
