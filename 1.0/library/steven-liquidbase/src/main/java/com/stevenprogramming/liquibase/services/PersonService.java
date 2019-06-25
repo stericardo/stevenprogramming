@@ -17,5 +17,7 @@ public interface PersonService extends CrudService<Person, Long>
 
     Person findByFirstNameAndLastName(String firstName, String lastName);
 
+    List<Person> getAllPerson();
+
 }
 

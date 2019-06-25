@@ -2,6 +2,7 @@ package com.stevenprogramming.liquibase.repositories;
 
 import com.stevenprogramming.liquibase.model.Person;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  *  @since 06/24/2019
  *
  */
+@Repository("PersonRepository")
 public interface PersonRepository extends CrudRepository<Person, Long>
 {
 

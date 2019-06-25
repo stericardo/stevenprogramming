@@ -44,6 +44,10 @@ public abstract class CrudServiceImpl<ModelObjectType extends BasicEntity, KeyTy
         crudRepository.delete(entity);
     }
 
+    public void setCrudRepository(CrudRepository<ModelObjectType, KeyType> crudRepository){
+        this.crudRepository = crudRepository;
+    }
+
     public Optional<ModelObjectType> findById(KeyType entityId){
 
         Class type = getDomainClass();

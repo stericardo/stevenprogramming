@@ -45,7 +45,7 @@ public class DBInitializer
         person.setLastUpdatedTimestamp( Instant.now() );
         person.setEntityVersion( 1 );
         personRepository.save(person);
-        
+
         logger.info("Database initialization finished.");
     }
 }
