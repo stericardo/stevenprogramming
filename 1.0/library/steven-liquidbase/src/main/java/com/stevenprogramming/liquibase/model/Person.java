@@ -1,29 +1,23 @@
 package com.stevenprogramming.liquibase.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Steven Ricardo Mendez Brenes
  */
 @Entity
-public class Person {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private Long id;
+@Table(name = "person")
+public class Person extends BasicEntity {
 
 	private String firstName;
     private String lastName;
     private char state;
     
     @Override
-	public int hashCode() {
+	public int onHashCode(int result){
 		final int prime = 31;
-		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
@@ -31,7 +25,7 @@ public class Person {
 	}
  
 	@Override
-	public boolean equals(Object obj) {
+	public boolean onEquals(Object obj){
 		if (this == obj)
 			return true;
 		if (obj == null)

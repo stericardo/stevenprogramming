@@ -1,0 +1,1 @@
+insert into Person (firstName, lastName, state) values ('Steven', 'Mendez', 'C');

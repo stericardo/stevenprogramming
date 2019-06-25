@@ -1,7 +1,6 @@
-package com.stevenprogramming.liquibase.repositories;
+package com.stevenprogramming.liquibase.services;
 
 import com.stevenprogramming.liquibase.model.Person;
-import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ import java.util.List;
  *  @since 06/24/2019
  *
  */
-public interface PersonRepository extends CrudRepository<Person, Long>
+public interface PersonService extends CrudService<Person, Long>
 {
 
     List<Person> findByFirstName(String firstName);
@@ -19,3 +18,4 @@ public interface PersonRepository extends CrudRepository<Person, Long>
     Person findByFirstNameAndLastName(String firstName, String lastName);
 
 }
+
