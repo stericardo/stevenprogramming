@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
@@ -12,7 +13,12 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.sql.DataSource;
 
 /**
@@ -23,6 +29,8 @@ import javax.sql.DataSource;
 @ComponentScan( basePackages = { "com.stevenprogramming.liquibase" },
 excludeFilters = { @ComponentScan.Filter ( type = FilterType.ASSIGNABLE_TYPE, value = DBInitializer.class ) } )
 @Profile( "test" )
+@EnableTransactionManagement
+@AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
 public class SimpleTestConfig
 {
 
@@ -51,6 +59,20 @@ public class SimpleTestConfig
         PropertyPlaceholderConfigurer placeholderConfigurer = new PropertyPlaceholderConfigurer();
         placeholderConfigurer.setLocation(new ClassPathResource("test.properties"));
         return placeholderConfigurer;
+    }
+
+    @Bean
+    EntityManagerFactory entityManagerFactory() {
+        EntityManagerFactory emf =
+                Persistence.createEntityManagerFactory("test-unit");
+        return emf;
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager() {
+        JpaTransactionManager txManager = new JpaTransactionManager();
+        txManager.setEntityManagerFactory(entityManagerFactory());
+        return txManager;
     }
 
 

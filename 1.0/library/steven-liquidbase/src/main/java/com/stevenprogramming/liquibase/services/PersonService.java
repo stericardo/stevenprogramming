@@ -19,5 +19,9 @@ public interface PersonService extends CrudService<Person, Long>
 
     List<Person> getAllPerson();
 
+    void transactionalOperations1() throws Exception;
+
+    void transactionalOperations2();
+
 }
 

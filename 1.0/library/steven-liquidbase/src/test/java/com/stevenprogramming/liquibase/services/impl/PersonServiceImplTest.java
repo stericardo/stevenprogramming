@@ -30,7 +30,7 @@ public class PersonServiceImplTest extends BaseTest
     PersonService personService;
 
     @Test
-    @DisplayName( "Person creation Test" )
+    @DisplayName( "Person creation Test SQL" )
     @SqlGroup( {
             @Sql(
                     value = "classpath:db/person-data.sql",
@@ -54,16 +54,52 @@ public class PersonServiceImplTest extends BaseTest
     }
 
     @Test
-    @DisplayName( "Person creation Test" )
-    public void createPersonTest2(){
-
+    @DisplayName( "Person creation Test Objects" )
+    public void createPersonObjectsTest(){
         List<Person> personList = personService.getAllPerson();
         Person person = new Person();
         person.setFirstName("JohnCreation");
         person.setLastName("MayerCreation");
         personService.create( person );
         personList = personService.getAllPerson();
-        logger.info( "\n\n ----Running createPersonTest ---- \n\n\n" );
+        logger.info( "\n\n ----Running createPersonObjectsTest ---- \n\n\n" );
+    }
+
+    @Test
+    @DisplayName( "Person creation Test Objects" )
+    public void findByFirstNameTest(){
+        List<Person> persons = personService.findByFirstName( "John" );
+        logger.info( "\n\n ----Running findByFirstNameTest ---- \n\n\n" );
+    }
+
+    @Test
+    @DisplayName( "Person creation Test Objects" )
+    public void findByFirstNameAndLastNameTest(){
+        Person person = personService.findByFirstNameAndLastName( "John", "Butler" );
+        logger.info( "\n\n ----Running findByFirstNameTest ---- \n\n\n" );
+    }
+
+    @Test
+    @DisplayName( "Transactional - Operations - 1" )
+    public void transactionalOperations1Test(){
+        List<Person> personList = personService.getAllPerson();
+        try
+        {
+            personService.transactionalOperations1();
+        } catch (Exception e){
+
+        }
+        personList = personService.getAllPerson();
+        logger.info( "\n\n ----Transactional - Operations - 1 ---- \n\n\n" );
+    }
+
+    @Test
+    @DisplayName( "Transactional - Operations - 2" )
+    public void transactionalOperations2Test(){
+        List<Person> personList = personService.getAllPerson();
+        personService.transactionalOperations2();
+        personList = personService.getAllPerson();
+        logger.info( "\n\n ----Transactional - Operations - 2 ---- \n\n\n" );
     }
 
 

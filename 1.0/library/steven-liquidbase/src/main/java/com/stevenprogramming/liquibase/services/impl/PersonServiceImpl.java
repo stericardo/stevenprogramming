@@ -5,6 +5,8 @@ import com.stevenprogramming.liquibase.repositories.PersonRepository;
 import com.stevenprogramming.liquibase.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.List;
  *
  */
 @Service("personService")
+@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 public class PersonServiceImpl extends CrudServiceImpl<Person, Long> implements PersonService
 {
 
@@ -29,17 +32,46 @@ public class PersonServiceImpl extends CrudServiceImpl<Person, Long> implements 
 
     @Override
     public List<Person> findByFirstName(String firstName){
-        return null;
+        return personRepository.findByFirstName( firstName );
     }
 
     @Override
     public Person findByFirstNameAndLastName(String firstName, String lastName){
-        return null;
+        return personRepository.findByFirstNameAndLastName( firstName, lastName );
     }
 
     @Override
     public List<Person> getAllPerson(){
         return getAll( personRepository );
     }
+
+    @Override
+    public void transactionalOperations1()throws Exception{
+        Person person = new Person();
+        person.setFirstName("John");
+        person.setLastName("Operations1");
+        create( person );
+        person = new Person();
+        person.setFirstName("John");
+        person.setLastName("Operations1-1");
+        create( person );
+        int data = 3;
+        if( data < 4 )
+            throw new Exception( "transactionalOperations1" );
+    }
+
+    @Override
+    public void transactionalOperations2(){
+        Person person = new Person();
+        person.setFirstName("John");
+        person.setLastName("Operations1");
+        create( person );
+        person = new Person();
+        person.setFirstName("John");
+        person.setLastName("Operations1-1");
+        create( person );
+    }
+
+
 
 }
