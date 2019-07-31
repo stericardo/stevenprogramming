@@ -1,0 +1,11 @@
+{
+	"outputLiquibaseSql":true ,
+    "databaseChangeLog": [
+        {
+            "include": {
+                    "file": "liquibase/test-db-changelog-1.0.json"
+                }
+                           
+        } 
+    ]
+}
