@@ -90,6 +90,7 @@
     <module>steven-web</module>
     <module>steven-ws</module>
     <module>steven-ocp</module>
+    <module>steven-eclipselink</module>
   </modules>
     
   <dependencies>
