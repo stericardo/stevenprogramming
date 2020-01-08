@@ -91,6 +91,7 @@
     <module>steven-ws</module>
     <module>steven-ocp</module>
     <module>steven-eclipselink</module>
+    <module>steven-ocp11</module>
   </modules>
     
   <dependencies>
