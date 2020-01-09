@@ -9,6 +9,7 @@ public class SimpleMathFuncs{
 	}
 	
 	public static int lcf(int a, int b){
+		System.out.println("LCF");
 		a = Math.abs(a);
 		b = Math.abs(b);
 		
