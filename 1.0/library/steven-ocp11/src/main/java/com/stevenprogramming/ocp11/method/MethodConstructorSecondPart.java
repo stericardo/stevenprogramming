@@ -1,13 +1,11 @@
 package com.stevenprogramming.ocp11.method;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 /**
  * https://www.codementor.io/@eh3rrera/using-java-8-method-reference-du10866vx
@@ -42,7 +40,7 @@ public class MethodConstructorSecondPart {
         List<String> l = s.get();
 
         // Using a method reference
-        Supplier<List<String> suplListSupplier = ArrayList::new;
+        Supplier<List<String>> suplListSupplier = ArrayList::new;
         List<String> listResult = suplListSupplier.get();
 
         // *******************************************************     PART 3  BiFunction
@@ -53,7 +51,7 @@ public class MethodConstructorSecondPart {
 
 // Using a method reference
         BiFunction<String, String, Locale> fResult = Locale::new;
-        Locale loc = fResult.apply("en","UK");
+        Locale locResult = fResult.apply("en","UK");
 
 
 
