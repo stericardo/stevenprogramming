@@ -2,6 +2,7 @@ package com.stevenprogramming.library.ocp8.ch8;
 
 import static com.stevenprogramming.library.ocp8.ch8.StreamPractice.dogs;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -12,8 +13,17 @@ import java.util.stream.Collectors;
  */
 public class CollectorsPractice1GroupingBy {
 
+   public static List<Dog> dogsA = Arrays.asList(new Dog("Steven", 10, 40),
+            new Dog("Steven2", 9, 70),
+            new Dog("Steven3", 8, 130),
+            new Dog("Steven3", 8, 130),
+            new Dog("Steven4", 7, 20),
+            new Dog("Steven5", 17, 130),
+            new Dog("Steven5", 8, 70));
+   
+  
     public static void main(String[] args) {
-        List<Dog> dogs = new ArrayList<>(StreamPractice.dogs);
+        List<Dog> dogs = new ArrayList<>(CollectorsPractice1GroupingBy.dogsA);
         Map<Integer, List<Dog>> dogByWeight = dogs.stream().collect(Collectors.groupingBy(Dog::getWeight));
         dogByWeight.forEach((m, n) -> System.out.println("Key>" + m + "@ " + n));
         System.out.println("Collector grouping by Weight: " + dogByWeight + "\n");
