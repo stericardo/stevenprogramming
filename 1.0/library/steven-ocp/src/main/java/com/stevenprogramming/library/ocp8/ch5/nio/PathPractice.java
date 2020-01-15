@@ -15,14 +15,14 @@ import java.util.concurrent.Executors;
 public class PathPractice {
 
     private void pathUses() {
-        Path path3 = Paths.get("\\home\\smendez\\development");         // \home\smendez\development
-        Path path4 = Paths.get("\\home\\smendez\\development\\java");   // \home\smendez\development\java
-        Path path1 = Paths.get("/home/smendez/development");            // /home/smendez/development
-        Path path2 = Paths.get("/home/smendez/development/java");       // /home/smendez/development/java
-        Path result = path3.relativize(path4);                                // ../\home\smendez\development\java
-        result = path4.relativize(path3);                                     // ../\home\smendez\development
-        result = path1.relativize(path2);                                     // java
-        result = path2.relativize(path1);                                     // ..
+        Path path3 = Paths.get("\\home\\smendez\\development");         
+        Path path4 = Paths.get("\\home\\smendez\\development\\java");   
+        Path path1 = Paths.get("/home/smendez/development");            
+        Path path2 = Paths.get("/home/smendez/development/java");      
+        Path result = path3.relativize(path4);                               
+        result = path4.relativize(path3);                                  
+        result = path1.relativize(path2);                                    
+        result = path2.relativize(path1);                                     
     }
 
     private void createDirectories() {
