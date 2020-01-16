@@ -2,6 +2,7 @@ package com.stevenprogramming.ocp11.nio;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.stream.IntStream;
 
 /**
  *
@@ -44,6 +45,8 @@ public class ResolveTest {
      * /home/smendez/development /home/smendez/file.txt development/file.txt
      * BAD /home/smendez BAD /home/smendez BAD file.txt/development
      */
+    
+
   }
 
 }

@@ -78,7 +78,16 @@ public class RelativizeTest {
         System.out.println(path03.relativize(path033));
         //System.out.println(path01.relativize(path04)); //Error IllegalArgumentException: 'other' is different type of Path
         
+        Path p1 = Paths.get("c:\\temp\\test1.txt");
         
+        System.out.println("13" + p1.relativize(Paths.get("c:\\temp\\text2.txt")));
+        p1 = Paths.get("c:\\test1.txt");
+        System.out.println("14" + p1.relativize(Paths.get("c:\\temp\\text2.txt")));
+        p1 = Paths.get("test1.txt");
+        //System.out.println("15" + p1.relativize(Paths.get("c:\\temp\\text2.txt")));
+        p1 = Paths.get("c:\\temp\\test1.txt");
+        
+        System.out.println("16" + p1.relativize(Paths.get("text2.txt")));
       
     }
 
