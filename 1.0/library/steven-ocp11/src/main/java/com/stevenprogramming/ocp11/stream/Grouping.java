@@ -56,6 +56,7 @@ public class Grouping {
         dogStream =  UtilStream.dogs.stream();
         Set<Dog> dogResultSet = dogStream.collect(Collectors.collectingAndThen(Collectors.toSet(), Collections::<Dog> unmodifiableSet));
         UtilStream.printStreamln(dogResultSet.stream(), "collectingAndThen");
+        
 
     }
 }

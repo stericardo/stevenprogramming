@@ -46,6 +46,12 @@ public class ResolveTest {
      * BAD /home/smendez BAD /home/smendez BAD file.txt/development
      */
     
+    System.out.println("BAD " + file.resolve(file));
+    
+     Path p1 = Paths.get("c:\\temp\\test.txt");
+   Path p2 = Paths.get("sdf");
+   System.out.println("Result" + p1.resolve(p2) + "__");
+    
 
   }
 
