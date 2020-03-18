@@ -6,25 +6,39 @@ public class ArrayTestRecursive{
 
 	}
 
+	public static boolean isZeroParent(int parent, int[][] vector, int cont){
+		return parent == vector[cont][0];
+	}
+
+	public static int getChild(int parent, int[][] vector, int cont){
+		if( isZeroParent(parent, vector, cont) ){
+			return vector[cont][1];
+		} else {
+			return vector[cont][0];
+		}
+	}
+
 	public static Node getNode(int parent, int[][] vector, int init){
 		boolean isParent = false;
 		Node nodeParent= null;
 		int childInt = 0;
 
 		for(int cont=init; cont<vector.length; cont++){
+			//System.out.println("Iterating parent: " + parent + " init " + init);
 			if(parent == vector[cont][0] || parent == vector[cont][1]){
-				System.out.println("Iterating: " + parent +" init iterating:: " + init +" Cont:: " + cont);
+				//System.out.println("Iterating parent: " + parent +" init iterating:: " + init +" Cont:: " + cont);
 				isParent = true;
 				if( nodeParent== null) {
-					if(parent == vector[cont][0]){
+					if( isZeroParent(parent, vector, cont) ){
 						nodeParent= new Parent( String.valueOf ( vector[cont][0] ) );
-						childInt = vector[cont][1];
 					} else {
 						nodeParent= new Parent( String.valueOf ( vector[cont][1] ) );
-						childInt = vector[cont][0];
 					}
 				}
+
+				childInt = getChild(parent, vector, cont);
 				Node child = getNode(childInt, vector, init + 1);
+				System.out.printf("%nAddint %d to parent: %d, contador: %d V[%d][%d] ", childInt, parent, cont, vector[cont][0], vector[cont][1] );
 				nodeParent.add(child);
 			}
 		}
@@ -63,9 +77,9 @@ public class ArrayTestRecursive{
 		public String toString(){
 			StringBuilder sb = new StringBuilder();
 			for (Node c: children){
-				sb.append(children);
+			//	sb.append(children);
 			}
-			return "Name " + name + " Size children " +children.size() + sb.toString();
+			return "\n\nName " + name + " Size children " +children.size() + sb.toString();
 		}
 	}
 
