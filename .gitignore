@@ -59,3 +59,7 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+
+
+.~lock/
+*.~lock/
