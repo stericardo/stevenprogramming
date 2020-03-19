@@ -187,54 +187,52 @@ public class VisitorTree {
 		return false;
 	}
 	
-	public static boolean isZeroParent(int parent, int[][] vector, int cont){
-		return parent == vector[cont][0];
-	}
-	
-	public static int getChild(int parent, int[][] vector, int cont){
-		if( isZeroParent(parent, vector, cont) ){
-			return vector[cont][1];
-		} else {
-			return vector[cont][0];
-		}
-	}
-
-	public static boolean isParent(int[][] vector, int value, int init){
-		for(int cont = init; cont < vector.length; cont++){
-			if (vector[cont][0] == value || vector[cont][1]  == value ){
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static Tree createTree(Tree nodeParent, int parent, int[][] vector, int init, int depth, int[] v1, int[] v2 ){
-		boolean found = false;
-		Tree newParent= null;
+	public static Tree createTree(int[] v1, int[] v2, int[][] v4, 
+		int capacity){
+		int temp = 1;
+		int depth = 0;
+		int[] v3 = fillV3(capacity, v4);
 		
-		for(int cont = init; cont < vector.length; cont++){
+		Tree root = null;
+		Tree parent =null;
+		Tree child = null;
+		for(int cont=0; cont< capacity-1; cont++){
+			int parentIntNode = v4[cont][0];
+			int childIntNode = v4[cont][1];
 			
-			if (vector[cont][0] == parent || vector[cont][1]  == parent ){
-				found = true;
-				int childValue = getChild(parent, vector, cont);
-
-				if(isParent(vector, childValue,cont+1)){
-					newParent= createNode( true, v1[childValue-1], v2[childValue-1], depth + 1 );
-				} else{
-					newParent= nodeParent;
-				}
-				newParent = createTree(newParent, childValue, vector, cont+1, depth + 1, v1, v2);
-				((TreeNode)nodeParent).addChild( newParent );
+			if(cont == 0){
+				parent = createNode(isParent(v3,parentIntNode-1 ), v1[parentIntNode -1 ], v2[parentIntNode -1 ], depth);
+				child = createNode(isParent(v3,childIntNode -1 ), v1[childIntNode -1 ], v2[childIntNode -1 ], depth + 1);
+				temp = parentIntNode;
+				root = parent;
+				((TreeNode)parent).addChild(child);
+			} else {
+				 if ( temp != parentIntNode  ){				
+				++depth;
+			} 
+			
+			boolean isParentNode = isParent(v3,childIntNode -1);
+			
+			if(isParentNode){
+						System.out.println("ParentcURRENT" + parentIntNode + " New Parent  " + (childIntNode -1) + " Value " + parent.getValue());
+						foundDirect(childIntNode -1, v4);
+						child = createNode( isParentNode, v1[childIntNode -1 ], v2[childIntNode -1 ], depth + 1);
+						((TreeNode)parent).addChild(child);
+						parent = child;
+					
+				
+				
+			} else {
+				child = createNode( isParentNode, v1[childIntNode -1 ], v2[childIntNode -1 ], depth + 1);
+				((TreeNode)parent).addChild(child);
 			}
+			
+		}
+			
+			
 		}
 		
-		if (found){
-			return nodeParent;
-		} else {
-			Tree child = createNode( false, v1[parent-1], v2[parent-1], depth);
-			return child;
-		}
-
+		return root;
 	}
 	
 	public static int[] fillV3(int capacity, int[][] v4){
@@ -276,16 +274,14 @@ public class VisitorTree {
 		}*/
 		
 		int[][] v4 =  getVectorV4(n);
-		
-		Tree parent = createNode( true, v1[0], v2[0], 0);
         
-        return createTree(parent, 1, v4, 0, 0, v1, v2);
+        return createTree(v1, v2, v4, n);
     }
     
     public static int getAmount(){
 		Container v = new Container();
 		try{
-			Stream<String> stream = Files.lines(Paths.get("amount2.txt"));
+			Stream<String> stream = Files.lines(Paths.get("amount.txt"));
 			stream.forEach(x -> v.v = Integer.parseInt (x) );
 		}catch(Exception e){
 		}
@@ -295,7 +291,7 @@ public class VisitorTree {
 	public static String getValuesV(){
 		Container v = new Container();
 		try{
-			Stream<String> stream = Files.lines(Paths.get("values2.txt"));
+			Stream<String> stream = Files.lines(Paths.get("values.txt"));
 			stream.forEach(x -> v.va = x );
 		}catch(Exception e){
 		}
@@ -305,7 +301,7 @@ public class VisitorTree {
 	public static String getColorsV(){
 		Container v = new Container();
 		try{
-			Stream<String> stream = Files.lines(Paths.get("colors2.txt"));
+			Stream<String> stream = Files.lines(Paths.get("colors.txt"));
 			stream.forEach(x -> v.c = x );
 		}catch(Exception e){
 		}
@@ -317,7 +313,7 @@ public class VisitorTree {
 		try{
 			
 			v.v4 = new int[amount][2];
-			Stream<String> stream = Files.lines(Paths.get("vector2.txt"));
+			Stream<String> stream = Files.lines(Paths.get("vector.txt"));
 			stream.forEach((String x) -> {
 			
 			String[] vec = x.split(" ");
