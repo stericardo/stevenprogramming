@@ -30,7 +30,7 @@ public class ArrayTestRecursive{
 	public static Node getNode2(Node nodeParent, int parent, int[][] vector, int init){
 		//int cont = init;
 		boolean found = false;
-		System.out.printf("%nStart parent: " + parent + " Node Parent " +nodeParent);
+		//System.out.printf("%nStart parent: " + parent + " Node Parent " +nodeParent);
 		Node newParent= null;
 		for(int cont = init; cont < vector.length; cont++){
 			//System.out.printf("%nParent %d, cont %d ", parent, cont);
@@ -38,7 +38,7 @@ public class ArrayTestRecursive{
 			//parent, cont, vector[cont][0], vector[cont][1]);
 			if (vector[cont][0] == parent || vector[cont][1]  == parent ){
 				found = true;
-				System.out.printf("%n    **********   ******Parent %d, cont %d, vector[0][1]=%d, vector[1][0]=%d ", parent, cont, vector[cont][0], vector[cont][1]);
+				//System.out.printf("%n    **********   ******Parent %d, cont %d, vector[0][1]=%d, vector[1][0]=%d ", parent, cont, vector[cont][0], vector[cont][1]);
 				int childValue = getChild(parent, vector, cont);
 
 				if(isParent(vector, childValue,cont+1)){
@@ -111,7 +111,7 @@ public class ArrayTestRecursive{
 
 		Node nodeParent = new Parent("1");
 		Node node = getNode2(nodeParent, 1, v2, 0);
-		System.out.println(node);
+		//System.out.println(node);
 	}
 
 	static class Node{
@@ -126,16 +126,19 @@ public class ArrayTestRecursive{
 			this.name = name;
 		}
 		public void add(Node c){
+			System.out.printf("%n Adding %s to parent %s %n", c, name);
 			children.add(c);
 		}
 
 		@Override
 		public String toString(){
 			StringBuilder sb = new StringBuilder();
+			sb.append("\n\t\t\t PRINTING "  + name + " Size: " +children.size() + "\n");
 			for (Node c: children){
 				sb.append(children);
 			}
-			return "\nNode-toString\t " + name + " Size children " +children.size() + sb.toString();
+			sb.append("\n\t\t\t END END END "+name+" \n");
+			return sb.toString();
 		}
 	}
 
@@ -146,7 +149,7 @@ public class ArrayTestRecursive{
 		}
 		@Override
 		public String toString(){
-			return "Child Name " + name;
+			return " \n>Child Name " + name;
 		}
 	}
 
