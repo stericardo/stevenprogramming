@@ -94,6 +94,7 @@ class SumInLeavesVisitor extends TreeVis {
     }
 
     public void visitLeaf(TreeLeaf leaf) {
+		System.out.println(" Sum: " + leaf.getValue() + " ");
 		result+= leaf.getValue();
     }
 }
@@ -108,13 +109,13 @@ class ProductOfRedNodesVisitor extends TreeVis {
 		
       	if(node.getColor().equals(Color.RED)){
 			
-			result = result * node.getValue();
+			result = (result * node.getValue()) % 1000000007;
 		}
     }
 
     public void visitLeaf(TreeLeaf leaf) {
       	if(leaf.getColor().equals(Color.RED)){
-			result = result * leaf.getValue();
+			result = (result * leaf.getValue()) % 1000000007 ;
 		}    
 	}
 }
@@ -169,6 +170,7 @@ public class VisitorTree {
 		if(parent){
 			return new TreeNode(value, color, depth);
 		}
+		
 		return new TreeLeaf(value, color, depth);
 	}
 	
@@ -208,10 +210,27 @@ public class VisitorTree {
 		return false;
 	}
 	
+	public static int getNextInit(int c, int[][] vector, int value){
+		boolean found = false;
+		int result = c;
+		int cont = --c;
+		System.out.printf("%n Validating Child %d cont %d" , value, cont);
+			while ( cont>0 && (vector[cont][0] == value || vector[cont][1]  == value) ){
+				found = true;
+				--cont;
+			}
+		if(found){
+			System.out.printf("%n ** Validating - RETURNING Child %d cont %d" , value, cont);
+			return cont;
+		}
+		System.out.printf("%n ** Validating - RETURNING Child %d cont %d" , value, result+1);
+		return result+1;
+	}
+	
 	public static Tree createTree(Tree nodeParent, int parent, int[][] vector, int init, int depth, int[] v1, int[] v2 ){
 		boolean found = false;
 		Tree newParent= null;
-		
+		//System.out.printf("%n%n            PROCESSING parent %d init %d" , parent, init);
 		for(int cont = init; cont < vector.length; cont++){
 			
 			if (vector[cont][0] == parent || vector[cont][1]  == parent ){
@@ -219,11 +238,13 @@ public class VisitorTree {
 				int childValue = getChild(parent, vector, cont);
 
 				if(isParent(vector, childValue,cont+1)){
+					System.out.printf("%nCreating parent %d-C:%d cont:%d,  with depth %d , value %d, color %d", parent, childValue, cont, depth+1, v1[childValue-1],v2[childValue-1] );
 					newParent= createNode( true, v1[childValue-1], v2[childValue-1], depth + 1 );
 				} else{
+					System.out.printf("%n                         NOT PARENT  Child %d Parent: %d init %d, cont %d" ,  childValue, parent, init, cont);
 					newParent= nodeParent;
 				}
-				newParent = createTree(newParent, childValue, vector, cont+1, depth + 1, v1, v2);
+				newParent = createTree(newParent, childValue, vector, getNextInit(cont, vector, childValue), depth + 1, v1, v2);
 				((TreeNode)nodeParent).addChild( newParent );
 			}
 		}
@@ -231,6 +252,7 @@ public class VisitorTree {
 		if (found){
 			return nodeParent;
 		} else {
+			System.out.printf("%nCreating Child  %d with depth %d, value %d, color %d", parent, depth, v1[parent-1],v2[parent-1]);
 			Tree child = createNode( false, v1[parent-1], v2[parent-1], depth);
 			return child;
 		}
@@ -285,7 +307,7 @@ public class VisitorTree {
     public static int getAmount(){
 		Container v = new Container();
 		try{
-			Stream<String> stream = Files.lines(Paths.get("amount2.txt"));
+			Stream<String> stream = Files.lines(Paths.get("amount.txt"));
 			stream.forEach(x -> v.v = Integer.parseInt (x) );
 		}catch(Exception e){
 		}
@@ -295,7 +317,7 @@ public class VisitorTree {
 	public static String getValuesV(){
 		Container v = new Container();
 		try{
-			Stream<String> stream = Files.lines(Paths.get("values2.txt"));
+			Stream<String> stream = Files.lines(Paths.get("values.txt"));
 			stream.forEach(x -> v.va = x );
 		}catch(Exception e){
 		}
@@ -305,7 +327,7 @@ public class VisitorTree {
 	public static String getColorsV(){
 		Container v = new Container();
 		try{
-			Stream<String> stream = Files.lines(Paths.get("colors2.txt"));
+			Stream<String> stream = Files.lines(Paths.get("colors.txt"));
 			stream.forEach(x -> v.c = x );
 		}catch(Exception e){
 		}
@@ -317,7 +339,7 @@ public class VisitorTree {
 		try{
 			
 			v.v4 = new int[amount][2];
-			Stream<String> stream = Files.lines(Paths.get("vector2.txt"));
+			Stream<String> stream = Files.lines(Paths.get("vector.txt"));
 			stream.forEach((String x) -> {
 			
 			String[] vec = x.split(" ");
@@ -335,6 +357,7 @@ public class VisitorTree {
 
     public static void main(String[] args) {
       	Tree root = solve();
+      	System.out.println("\n");
 		SumInLeavesVisitor vis1 = new SumInLeavesVisitor();
       	ProductOfRedNodesVisitor vis2 = new ProductOfRedNodesVisitor();
       	FancyVisitor vis3 = new FancyVisitor();
