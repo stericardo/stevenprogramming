@@ -26,6 +26,8 @@ bin/
 .idea/
 .data/
 .class/
+*.log
+*.BAT
 *.class
 .mvn/
 HELP.md
