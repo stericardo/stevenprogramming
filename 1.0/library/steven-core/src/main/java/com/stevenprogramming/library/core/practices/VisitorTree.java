@@ -99,9 +99,10 @@ class SumInLeavesVisitor extends TreeVis {
 }
 
 class ProductOfRedNodesVisitor extends TreeVis {
-	int result =1;
+	long result =1;
+    
     public int getResult() {
-      	return result;
+      	return (int) result;
     }
 
     public void visitNode(TreeNode node) {
@@ -127,8 +128,10 @@ class FancyVisitor extends TreeVis {
     }
 
     public void visitNode(TreeNode node) {
-		if(node.getDepth() % 2 == 0){
+		if(node.getDepth() == 0){
 			result+= result + node.getValue();
+		} else if(node.getDepth() % 2 == 0){
+			result = result + node.getValue();
 		}
     }
 
@@ -194,11 +197,11 @@ public class VisitorTree {
 		int[] values = new int[2];
 		if( isZeroParent(parent, vector, cont) ){
 			values[0] = vector[cont][1];
-			values[1] = 0;
+			values[1] = 1;
 			return values;
 		} else {
 			values[0] = vector[cont][0];
-			values[1] = 1;
+			values[1] = 0;
 			return values;
 		}
 	}
@@ -215,39 +218,78 @@ public class VisitorTree {
 	public static int getNextInit(int c, int[][] vector, int value, int pos){
 		boolean found = false;
 		int result = c;
-		int cont = --c;
-		//System.out.printf("%n Validating Child %d cont %d" , value, cont);
-			while ( cont>0 && (vector[cont][pos] == value) ){
+		int cont = c-1;
+		
+		while ( cont>0 && (vector[cont][pos] == value) ){
 				found = true;
 				--cont;
 			}
 		if(found){
-		//	System.out.printf("%n ** Validating - RETURNING Child %d cont %d" , value, cont);
+			++cont;
 			return cont;
 		}
-		//System.out.printf("%n ** Validating - RETURNING Child %d cont %d" , value, result+1);
 		return result+1;
 	}
+	
+	static class NodeParent {
+		private int parent = -1;
+		private int child = -1;
+		private NodeParent prev= null;
+		public NodeParent(int p, int c, NodeParent node){
+			this.parent = p;
+			this.child = c;
+			prev = node;
+		}
+		
+		public NodeParent getPrev(){
+			return prev;
+		}
+		
+		public int getParent(){
+			return parent;
+		}
+		
+		public int getChild(){
+			return child;
+		}
+		
+	}
+	
+	public static boolean validNode(int p, int c, NodeParent node){
+		if(node == null){
+				return true;
+		}
+		NodeParent temp = node;
+		while(temp != null){
+			if((temp.getParent() == p && temp.getChild() == c) ||  (temp.getParent() == c && temp.getChild() == p)  ) {
+				return false;
+			}
+			
+			temp = temp.getPrev();
+		}
+		return true;
+	}
 
-	public static Tree createTree(Tree nodeParent, int parent, int[][] vector, int init, int depth, int[] v1, int[] v2 ){
+	public static Tree createTree(Tree nodeParent, int parent, int[][] vector, int init, int depth, int[] v1, int[] v2, NodeParent prevNode ){
 		boolean found = false;
 		Tree newParent= null;
-		//System.out.printf("%n%n            PROCESSING parent %d init %d" , parent, init);
 		for(int cont = init; cont < vector.length; cont++){
 
 			if (vector[cont][0] == parent || vector[cont][1]  == parent ){
 				found = true;
 				int[] childValue = getChild(parent, vector, cont);
-
+				if (!validNode (parent, childValue[0], prevNode)){
+					continue;
+				}
+				NodeParent nodeParentCustom = null;
 				if(isParent(vector, childValue[0],cont+1)){
-					System.out.printf("%nCreating parent %d-C:%d cont:%d,  with depth %d , value %d, color %d", parent, childValue[0], cont, depth+1, v1[childValue[0]-1],v2[childValue[0]-1] );
+					nodeParentCustom = new NodeParent(parent, childValue[0], prevNode);
 					newParent= createNode( true, v1[childValue[0]-1], v2[childValue[0]-1], depth + 1 );
 				} else{
-					System.out.printf("%n                         NOT PARENT  Child %d Parent: %d init %d, cont %d" ,  childValue[0], parent, init, cont);
 					newParent= nodeParent;
+					nodeParentCustom = prevNode;
 				}
-				newParent = createTree(newParent, childValue[0], vector, getNextInit(cont, vector, childValue[0], childValue[1]), depth + 1, v1, v2);
-				//newParent = createTree(newParent, childValue, vector, cont+1, depth + 1, v1, v2);
+				newParent = createTree(newParent, childValue[0], vector, getNextInit(cont, vector, childValue[0], childValue[1]), depth + 1, v1, v2, nodeParentCustom);
 				((TreeNode)nodeParent).addChild( newParent );
 			}
 		}
@@ -255,7 +297,6 @@ public class VisitorTree {
 		if (found){
 			return nodeParent;
 		} else {
-			System.out.printf("%nCreating Child  %d with depth %d, value %d, color %d", parent, depth, v1[parent-1],v2[parent-1]);
 			Tree child = createNode( false, v1[parent-1], v2[parent-1], depth);
 			return child;
 		}
@@ -304,7 +345,7 @@ public class VisitorTree {
 
 		Tree parent = createNode( true, v1[0], v2[0], 0);
 
-        return createTree(parent, 1, v4, 0, 0, v1, v2);
+        return createTree(parent, 1, v4, 0, 0, v1, v2, null);
     }
 
     public static int getAmount(){
