@@ -58,6 +58,7 @@ public class Java11NewMethods {
   }
   
   public static void iterateTest() {
+    System.out.println("Dddd");
     int sum = Stream.iterate(new int[]{0, 1}, n -> new int[]{n[1], n[0] + n[1]})
             .limit(10)
             .map(n -> n[0]) // Stream<Integer>
