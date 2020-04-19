@@ -1,7 +1,5 @@
 package com.stevenprogramming.library.core.practices;
 
-
-
 import java.util.ArrayList;
 import java.io.*;
 import java.util.*;
@@ -15,6 +13,10 @@ import java.util.regex.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+enum Color {
+    RED, GREEN
+}
 
 abstract class Tree {
 
@@ -45,7 +47,7 @@ abstract class Tree {
 
 class TreeNode extends Tree {
 
-    private ArrayList<Tree> children = new ArrayList<>();
+    public ArrayList<Tree> children = new ArrayList<>();
 
     public TreeNode(int value, Color color, int depth) {
         super(value, color, depth);
@@ -53,8 +55,9 @@ class TreeNode extends Tree {
 
     public void accept(TreeVis visitor) {
         visitor.visitNode(this);
-
+		//System.out.println(children.size());
         for (Tree child : children) {
+			//System.out.println("Value" + child.getValue() + " Size Children" + children.size());
             child.accept(visitor);
         }
     }
@@ -99,9 +102,10 @@ class SumInLeavesVisitor extends TreeVis {
 }
 
 class ProductOfRedNodesVisitor extends TreeVis {
-	int result =1;
+	long result =1;
+    
     public int getResult() {
-      	return result;
+      	return (int) result;
     }
 
     public void visitNode(TreeNode node) {
@@ -127,8 +131,10 @@ class FancyVisitor extends TreeVis {
     }
 
     public void visitNode(TreeNode node) {
-		if(node.getDepth() % 2 == 0){
+		if(node.getDepth() == 0){
 			result+= result + node.getValue();
+		} else if(node.getDepth() % 2 == 0){
+			result = result + node.getValue();
 		}
     }
 
@@ -140,7 +146,7 @@ class FancyVisitor extends TreeVis {
     }
 }
 
-public class VisitorTree {
+public class VisitorTreeOriginalPriorLast {
 
 	public static int[] getArrayFromString(String line, int capacity){
 		int pos = 0;
@@ -173,18 +179,6 @@ public class VisitorTree {
 		return new TreeLeaf(value, color, depth);
 	}
 
-	public static boolean isParent(int[] v3, int pos){
-		return v3[pos] == 1;
-	}
-
-	public static boolean foundDirect(int pos, int[][] v4){
-		for(int c = 0;c<v4.length; c++){
-			if(pos == v4[c][1]){
-				return true;
-			}
-		}
-		return false;
-	}
 
 	public static boolean isZeroParent(int parent, int[][] vector, int cont){
 		return parent == vector[cont][0];
@@ -194,123 +188,182 @@ public class VisitorTree {
 		int[] values = new int[2];
 		if( isZeroParent(parent, vector, cont) ){
 			values[0] = vector[cont][1];
-			values[1] = 0;
+			values[1] = 1;
 			return values;
 		} else {
 			values[0] = vector[cont][0];
-			values[1] = 1;
+			values[1] = 0;
 			return values;
 		}
 	}
 
-	public static boolean isParent(int[][] vector, int value, int init){
-		for(int cont = init; cont < vector.length; cont++){
+	public static boolean isParent(int[][] vector, int value, int parent, int init){
+		int cont =0;
+		if (init>3){
+			cont = init-2;
+		} else {
+			cont = init;
+		}
+		cont = 1;
+		for(; cont < vector.length; cont++){
+			if( (init-1) == cont || (vector[cont][0] == value && vector[cont][1] == parent) || (vector[cont][0] == parent && vector[cont][1] == value) ){
+				continue;
+			} 
 			if (vector[cont][0] == value || vector[cont][1]  == value ){
 				return true;
 			}
 		}
 		return false;
 	}
+	
+	public static int lookup (int value, int[][] vector, int pos, int result, int c){
+		for(int cont=c-1; cont > 0; cont--){
+			if(vector[cont][pos] == value){
+				return cont;
+			}
+			
+		}
+		return result +1;
+	}
 
 	public static int getNextInit(int c, int[][] vector, int value, int pos){
 		boolean found = false;
 		int result = c;
-		int cont = --c;
-		//System.out.printf("%n Validating Child %d cont %d" , value, cont);
-			while ( cont>0 && (vector[cont][pos] == value) ){
+		int cont = c-1;
+		
+		while ( cont>0 && (vector[cont][pos] == value) ){
 				found = true;
 				--cont;
 			}
 		if(found){
-		//	System.out.printf("%n ** Validating - RETURNING Child %d cont %d" , value, cont);
+			++cont;
 			return cont;
 		}
-		//System.out.printf("%n ** Validating - RETURNING Child %d cont %d" , value, result+1);
-		return result+1;
+		return lookup(value, vector, pos, result, c);
+		
+	}
+	
+	static class NodeParent {
+		private int parent = -1;
+		private int child = -1;
+		private NodeParent prev= null;
+		public NodeParent(int p, int c, NodeParent node){
+			this.parent = p;
+			this.child = c;
+			prev = node;
+		}
+		
+		public NodeParent getPrev(){
+			return prev;
+		}
+		
+		public int getParent(){
+			return parent;
+		}
+		
+		public int getChild(){
+			return child;
+		}
+		
+	}
+	
+	static NodeParent lastPrevNode = null;
+	
+	public static void printParent(NodeParent node){
+		if(node == null){
+				return ;
+		}
+		NodeParent temp = node;
+		while(temp != null){
+			temp = temp.getPrev();
+		}
+	}
+	
+	public static boolean validNode(int p, int c, NodeParent node){
+		if(node == null){
+				return true;
+		}
+		NodeParent temp = node;
+		
+		while(temp != null){
+			if((temp.getParent() == p && temp.getChild() == c) ||  (temp.getParent() == c && temp.getChild() == p)  ) {
+				return false;
+			}
+			
+			temp = temp.getPrev();
+		}
+		return true;
 	}
 
-	public static Tree createTree(Tree nodeParent, int parent, int[][] vector, int init, int depth, int[] v1, int[] v2 ){
+	public static Tree createTree(Tree nodeParent, int parent, int[][] vector, int init, int depth, int[] v1, int[] v2, NodeParent prevNode ){
 		boolean found = false;
 		Tree newParent= null;
-		//System.out.printf("%n%n            PROCESSING parent %d init %d" , parent, init);
 		for(int cont = init; cont < vector.length; cont++){
-
+			
 			if (vector[cont][0] == parent || vector[cont][1]  == parent ){
 				found = true;
 				int[] childValue = getChild(parent, vector, cont);
-
-				if(isParent(vector, childValue[0],cont+1)){
-					System.out.printf("%nCreating parent %d-C:%d cont:%d,  with depth %d , value %d, color %d", parent, childValue[0], cont, depth+1, v1[childValue[0]-1],v2[childValue[0]-1] );
-					newParent= createNode( true, v1[childValue[0]-1], v2[childValue[0]-1], depth + 1 );
-				} else{
-					System.out.printf("%n                         NOT PARENT  Child %d Parent: %d init %d, cont %d" ,  childValue[0], parent, init, cont);
-					newParent= nodeParent;
+				
+				if (validNode (parent, childValue[0], lastPrevNode)){
+					
+					NodeParent nodeParentCustom = null;
+					if(isParent(vector, childValue[0], parent, cont+1)){
+							if( parent ==1 && cont == 0){
+								lastPrevNode = new NodeParent(parent, childValue[0], prevNode);
+							} else {
+								nodeParentCustom = new NodeParent(parent, childValue[0], lastPrevNode);
+								lastPrevNode = nodeParentCustom;
+							}
+								newParent= createNode( true, v1[childValue[0]-1], v2[childValue[0]-1], depth + 1 );
+						} else{
+							newParent= nodeParent;
+							nodeParentCustom = new NodeParent(parent, childValue[0], lastPrevNode);
+							lastPrevNode = nodeParentCustom;
+						}
+						
+						newParent = createTree(newParent, childValue[0], vector, getNextInit(cont, vector, childValue[0], childValue[1]), depth + 1, v1, v2, nodeParentCustom);
+						if( newParent != null) {
+							((TreeNode)nodeParent).addChild( newParent );						
+						}
 				}
-				newParent = createTree(newParent, childValue[0], vector, getNextInit(cont, vector, childValue[0], childValue[1]), depth + 1, v1, v2);
-				//newParent = createTree(newParent, childValue, vector, cont+1, depth + 1, v1, v2);
-				((TreeNode)nodeParent).addChild( newParent );
+			}
+			if(parent == 1 && (cont+1) == vector.length){
+					printParent(lastPrevNode);
 			}
 		}
 
 		if (found){
 			return nodeParent;
 		} else {
-			System.out.printf("%nCreating Child  %d with depth %d, value %d, color %d", parent, depth, v1[parent-1],v2[parent-1]);
 			Tree child = createNode( false, v1[parent-1], v2[parent-1], depth);
 			return child;
 		}
 
 	}
 
-	public static int[] fillV3(int capacity, int[][] v4){
-		int[] v3 = initArray(capacity);
-		int temp = 0;
-		for(int cont=0; cont < v4.length-1; cont++){
-			temp = v4[cont][0];
-
-			for(int cont2= cont+1; cont2 < v4.length;  cont2++){
-
-				if(temp == v4[cont2][0]){
-					v3[temp -1] = 1;
-				}
-			}
-		}
-		for(int c=0; c< capacity-1; c ++ ){
-			//System.out.println("v3.length " + v3.length +"Parent " + v3[c] + " Parent " + v4[c][0] + " Node " + v4[c][1]  );
-		}
-
-		return v3;
-	}
-
     public static Tree solve() {
 		getAmount();
         Scanner scanner = new Scanner(System.in);
-        int n = getAmount(); //Integer.parseInt(scanner.nextLine());
-        //int[][] v4 = new int[n][2];
-        String line = getValuesV(); //scanner.nextLine();
+        int n = getAmount(); 
+        
+        String line = getValuesV(); 
         int[] v1 = getArrayFromString(line, n);
-        line = getColorsV(); //scanner.nextLine();
-
+        line = getColorsV(); 
         int[] v2 = getArrayFromString(line, n);
-        /*
-        for(int cont=0; cont < (n-1); cont++){
-			line = scanner.nextLine();
-			int[] valuesNode = getArrayFromString(line, 2);
-			v4[cont][0] = valuesNode[0];
-			v4[cont][1] = valuesNode[1];
-		}*/
-
 		int[][] v4 =  getVectorV4(n);
-
 		Tree parent = createNode( true, v1[0], v2[0], 0);
-
-        return createTree(parent, 1, v4, 0, 0, v1, v2);
+		long startTime = System.currentTimeMillis();
+		Tree root = createTree(parent, 1, v4, 0, 0, v1, v2, null);
+		long endTime = System.currentTimeMillis();
+		System.out.println("That took " + (endTime - startTime) + " milliseconds");
+		
+        return root;
     }
 
     public static int getAmount(){
 		Container v = new Container();
 		try{
-			Stream<String> stream = Files.lines(Paths.get("amount.txt"));
+			Stream<String> stream = Files.lines(Paths.get("amount6.txt"));
 			stream.forEach(x -> v.v = Integer.parseInt (x) );
 		}catch(Exception e){
 		}
@@ -320,7 +373,7 @@ public class VisitorTree {
 	public static String getValuesV(){
 		Container v = new Container();
 		try{
-			Stream<String> stream = Files.lines(Paths.get("values.txt"));
+			Stream<String> stream = Files.lines(Paths.get("values6.txt"));
 			stream.forEach(x -> v.va = x );
 		}catch(Exception e){
 		}
@@ -330,7 +383,7 @@ public class VisitorTree {
 	public static String getColorsV(){
 		Container v = new Container();
 		try{
-			Stream<String> stream = Files.lines(Paths.get("colors.txt"));
+			Stream<String> stream = Files.lines(Paths.get("colors6.txt"));
 			stream.forEach(x -> v.c = x );
 		}catch(Exception e){
 		}
@@ -342,7 +395,7 @@ public class VisitorTree {
 		try{
 
 			v.v4 = new int[amount][2];
-			Stream<String> stream = Files.lines(Paths.get("vector.txt"));
+			Stream<String> stream = Files.lines(Paths.get("vector6.txt"));
 			stream.forEach((String x) -> {
 
 			String[] vec = x.split(" ");
@@ -360,7 +413,8 @@ public class VisitorTree {
 
     public static void main(String[] args) {
       	Tree root = solve();
-      	System.out.println("\n");
+      	
+		
 		SumInLeavesVisitor vis1 = new SumInLeavesVisitor();
       	ProductOfRedNodesVisitor vis2 = new ProductOfRedNodesVisitor();
       	FancyVisitor vis3 = new FancyVisitor();

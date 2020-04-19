@@ -1,3 +1,6 @@
+package com.stevenprogramming.library.core.practices;
+
+
 import java.util.ArrayList;
 import java.io.*;
 import java.util.*;
@@ -140,7 +143,7 @@ class FancyVisitor extends TreeVis {
     }
 }
 
-public class VisitorTree {
+public class VisitorTreeVersionUnidireccional {
   
 	public static int[] getArrayFromString(String line, int capacity){
 		int pos = 0;

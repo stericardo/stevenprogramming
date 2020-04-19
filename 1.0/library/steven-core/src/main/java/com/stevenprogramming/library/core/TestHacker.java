@@ -21,7 +21,6 @@ public class TestHacker {
   static {
     value = new Scanner(System.in).nextInt();
     Scanner s;
-    s.nex
   }
   
   
