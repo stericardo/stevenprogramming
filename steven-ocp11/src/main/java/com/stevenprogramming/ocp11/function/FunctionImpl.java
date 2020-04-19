@@ -16,7 +16,6 @@ public class FunctionImpl {
   public static void main(String[] args) {
     
     List i;
-    i.repl
             
     
     DoubleFunction g = a -> a / 2.0;

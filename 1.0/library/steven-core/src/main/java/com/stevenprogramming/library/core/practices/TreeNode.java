@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class TreeNode extends Tree
 {
 
-    private ArrayList<Tree> children = new ArrayList<>();
+    public ArrayList<Tree> children = new ArrayList<>();
 
     public TreeNode( int value, Color color, int depth )
     {

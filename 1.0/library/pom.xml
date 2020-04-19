@@ -18,7 +18,7 @@
       <id>central</id>
       <name>Maven Repository Switchboard</name>
       <layout>default</layout>
-      <url>http://repo1.maven.org/maven2</url>
+      <url>https://repo1.maven.org/maven2</url>
     </repository>
 
     <repository>
@@ -91,7 +91,6 @@
     <module>steven-ws</module>
     <module>steven-ocp</module>
     <module>steven-eclipselink</module>
-    <module>steven-ocp11</module>
   </modules>
     
   <dependencies>

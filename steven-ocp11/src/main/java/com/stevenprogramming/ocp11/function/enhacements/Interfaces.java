@@ -57,7 +57,7 @@ interface Vaporizer extends Boiler{
   public void method();
       
    
-   private static void log(String msg){ //1
+   public static void log(String msg){ //1
        System.out.println(msg);
     }
     public default void vaporize(){

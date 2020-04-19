@@ -3,54 +3,79 @@
   <component name="ChangeListManager">
     <list default="true" id="7122c40a-2036-4a38-9998-2702f54534c8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch11/ArrayDequeDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch11/ArrayDequeDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/nb-configuration.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/src/main/java/com/stevenprogramming/challenges/Init.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/steven-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/ArrayRecursive.java" beforeDir="false" afterPath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/ArrayRecursive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/SolutionCesar.java" beforeDir="false" afterPath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/SolutionCesar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/TreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/TreeNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/VisitorTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/VisitorTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/VisitorTreeLastCesar.java" beforeDir="false" afterPath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/VisitorTreeLastCesar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/VisitorTreeOriginalPriorLast.java" beforeDir="false" afterPath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/VisitorTreeOriginalPriorLast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/VisitorTreePerformance.java" beforeDir="false" afterPath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/VisitorTreePerformance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/VisitorTreeStevenLast.java" beforeDir="false" afterPath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/VisitorTreeStevenLast.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/VisitorTreeVersionUnidireccional.java" beforeDir="false" afterPath="$PROJECT_DIR$/steven-core/src/main/java/com/stevenprogramming/library/core/practices/VisitorTreeVersionUnidireccional.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/BaseFunction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/apps/TestBaseFunction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/binaryoperator/BinaryOperatorImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/consumer/ConsumerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/enhacements/TryWithResourcesTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/function/FunctionImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/function/enhacements/DefaultWithabstract.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/function/enhacements/ExceptionTryCatch2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/function/enhacements/Interfaces.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/function/enhacements/Interfaces2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/function/enhacements/MultiCatchTryResources.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/map/MapImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/method/MethodArbitrary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/method/MethodConstructor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/method/MethodConstructorSecondPart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/method/MethodImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/method/MethodReferencesApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/nio/Constants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/nio/InformationSubPathTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/nio/NormalizeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/nio/PathMock.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/nio/PathTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/nio/RelativizeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/nio/ResolveTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/optional/OptionalImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/predicate/PredicateImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/Collecting.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/Dog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/FilteringImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/FlatMapImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/Grouping.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/Java11NewMethods.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/MapLambdaSnap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/MaxMinCount.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/MixIntStreamDoubleLong.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/Partioning.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/PartioningAndGrouping.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/ReduceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/SortedStream.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/StreamImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/stream/UtilStream.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/supplier/SupplierImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/to/ToImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/unaryoperator/UnaryOperatorImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/steven-ocp11/src/main/java/com/stevenprogramming/ocp11/var/VarImpl.java" beforeDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/steven-collections/target/" />
-    <ignored path="$PROJECT_DIR$/steven-thread/target/" />
-    <ignored path="$PROJECT_DIR$/steven-android/target/" />
-    <ignored path="$PROJECT_DIR$/steven-spring/target/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <ignored path="$PROJECT_DIR$/steven-patterns/target/" />
-    <ignored path="$PROJECT_DIR$/steven-ws/target/" />
-    <ignored path="$PROJECT_DIR$/steven-core/target/" />
-    <ignored path="$PROJECT_DIR$/steven-aem/target/" />
-    <ignored path="$PROJECT_DIR$/steven-generics/target/" />
-    <ignored path="$PROJECT_DIR$/steven-ui/target/" />
-    <ignored path="$PROJECT_DIR$/steven-security/target/" />
-    <ignored path="$PROJECT_DIR$/steven-ocp/target/" />
-    <ignored path="$PROJECT_DIR$/steven-web/target/" />
-    <ignored path="$PROJECT_DIR$/steven-io/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch11/ArrayDequeDemo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../../../../software/jdk1.8.0_191/src.zip!/java/util/Deque.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="406" column="12" selection-start-line="406" selection-start-column="12" selection-end-line="406" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -59,26 +84,8 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>TemporalAd</find>
-    </findStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8</dir>
-    </dirStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch4/time/DurationPractice.java" />
-        <option value="$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch4/time/TimePractice.java" />
-        <option value="$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch11/ReentrantLockPractice.java" />
-        <option value="$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch11/ArrayDequeDemo.java" />
-      </list>
-    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -86,6 +93,9 @@
         <option name="jdkForImporter" value="1.8" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
   </component>
   <component name="ProjectConfigurationFiles">
     <option name="files">
@@ -96,96 +106,19 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
-    <option name="y" value="-2" />
-    <option name="width" value="1920" />
-    <option name="height" value="1017" />
-  </component>
+  <component name="ProjectId" id="1alVRXV8Jqj0s2jdijl0EOz2q4a" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library" type="462c0819:PsiDirectoryNode" />
-              <item name="steven-ocp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library" type="462c0819:PsiDirectoryNode" />
-              <item name="steven-ocp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library" type="462c0819:PsiDirectoryNode" />
-              <item name="steven-ocp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library" type="462c0819:PsiDirectoryNode" />
-              <item name="steven-ocp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library" type="462c0819:PsiDirectoryNode" />
-              <item name="steven-ocp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ocp8" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="library" type="b2602c69:ProjectViewProjectNode" />
-              <item name="library" type="462c0819:PsiDirectoryNode" />
-              <item name="steven-ocp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ocp8" type="462c0819:PsiDirectoryNode" />
-              <item name="ch11" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.ArrayDequeDemo">
     <configuration name="ArrayDequeDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -246,141 +179,8 @@
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="40307000" />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="1920" y="-2" width="1920" height="1017" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2628205" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32975295" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32946634" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" />
-      <window_info anchor="bottom" id="Java Enterprise" order="12" />
-      <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="bottom" id="Version Control" order="14" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Bean Validation" order="9" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch4/bundle/ResourceBundleImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch4/locale/LocaleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../../../software/jdk1.8.0_181/src.zip!/java/util/Locale.java" />
-    <entry file="jar://$PROJECT_DIR$/../../../../software/jdk1.8.0_181/src.zip!/java/time/LocalDateTime.java" />
-    <entry file="file://$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch4/time/DurationPractice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch11/ReentrantLockPractice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch4/time/Practice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../../../../software/jdk1.8.0_191/src.zip!/java/time/ZonedDateTime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="547" column="65" selection-start-line="547" selection-start-column="65" selection-end-line="547" selection-end-column="65" />
-          <folding>
-            <element signature="e#12675#12676#0" expanded="true" />
-            <element signature="e#12732#12733#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../../../../software/jdk1.8.0_191/src.zip!/java/time/temporal/TemporalAccessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="102" column="33" selection-start-line="102" selection-start-column="17" selection-end-line="102" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch4/time/ZonePractice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch4/time/TimePractice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../../../../software/jdk1.8.0_191/src.zip!/java/util/Deque.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="406" column="12" selection-start-line="406" selection-start-column="12" selection-end-line="406" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/steven-ocp/src/main/java/com/stevenprogramming/library/ocp8/ch11/ArrayDequeDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>
