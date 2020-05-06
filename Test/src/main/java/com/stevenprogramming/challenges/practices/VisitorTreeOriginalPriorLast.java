@@ -1,6 +1,4 @@
-package com.stevenprogramming.library.core.practices;
-
-
+package com.stevenprogramming.challenges.practices;
 
 import java.util.ArrayList;
 import java.io.*;
@@ -17,15 +15,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-
-
-
-
-
-
-
-
-public class VisitorTree {
+public class VisitorTreeOriginalPriorLast {
 
 	public static int[] getArrayFromString(String line, int capacity){
 		int pos = 0;
@@ -58,18 +48,6 @@ public class VisitorTree {
 		return new TreeLeaf(value, color, depth);
 	}
 
-	public static boolean isParent(int[] v3, int pos){
-		return v3[pos] == 1;
-	}
-
-	public static boolean foundDirect(int pos, int[][] v4){
-		for(int c = 0;c<v4.length; c++){
-			if(pos == v4[c][1]){
-				return true;
-			}
-		}
-		return false;
-	}
 
 	public static boolean isZeroParent(int parent, int[][] vector, int cont){
 		return parent == vector[cont][0];
@@ -88,13 +66,33 @@ public class VisitorTree {
 		}
 	}
 
-	public static boolean isParent(int[][] vector, int value, int init){
-		for(int cont = init; cont < vector.length; cont++){
+	public static boolean isParent(int[][] vector, int value, int parent, int init){
+		int cont =0;
+		if (init>3){
+			cont = init-2;
+		} else {
+			cont = init;
+		}
+		cont = 1;
+		for(; cont < vector.length; cont++){
+			if( (init-1) == cont || (vector[cont][0] == value && vector[cont][1] == parent) || (vector[cont][0] == parent && vector[cont][1] == value) ){
+				continue;
+			} 
 			if (vector[cont][0] == value || vector[cont][1]  == value ){
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	public static int lookup (int value, int[][] vector, int pos, int result, int c){
+		for(int cont=c-1; cont > 0; cont--){
+			if(vector[cont][pos] == value){
+				return cont;
+			}
+			
+		}
+		return result +1;
 	}
 
 	public static int getNextInit(int c, int[][] vector, int value, int pos){
@@ -110,7 +108,8 @@ public class VisitorTree {
 			++cont;
 			return cont;
 		}
-		return result+1;
+		return lookup(value, vector, pos, result, c);
+		
 	}
 	
 	static class NodeParent {
@@ -137,11 +136,24 @@ public class VisitorTree {
 		
 	}
 	
+	static NodeParent lastPrevNode = null;
+	
+	public static void printParent(NodeParent node){
+		if(node == null){
+				return ;
+		}
+		NodeParent temp = node;
+		while(temp != null){
+			temp = temp.getPrev();
+		}
+	}
+	
 	public static boolean validNode(int p, int c, NodeParent node){
 		if(node == null){
 				return true;
 		}
 		NodeParent temp = node;
+		
 		while(temp != null){
 			if((temp.getParent() == p && temp.getChild() == c) ||  (temp.getParent() == c && temp.getChild() == p)  ) {
 				return false;
@@ -156,23 +168,36 @@ public class VisitorTree {
 		boolean found = false;
 		Tree newParent= null;
 		for(int cont = init; cont < vector.length; cont++){
-
+			
 			if (vector[cont][0] == parent || vector[cont][1]  == parent ){
 				found = true;
 				int[] childValue = getChild(parent, vector, cont);
-				if (!validNode (parent, childValue[0], prevNode)){
-					continue;
+				
+				if (validNode (parent, childValue[0], lastPrevNode)){
+					
+					NodeParent nodeParentCustom = null;
+					if(isParent(vector, childValue[0], parent, cont+1)){
+							if( parent ==1 && cont == 0){
+								lastPrevNode = new NodeParent(parent, childValue[0], prevNode);
+							} else {
+								nodeParentCustom = new NodeParent(parent, childValue[0], lastPrevNode);
+								lastPrevNode = nodeParentCustom;
+							}
+								newParent= createNode( true, v1[childValue[0]-1], v2[childValue[0]-1], depth + 1 );
+						} else{
+							newParent= nodeParent;
+							nodeParentCustom = new NodeParent(parent, childValue[0], lastPrevNode);
+							lastPrevNode = nodeParentCustom;
+						}
+						
+						newParent = createTree(newParent, childValue[0], vector, getNextInit(cont, vector, childValue[0], childValue[1]), depth + 1, v1, v2, nodeParentCustom);
+						if( newParent != null) {
+							((TreeNode)nodeParent).addChild( newParent );						
+						}
 				}
-				NodeParent nodeParentCustom = null;
-				if(isParent(vector, childValue[0],cont+1)){
-					nodeParentCustom = new NodeParent(parent, childValue[0], prevNode);
-					newParent= createNode( true, v1[childValue[0]-1], v2[childValue[0]-1], depth + 1 );
-				} else{
-					newParent= nodeParent;
-					nodeParentCustom = prevNode;
-				}
-				newParent = createTree(newParent, childValue[0], vector, getNextInit(cont, vector, childValue[0], childValue[1]), depth + 1, v1, v2, nodeParentCustom);
-				((TreeNode)nodeParent).addChild( newParent );
+			}
+			if(parent == 1 && (cont+1) == vector.length){
+					printParent(lastPrevNode);
 			}
 		}
 
@@ -185,55 +210,29 @@ public class VisitorTree {
 
 	}
 
-	public static int[] fillV3(int capacity, int[][] v4){
-		int[] v3 = initArray(capacity);
-		int temp = 0;
-		for(int cont=0; cont < v4.length-1; cont++){
-			temp = v4[cont][0];
-
-			for(int cont2= cont+1; cont2 < v4.length;  cont2++){
-
-				if(temp == v4[cont2][0]){
-					v3[temp -1] = 1;
-				}
-			}
-		}
-		for(int c=0; c< capacity-1; c ++ ){
-			//System.out.println("v3.length " + v3.length +"Parent " + v3[c] + " Parent " + v4[c][0] + " Node " + v4[c][1]  );
-		}
-
-		return v3;
-	}
-
     public static Tree solve() {
 		getAmount();
         Scanner scanner = new Scanner(System.in);
-        int n = getAmount(); //Integer.parseInt(scanner.nextLine());
-        //int[][] v4 = new int[n][2];
-        String line = getValuesV(); //scanner.nextLine();
+        int n = getAmount(); 
+        
+        String line = getValuesV(); 
         int[] v1 = getArrayFromString(line, n);
-        line = getColorsV(); //scanner.nextLine();
-
+        line = getColorsV(); 
         int[] v2 = getArrayFromString(line, n);
-        /*
-        for(int cont=0; cont < (n-1); cont++){
-			line = scanner.nextLine();
-			int[] valuesNode = getArrayFromString(line, 2);
-			v4[cont][0] = valuesNode[0];
-			v4[cont][1] = valuesNode[1];
-		}*/
-
 		int[][] v4 =  getVectorV4(n);
-
 		Tree parent = createNode( true, v1[0], v2[0], 0);
-
-        return createTree(parent, 1, v4, 0, 0, v1, v2, null);
+		long startTime = System.currentTimeMillis();
+		Tree root = createTree(parent, 1, v4, 0, 0, v1, v2, null);
+		long endTime = System.currentTimeMillis();
+		System.out.println("That took " + (endTime - startTime) + " milliseconds");
+		
+        return root;
     }
 
     public static int getAmount(){
 		Container v = new Container();
 		try{
-			Stream<String> stream = Files.lines(Paths.get("amount.txt"));
+			Stream<String> stream = Files.lines(Paths.get("amount6.txt"));
 			stream.forEach(x -> v.v = Integer.parseInt (x) );
 		}catch(Exception e){
 		}
@@ -243,7 +242,7 @@ public class VisitorTree {
 	public static String getValuesV(){
 		Container v = new Container();
 		try{
-			Stream<String> stream = Files.lines(Paths.get("values.txt"));
+			Stream<String> stream = Files.lines(Paths.get("values6.txt"));
 			stream.forEach(x -> v.va = x );
 		}catch(Exception e){
 		}
@@ -253,7 +252,7 @@ public class VisitorTree {
 	public static String getColorsV(){
 		Container v = new Container();
 		try{
-			Stream<String> stream = Files.lines(Paths.get("colors.txt"));
+			Stream<String> stream = Files.lines(Paths.get("colors6.txt"));
 			stream.forEach(x -> v.c = x );
 		}catch(Exception e){
 		}
@@ -265,7 +264,7 @@ public class VisitorTree {
 		try{
 
 			v.v4 = new int[amount][2];
-			Stream<String> stream = Files.lines(Paths.get("vector.txt"));
+			Stream<String> stream = Files.lines(Paths.get("vector6.txt"));
 			stream.forEach((String x) -> {
 
 			String[] vec = x.split(" ");
@@ -283,7 +282,8 @@ public class VisitorTree {
 
     public static void main(String[] args) {
       	Tree root = solve();
-      	System.out.println("\n");
+      	
+		
 		SumInLeavesVisitor vis1 = new SumInLeavesVisitor();
       	ProductOfRedNodesVisitor vis2 = new ProductOfRedNodesVisitor();
       	FancyVisitor vis3 = new FancyVisitor();

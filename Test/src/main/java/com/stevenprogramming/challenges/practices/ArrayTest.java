@@ -1,4 +1,4 @@
-
+package com.stevenprogramming.challenges.practices;
 
 public class ArrayTest{
 	

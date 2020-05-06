@@ -1,3 +1,5 @@
+package com.stevenprogramming.challenges.practices;
+
 public class Fibonnaci {
 
 	public long fib(long number){

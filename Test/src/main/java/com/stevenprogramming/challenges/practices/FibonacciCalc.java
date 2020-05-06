@@ -1,3 +1,5 @@
+package com.stevenprogramming.challenges.practices;
+
 public class FibonacciCalc{
 	public static int fibonacciRecursion(int n){
 	if(n == 0){

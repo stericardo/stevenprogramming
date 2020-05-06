@@ -1,4 +1,4 @@
-package com.stevenprogramming.library.core.practices;
+package com.stevenprogramming.challenges.practices;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -6,104 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-
-class MyArray {
-
-    private int[] arr;
-    private int endIdx=-1;
-    private int childCount;
-
-    public MyArray() {
-        arr = new int[10];
-        init(arr);
-    }
-
-    private void init( int[] arr ) {
-        for( int i=endIdx+1; i<arr.length; i++)
-            arr[i] = -1;
-    }
-
-    public void add( int value ) {
-        endIdx++;
-        childCount++;
-        if( endIdx >= arr.length ) {
-            int[] newArr = new int[ endIdx*2 ];
-            init(newArr);
-            System.arraycopy( arr, 0, newArr, 0, arr.length );
-            arr = newArr;
-        }
-        arr[endIdx] = value;
-    }
-
-    public void sort() {
-        Arrays.parallelSort( arr );
-    }
-
-    public void remove( int value ) {
-        if( value == -1 ) return;
-        int idx = Arrays.binarySearch( arr, value );
-        if( idx > -1 ) {
-            arr[idx] = -1;
-            childCount--;
-            Arrays.parallelSort( arr );
-        }
-    }
-
-    public int[] getArray() {
-        return this.arr;
-    }
-
-    public int getIndex( int value )
-    {
-        return Arrays.binarySearch( arr, value );
-    }
-
-    public boolean hasChilds() {
-        return this.childCount > 0;
-    }
-}
-
-
-class EdgeIndex
-{
-    MyArray[] arr;
-
-    public EdgeIndex( int n ) {
-        arr = new MyArray[n];
-        for( int i=0; i<n; i++)
-            arr[i] = new MyArray();
-    }
-
-    public void set(int left, int right ) {
-        arr[left].add( right );
-        arr[right].add( left );
-    }
-
-    public void sort() {
-        for( MyArray ma : arr ) {
-            ma.sort();
-        }
-    }
-
-    public int[] getChilds( int row ) {
-
-        int[] childs = Arrays.copyOf( arr[row].getArray(), arr[row].getArray().length );
-        arr[row] = null;
-        for( int c : childs ) {
-            if( c<0 ) continue;
-            arr[c].remove( row );
-        }
-        return childs;
-    }
-
-
-    public boolean hasChilds( int row ) {
-        return arr[row].hasChilds();
-    }
-}
-
-
-public class VisitorTreeLastCesar
+public class VisitorTreeLast
 {
 
     public static int[] getValuesFromString( String line, int capacity )

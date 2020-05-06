@@ -1,3 +1,5 @@
+package com.stevenprogramming.challenges.practices;
+
 import java.util.*;
 
 public class ArrayTestRecursive{

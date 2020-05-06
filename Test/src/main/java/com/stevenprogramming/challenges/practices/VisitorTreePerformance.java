@@ -1,4 +1,4 @@
-package com.stevenprogramming.library.core.practices;
+package com.stevenprogramming.challenges.practices;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -372,7 +372,7 @@ public class VisitorTreePerformance {
 
         return root;
     }
-    static String PATHROOT = System.getProperty("user.home") + "\\development\\code\\stevenprogramming\\1.0\\library\\steven-core\\src\\main\\java\\com\\stevenprogramming\\library\\core\\practices";
+    static String PATHROOT = System.getProperty("user.home") + "\\development\\code\\stevenprogramming\\Test\\src\\main\\java\\com\\stevenprogramming\\challenges\\practices";
 
     public static int getAmount() {
         //Para que existe la clase Conteiner? no se esta usando como tal
@@ -427,6 +427,7 @@ public class VisitorTreePerformance {
                 v.v4[v.cont][0] = Integer.parseInt(vec[0]);
                 v.v4[v.cont][1] = Integer.parseInt(vec[1]);
                 ++v.cont;
+
             });
         } catch (Exception e) {
         }

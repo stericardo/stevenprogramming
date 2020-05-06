@@ -1,4 +1,4 @@
-package com.stevenprogramming.library.core.practices;
+package com.stevenprogramming.challenges.practices;
 
 public class ProductOfRedNodesVisitor extends TreeVis {
     long result =1;
