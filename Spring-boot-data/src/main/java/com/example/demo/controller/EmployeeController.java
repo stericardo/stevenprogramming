@@ -22,6 +22,12 @@ public class EmployeeController {
         return "loading ...";
     }
 
+    @GetMapping("/createData")
+    public String createData() {
+        employeeService.createInitialData();
+        return "loading ...";
+    }
+
     @GetMapping("/employees")
     public long getEmployees() {
         String[] words = {"fresh", "market"};

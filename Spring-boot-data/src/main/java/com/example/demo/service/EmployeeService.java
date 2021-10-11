@@ -13,4 +13,6 @@ public interface EmployeeService {
 
     Set<Employee> fetchByDescription(String[] words, int type);
 
+    void createInitialData();
+
 }

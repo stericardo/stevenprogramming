@@ -4,8 +4,11 @@ import com.example.demo.entity.Employee;
 import com.example.demo.filter.EmployeeFilter;
 import com.example.demo.repository.EmployeeRepository;
 import com.example.demo.specification.EmployeeSpecification;
+import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.concurrent.Callable;
@@ -15,10 +18,43 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService{
 
     @Autowired
     EmployeeRepository employeeRepository;
+
+    @Autowired
+    SessionFactory sessionFactory;
+
+    @Override
+    public void createInitialData(){
+        Employee employee = new Employee();
+        employee.setDescription("Desc");
+        employee.setFirstName("Steven");
+        employee = employeeRepository.save(employee);
+        lockObject(employee);
+        //createInitialData2();
+
+    }
+
+    @Transactional(propagation = Propagation.MANDATORY)
+    protected void lockObject(final Employee employee){
+        Session session = sessionFactory.getCurrentSession();
+        //Transaction tx = session.getTransaction();
+        //tx.begin();
+        session.evict(employee);
+        session.buildLockRequest(new LockOptions(LockMode.NONE)).lock(employee);
+        //tx.commit();
+    }
+
+
+    public void createInitialData2(){
+        Employee employee = new Employee();
+        employee.setDescription("Desc2");
+        employee.setFirstName("Steven2");
+        employee = employeeRepository.save(employee);
+    }
 
     @Override
     public Set<Employee> fetchByDescription(String[] words, int type){

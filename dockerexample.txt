@@ -1,0 +1,83 @@
+####
+# This Dockerfile is used in order to build a container that runs the Quarkus application in JVM mode
+#
+# Before building the docker image run:
+#
+# mvn package
+#
+# Then, build the image with:
+#
+# docker build -f src/main/docker/Dockerfile.jvm -t quarkus/mercury-web-jvm .
+#
+# Then run the container using:
+#
+# docker run -i --rm -p 8080:8080 quarkus/mercury-web-jvm
+#
+# If you want to include the debug port into your docker image
+# you will have to expose the debug port (default 5005) like this :  EXPOSE 8080 5050
+#
+# Then run the container using :
+#
+# docker run -i --rm -p 8080:8080 -p 5005:5005 -e JAVA_ENABLE_DEBUG="true" quarkus/mercury-web-jvm
+#
+###
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.1
+
+ARG JAVA_PACKAGE=java-11-openjdk-headless
+ARG RUN_JAVA_VERSION=1.3.5
+
+
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' MACHINE_ID=M_WEB_DOCKER_1
+
+## Hulft Image information
+LABEL maintainer="Hulft Inc."
+
+ARG image_name=set-me
+ARG commit=set-me
+ARG commit_hash=set-me
+ARG branch=set-me
+ARG build_date=set-me
+
+LABEL org.label-schemavendor='Hulft Inc.' \
+    org.label-schema.name=$image_name \
+    org.label-schema.commit=$commit \
+    org.label-schema.description="Hulft mercury-web image" \
+    org.label-schema.vcs-ref=$commit_hash \
+    org.label-schema.build-date=$build_date \
+    org.label-schema.branch=$branch 
+
+# Import self signed certificate. (e.g. SISCO CA certificate)
+COPY ./src/main/docker/certs/ /certs/
+RUN chmod 540 /certs/install_cert.sh && /certs/install_cert.sh
+
+# Install java and the run-java script
+# Also set up permissions for user `1001`
+RUN microdnf install curl ca-certificates ${JAVA_PACKAGE} \
+    && microdnf update \
+    && microdnf clean all \
+    && mkdir /deployments \
+    && chown 1001 /deployments \
+    && chmod "g+rwX" /deployments \
+    && chown 1001:root /deployments \
+    && curl https://repo1.maven.org/maven2/io/fabric8/run-java-sh/${RUN_JAVA_VERSION}/run-java-sh-${RUN_JAVA_VERSION}-sh.sh -o /deployments/run-java.sh \
+    && chown 1001 /deployments/run-java.sh \
+    && chmod 540 /deployments/run-java.sh \
+    && echo "securerandom.source=file:/dev/urandom" >> /etc/alternatives/jre/lib/security/java.security
+
+# Configure the JAVA_OPTIONS, you can add -XshowSettings:vm to also display the heap size.
+ENV JAVA_OPTIONS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager -javaagent:/deployments/lib/mercury-real-time-interceptor-1.0-SNAPSHOT.jar" 
+ENV JAVA_HOME=/etc/alternatives/jre
+
+COPY build/lib/* /deployments/lib/
+COPY build/*-runner.jar /deployments/app.jar
+COPY lib/* /deployments/lib/
+COPY src/main/resources/META-INF/resources/certs/server.crt /deployments/server.crt
+COPY src/main/resources/META-INF/resources/certs/certalias.txt /deployments/certalias.txt
+
+RUN ALIAS_NAME=$(cat /deployments/certalias.txt) \ 
+    &&  keytool -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit -noprompt -trustcacerts -importcert -alias $ALIAS_NAME -file /deployments/server.crt \
+    &&  keytool -list -keystore $JAVA_HOME/lib/security/cacerts -storepass changeit | grep $ALIAS_NAME
+
+EXPOSE 8082
+
+ENTRYPOINT [ "/deployments/run-java.sh" ]

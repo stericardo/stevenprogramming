@@ -13,6 +13,10 @@ public class Employee {
     private String firstName;
     private String description;
 
+    @Version
+    @Column(name = "version")
+    private int version;
+
     @OneToMany(fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
             mappedBy="employee",
@@ -73,5 +77,13 @@ public class Employee {
 
     public void setPhones(Set<Phone> phones) {
         this.phones = phones;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 }
