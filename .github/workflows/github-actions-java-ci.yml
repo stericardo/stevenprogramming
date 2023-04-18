@@ -15,5 +15,5 @@ jobs:
           distribution: 'temurin'
       - name: Build with Maven
         run:
-		  cd Steven-Spring-Rest
-		  mvn --batch-mode --update-snapshots package
+          cd Steven-Spring-Rest
+          mvn --batch-mode --update-snapshots package
