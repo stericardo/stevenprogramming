@@ -1,4 +1,4 @@
-name: Java CI - Steven-Spring-Rest
+name: Java CI Steven-Spring-Rest
 
 on: [push]
 
