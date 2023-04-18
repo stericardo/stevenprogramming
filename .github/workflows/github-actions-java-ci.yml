@@ -1,4 +1,4 @@
-name: Java CI Steven-Spring-Rest
+name: 'Java CI Steven-Spring-Rest'
 
 on: [push]
 
@@ -14,6 +14,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Maven
-        run: |
-			cd Steven-Spring-Rest
-			mvn --batch-mode --update-snapshots package
+        run:
+		  cd Steven-Spring-Rest
+		  mvn --batch-mode --update-snapshots package
