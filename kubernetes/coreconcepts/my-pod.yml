@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: My name
+ labels:
+  app: My app
+spec
+ containers:
+  - name
+    image: image
+    command: ['','']
