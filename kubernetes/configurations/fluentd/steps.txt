@@ -1,0 +1,72 @@
+follow steps on: https://docs.fluentd.org/container-deployment/kubernetes
+
+
+wget https://github.com/fluent/fluentd-kubernetes-daemonset/blob/master/fluentd-daemonset-elasticsearch.yaml
+
+FILES ON DIRECTORY
+
+daemonset-website-kubernetes.yaml  elastic_search.yml  elastic_search_deployment.yml
+
+daemonset is just a demostration is not related to put elasticsearch to work on a port in external WEB
+
+elastic_search.yml  elastic_search_deployment.yml
+give us the magic thing, we have service + deployment working.
+
+Now after that I will follw this website for logging: https://kubernetes.io/docs/concepts/cluster-administration/logging/
+
+
+
+STEPS ON elasticsearch to set up password
+
+elasticsearch@elasticsearch-deployment-7b47997cb5-2bks8:~$ pwd
+/usr/share/elasticsearch
+elasticsearch@elasticsearch-deployment-7b47997cb5-2bks8:~$ ls
+LICENSE.txt  NOTICE.txt  README.asciidoc  bin  config  data  jdk  lib  logs  modules  plugins
+elasticsearch@elasticsearch-deployment-7b47997cb5-2bks8:~$ cd bin
+elasticsearch@elasticsearch-deployment-7b47997cb5-2bks8:~/bin$ ls
+elasticsearch           elasticsearch-create-enrollment-token  elasticsearch-geoip     elasticsearch-reconfigure-node  elasticsearch-setup-passwords    elasticsearch-syskeygen
+elasticsearch-certgen   elasticsearch-croneval                 elasticsearch-keystore  elasticsearch-reset-password    elasticsearch-shard              elasticsearch-users
+elasticsearch-certutil  elasticsearch-env                      elasticsearch-node      elasticsearch-saml-metadata     elasticsearch-sql-cli
+elasticsearch-cli       elasticsearch-env-from-file            elasticsearch-plugin    elasticsearch-service-tokens    elasticsearch-sql-cli-8.5.0.jar
+elasticsearch@elasticsearch-deployment-7b47997cb5-2bks8:~/bin$ 
+
+install service, install deployment on this directory
+
+ERROR: Unknown command [iterative]
+elasticsearch@elasticsearch-deployment-7b47997cb5-2bks8:~/bin$ ./elasticsearch-setup-passwords interactive
+******************************************************************************
+Note: The 'elasticsearch-setup-passwords' tool has been deprecated. This       command will be removed in a future release.
+******************************************************************************
+
+Initiating the setup of passwords for reserved users elastic,apm_system,kibana,kibana_system,logstash_system,beats_system,remote_monitoring_user.
+You will be prompted to enter passwords as the process progresses.
+Please confirm that you would like to continue [y/N]Y
+
+
+Enter password for [elastic]: 
+Reenter password for [elastic]: 
+Enter password for [apm_system]: 
+Reenter password for [apm_system]: 
+Enter password for [kibana_system]: 
+Reenter password for [kibana_system]: 
+Enter password for [logstash_system]: 
+Reenter password for [logstash_system]: 
+Enter password for [beats_system]: 
+Reenter password for [beats_system]: 
+Enter password for [remote_monitoring_user]: 
+Reenter password for [remote_monitoring_user]: 
+Passwords do not match.
+Try again.
+Enter password for [remote_monitoring_user]: 
+Reenter password for [remote_monitoring_user]: 
+Changed password for user [apm_system]
+Changed password for user [kibana_system]
+Changed password for user [kibana]
+Changed password for user [logstash_system]
+Changed password for user [beats_system]
+Changed password for user [remote_monitoring_user]
+Changed password for user [elastic]
+elasticsearch@elasticsearch-deployment-7b47997cb5-2bks8:~/bin$ 
+
+
+
