@@ -15,14 +15,15 @@ spec:
       do
         echo "$i: $(date)" >> /var/log/1.log;
         echo "$(date) INFO $i" >> /var/log/2.log;
+        echo "$(date) Elastic=INFO $i" >> /var/log/elasticsearch.log;
         i=$((i+1));
-        sleep 1;
+        sleep 30;
       done      
     volumeMounts:
     - name: varlog
       mountPath: /var/log
   - name: count-agent
-    image: registry.k8s.io/fluentd-gcp:1.30
+    image: quay.io/fluentd_elasticsearch/fluentd:v2.5.2
     env:
     - name: FLUENTD_ARGS
       value: -c /etc/fluentd-config/fluentd.conf

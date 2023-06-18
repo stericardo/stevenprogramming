@@ -16,7 +16,25 @@ Now after that I will follw this website for logging: https://kubernetes.io/docs
 
 
 
+
+Steps to connect with elasticsearch
+
+Create daemonset to test connection with Elasticsearch:
+	fluentd-daemonset-elasticsearch.yaml
+
+  After:
+	create service account
+		cluster-service-account.yml
+	create cluster role
+		cluster_rol_fluentd.yml
+	bind service with cluster rol:
+		cluster-role-binding-fluentd.yml
+
 STEPS ON elasticsearch to set up password
+
+AFTER CHANGE PASSWORD:  https://108.61.135.86:31015/_cluster/state?pretty
+https://108.61.135.86:31015/_cat/indices
+
 
 elasticsearch@elasticsearch-deployment-7b47997cb5-2bks8:~$ pwd
 /usr/share/elasticsearch
