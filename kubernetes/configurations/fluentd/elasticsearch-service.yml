@@ -3,11 +3,13 @@ kind: Service
 metadata:
   name: elasticsearch
   labels:
-   service: elasticsearch
+   run: elasticsearch-deployment
 spec:
  type: NodePort
  selector:
+  app.kubernetes.io/name: elasticsearch
   component: elasticsearch
+  run: elasticsearch-deployment
  ports:
   - port: 9200
     targetPort: 9200

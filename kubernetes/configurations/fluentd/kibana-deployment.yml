@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana-deployment
+  labels:
+    component: kibana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+     component: kibana
+  template:
+    metadata:
+      labels:
+        component: kibana
+    spec:
+      securityContext:
+       runAsUser: 2000
+       fsGroup: 3000
+      containers:
+      - name: kibana
+        image: docker.elastic.co/kibana/kibana:8.8.1
+        env:
+        - name: NODE_TLS_REJECT_UNAUTHORIZED
+          value: "0"
+        - name: CLUSTER_NAME
+          value: docker-cluster
+        - name: ELASTICSEARCH_URL
+          value: http://108.61.135.86:30146/
+        - name: ELASTICSEARCH_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: db-secret-elastic
+        - name: ELASTICSEARCH_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: db-secret-elastic
+        resources:
+          limits:
+            cpu: 200m
+          requests:
+            cpu: 100m
+        ports:
+        - containerPort: 5601
+          name: http
+        volumeMounts:
+        - name: data-kibana
+          mountPath: /usr/share/kibana/data
+      volumes:
+      - name: data-kibana
+        hostPath: 
+         path: /usr/share/kibana/data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana
+  annotations:
+    cloud.google.com/load-balancer-type: "Internal"
+  labels:
+    component: kibana
+spec:
+  selector:
+    component: kibana
+  ports:
+  - name: http
+    port: 5601
+  type: LoadBalancer

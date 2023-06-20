@@ -1,3 +1,16 @@
+Summary 
+
+elasticsearch-deployment and kibana-deployment works together with 8.8.1 version and those are working with service to expose both PODS
+
+Those are just for a container sending logs and fluentd writting to PERMANENT Volume on the Node
+admin-logging-fluentd-sidecar-config-yaml
+admin-logging-two-files-counter-pod-agent-sidecar-yaml 
+
+we can add this securityContext:     ---> this will allow pod to make changes on the Host directory
+                   privileged: true
+instead of user and group
+
+
 follow steps on: https://docs.fluentd.org/container-deployment/kubernetes
 
 
@@ -15,6 +28,18 @@ give us the magic thing, we have service + deployment working.
 Now after that I will follw this website for logging: https://kubernetes.io/docs/concepts/cluster-administration/logging/
 
 
+*********************************  ELASTIC SEARCH NEW CONFDIGURATION ASSIGNATION OF SECURITYContext
+chown 2000:3000 data/ /usr/share/elasticsearch/data use a hostPath volume for ES
+
+For kibana do the same:
+spec:
+      securityContext:
+       runAsUser: 2000
+       fsGroup: 3000
+      containers:
+      - name: kibana
+        image: docker.elastic.co/kibana/kibana:8.8.1
+chown 2000:3000 /usr/share/kibana/data
 
 
 Steps to connect with elasticsearch
@@ -33,6 +58,9 @@ Create daemonset to test connection with Elasticsearch:
 STEPS ON elasticsearch to set up password
 
 AFTER CHANGE PASSWORD:  https://108.61.135.86:31015/_cluster/state?pretty
+
+/_cluster/health?pretty
+
 https://108.61.135.86:31015/_cat/indices
 
 

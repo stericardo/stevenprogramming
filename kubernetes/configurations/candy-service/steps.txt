@@ -1,0 +1,4 @@
+kubectl create serviceaccount candy-svc
+kubectl apply -f config
+kubectl apply -f db-password-secret.yml 
+kubectl apply -f apply pod
