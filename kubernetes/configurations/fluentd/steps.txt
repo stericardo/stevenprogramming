@@ -1,3 +1,8 @@
+EFK:
+fluentd-daemonset-elasticsearch.yaml
+kibana-service.yml
+kibana-complete-secret-deployment.yml
+
 Summary 
 
 elasticsearch-deployment and kibana-deployment works together with 8.8.1 version and those are working with service to expose both PODS

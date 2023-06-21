@@ -45,6 +45,20 @@ data:
     </source>
 
     <match **>
+     @type elasticsearch
+     scheme http
+     ssl_verify false
+     host 108.61.135.86
+     port 30146
+     index_name fluentd
+     type_name fluentd
+     include_tag_key true
+     tag_key _key
+     with_transporter_log true
+     @log_level trace
+    </match>
+
+    <match **>
       type file
       path /var/logout/count
       time_slice_format %Y%m%d%H%M%S

@@ -3,11 +3,12 @@ kind: Service
 metadata:
   name: kibana-service
   labels:
-   service: kibana
+   app: kibana
 spec:
   type: NodePort
   selector:
-   component: kibana
+   app: kibana
   ports:
   - port: 5601
     targetPort: 5601
+    nodePort: 30665

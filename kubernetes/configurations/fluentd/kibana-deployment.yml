@@ -21,11 +21,7 @@ spec:
       - name: kibana
         image: docker.elastic.co/kibana/kibana:8.8.1
         env:
-        - name: NODE_TLS_REJECT_UNAUTHORIZED
-          value: "0"
-        - name: CLUSTER_NAME
-          value: docker-cluster
-        - name: ELASTICSEARCH_URL
+        - name: ELASTICSEARCH_HOSTS
           value: http://108.61.135.86:30146/
         - name: ELASTICSEARCH_USERNAME
           valueFrom:
@@ -37,6 +33,26 @@ spec:
             secretKeyRef:
               key: password
               name: db-secret-elastic
+        - name: cluster.name
+          value: docker-cluster
+        - name: elasticsearch.hosts
+          value: http://108.61.135.86:30146/
+        - name: elasticsearch.username
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: db-secret-elastic
+        - name: elasticsearch.password
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: db-secret-elastic
+        - name: NODE_TLS_REJECT_UNAUTHORIZED
+          value: "0"
+        - name: CLUSTER_NAME
+          value: docker-cluster
+        - name: ELASTICSEARCH_URL
+          value: http://108.61.135.86:30146/
         resources:
           limits:
             cpu: 200m
@@ -48,10 +64,15 @@ spec:
         volumeMounts:
         - name: data-kibana
           mountPath: /usr/share/kibana/data
+        - name: config-kibana
+          mountPath: /usr/share/kibana/config 
       volumes:
       - name: data-kibana
         hostPath: 
          path: /usr/share/kibana/data
+      - name: config-kibana
+        hostPath:
+         path: /usr/share/kibana/config
 ---
 apiVersion: v1
 kind: Service
