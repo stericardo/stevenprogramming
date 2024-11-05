@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://www.ni.com/schemas/web/app/myproducts"
+           targetNamespace="http://www.ni.com/schemas/web/app/myproducts"
+           elementFormDefault="qualified">
+           
+    <!-- Schema Dependencies, the base providers schema and schemas of providers this provider references/retrieves from -->
+  
+    <xsd:import namespace="http://www.ni.com/schemas/provider-framework/ib/3" 
+                schemaLocation="http://immix.natinst.com/ib-rest/3/meta/schema.xsd" />
+	
+	 <xsd:import namespace="http://www.ni.com/schemas/provider-framework/cpr/2"
+    		schemaLocation="http://immix.natinst.com/cpr-rest/2/meta/schema.xsd" />
+
+</xsd:schema>

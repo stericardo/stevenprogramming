@@ -1,7 +1,7 @@
 package com.stevenprogramming.cracking.arraysandstrings;
 
 public class Exercise1 {
-
+/*
     public static boolean uniqueChars(String s) {
         char[] chars = s.toLowerCase().toCharArray();
         int[] indexes = new int[26];
@@ -51,4 +51,6 @@ public class Exercise1 {
         System.out.println("i and b: " + i + " " + b);
 
     }
+
+ */
 }

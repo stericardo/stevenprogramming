@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.3.0-b170407.2038 svn-revision#2eaca54d17a59d265c6fe886b7fd0027836c766c.--><xsd:schema targetNamespace="http://com/ni/apps/cpac/CpacWs.wsdl/types/" elementFormDefault="qualified" xmlns:ns0="http://com/ni/apps/cpac/CpacWs.wsdl/types/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="TNiCpacSessionUser">
+    <xsd:complexContent>
+      <xsd:extension base="ns0:TNiCpacSessionBase">
+        <xsd:sequence>
+          <xsd:element name="captureSource" type="xsd:string" nillable="true"/>
+          <xsd:element name="contacts" type="ns0:TNiCpacContactsTbl" nillable="true"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TNiCpacContactBase"/>
+  <xsd:complexType name="TNiCpacAttributesTbl">
+    <xsd:sequence>
+      <xsd:element name="array" type="ns0:TNiCpacAttributesUser" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TNiCpacSessionBase"/>
+  <xsd:complexType name="TNiCpacItemUser">
+    <xsd:complexContent>
+      <xsd:extension base="ns0:TNiCpacItemBase">
+        <xsd:sequence>
+          <xsd:element name="overrideAction" type="xsd:string" nillable="true"/>
+          <xsd:element name="serialNumber" type="xsd:string" nillable="true"/>
+          <xsd:element name="itemAttributes" type="ns0:TNiCpacAttributesTbl" nillable="true"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TNiCpacAttributesUser">
+    <xsd:complexContent>
+      <xsd:extension base="ns0:TNiCpacAttributesBase">
+        <xsd:sequence>
+          <xsd:element name="attributeName" type="xsd:string" nillable="true"/>
+          <xsd:element name="attributeValue" type="xsd:string" nillable="true"/>
+          <xsd:element name="attributeType" type="xsd:string" nillable="true"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TNiCpacItemsTbl">
+    <xsd:sequence>
+      <xsd:element name="array" type="ns0:TNiCpacItemUser" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TNiCpacContactsTbl">
+    <xsd:sequence>
+      <xsd:element name="array" type="ns0:TNiCpacContactUser" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TNiCpacContactUser">
+    <xsd:complexContent>
+      <xsd:extension base="ns0:TNiCpacContactBase">
+        <xsd:sequence>
+          <xsd:element name="lastName" type="xsd:string" nillable="true"/>
+          <xsd:element name="upId" type="xsd:decimal" nillable="true"/>
+          <xsd:element name="state" type="xsd:string" nillable="true"/>
+          <xsd:element name="emailAddress" type="xsd:string" nillable="true"/>
+          <xsd:element name="address1" type="xsd:string" nillable="true"/>
+          <xsd:element name="address2" type="xsd:string" nillable="true"/>
+          <xsd:element name="upAddressId" type="xsd:decimal" nillable="true"/>
+          <xsd:element name="companyName" type="xsd:string" nillable="true"/>
+          <xsd:element name="city" type="xsd:string" nillable="true"/>
+          <xsd:element name="country" type="xsd:string" nillable="true"/>
+          <xsd:element name="postalCode" type="xsd:string" nillable="true"/>
+          <xsd:element name="faxNumber" type="xsd:string" nillable="true"/>
+          <xsd:element name="phoneNumber" type="xsd:string" nillable="true"/>
+          <xsd:element name="items" type="ns0:TNiCpacItemsTbl" nillable="true"/>
+          <xsd:element name="province" type="xsd:string" nillable="true"/>
+          <xsd:element name="firstName" type="xsd:string" nillable="true"/>
+          <xsd:element name="contactAttributes" type="ns0:TNiCpacAttributesTbl" nillable="true"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="TNiCpacItemBase"/>
+  <xsd:complexType name="TNiCpacAttributesBase"/>
+</xsd:schema>

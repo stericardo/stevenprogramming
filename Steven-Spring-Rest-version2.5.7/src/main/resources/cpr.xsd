@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:pf="http://www.ni.com/schemas/provider-framework/1/providers"
+           xmlns:ib="http://www.ni.com/schemas/provider-framework/ib/3"
+           xmlns:cc="http://www.ni.com/schemas/provider-framework/cc/1"
+           xmlns="http://www.ni.com/schemas/provider-framework/cpr/2"
+           targetNamespace="http://www.ni.com/schemas/provider-framework/cpr/2"
+           elementFormDefault="qualified">
+
+    <!-- Schema Dependencies, the base providers schema and schemas of providers this provider references/retrieves from -->
+    <xsd:import namespace="http://www.ni.com/schemas/provider-framework/1/providers"
+                schemaLocation="http://www.ni.com/schemas/provider-framework/1/providers.xsd" />
+    <xsd:import namespace="http://www.ni.com/schemas/provider-framework/ib/3"
+                schemaLocation="http://immix.natinst.com/ib-rest/3/meta/schema.xsd" />
+    <xsd:import namespace="http://www.ni.com/schemas/provider-framework/cc/1"
+                schemaLocation="http://immix.natinst.com/cc-rest/1/meta/schema.xsd" />
+
+    <!--
+        *************************************************************
+        **                    EBO Elements                         **
+        *************************************************************
+    -->
+    <xsd:element name="CustomerProductRelationship" type="CustomerProductRelationshipType" />
+
+    <!--
+        *************************************************************
+        **                    EBO Collection Elements              **
+        *************************************************************
+    -->
+    <xsd:element name="CustomerProductRelationships" type="CustomerProductRelationshipCollectionType" />
+
+    <!--
+        *************************************************************
+        **                EBO Type Definitions                     **
+        *************************************************************
+    -->
+    <xsd:complexType name="CustomerProductRelationshipType">
+		<xsd:annotation>
+			<xsd:documentation>
+                An object within the CPR provider which represents data associated with
+                a relationship between a customer and a product.
+            </xsd:documentation>
+		</xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="pf:EnterpriseBusinessObjectType">
+                <xsd:sequence minOccurs="0" maxOccurs="1">
+                    <!--
+                        ALL fields are referenced here with minOccurs=0 for each.
+                    -->
+                    <xsd:element name="repository" type="xsd:string" minOccurs="0" maxOccurs="1">
+					    <xsd:annotation>
+				            <xsd:documentation>
+				                <!-- suggested enumerations -->
+					            <xsd:enumeration value="CPR" />
+					            <xsd:enumeration value="CPAC" />
+				            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="relationshipId" type="xsd:decimal" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="relationshipType" type="xsd:string" minOccurs="0" maxOccurs="1">
+					    <xsd:annotation>
+				            <xsd:documentation>
+				                <!-- suggested enumerations -->
+								<xsd:enumeration value="ADMINISTRATOR" />
+								<xsd:enumeration value="ACTIVATED" />
+								<xsd:enumeration value="EXTENDED_EVALUATION" />
+								<xsd:enumeration value="REGISTERED" />
+				            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+					<xsd:element name="sourceReferenceType" type="xsd:string" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+					    <xsd:annotation>
+				            <xsd:documentation>
+				                <!-- suggested enumerations -->
+					            <xsd:enumeration value="ACTIVE" />
+					            <xsd:enumeration value="INACTIVE" />
+					            <xsd:enumeration value="IN_PROCESS" />
+				            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="startDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="endDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1" nillable="true" />
+                    <xsd:element name="serialNumber" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true" />
+                    <xsd:element name="partNumber" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true" />
+                    <xsd:element name="productFeature" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true" />
+					<xsd:element name="productType" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true" >
+					    <xsd:annotation>
+				            <xsd:documentation>
+				                <!-- suggested enumerations -->
+					            <xsd:enumeration value="Hardware" />
+					            <xsd:enumeration value="Bundle" />
+					            <xsd:enumeration value="Software" />
+								<xsd:enumeration value="Unassigned" />
+								<xsd:enumeration value="Service" />
+								<xsd:enumeration value="System" />
+				            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="installedProduct" type="ib:InstalledProductType" minOccurs="0" maxOccurs="1" nillable="true" />
+                    <xsd:element name="contact" type="cc:ContactType" minOccurs="0" maxOccurs="1" nillable="true" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!--
+        *************************************************************
+        **            Collection Type Definitions                  **
+        *************************************************************
+    -->
+    <xsd:complexType name="CustomerProductRelationshipCollectionType">
+        <xsd:annotation>
+            <xsd:documentation></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="pf:PagedCollectionType"> <!-- You may use pf:PagedCollectionType if you wish to implement paging -->
+                <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xsd:element name="CustomerProductRelationship" type="CustomerProductRelationshipType" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+    <!--
+        *************************************************************
+        **  Retrievable Fields Enumeration Type Definitions        **
+        **  To be referenced in WADL Potentially one per EBO       **
+        *************************************************************
+    -->
+    <xsd:simpleType name="CustomerProductRelationshipRetrievableFieldType">
+        <xsd:restriction base="xsd:string">
+            <!-- Include the required values as defined in Provider Framework Schema - RetrievableFieldsType -->
+            <xsd:enumeration value="all"/>
+            <xsd:enumeration value="none"/>
+            <xsd:enumeration value="default"/>
+            <!-- Add your custom enumeration values here -->
+            <xsd:enumeration value="productFeature"/>
+            <xsd:enumeration value="installedProduct"/>
+            <xsd:enumeration value="contact"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+        *************************************************************
+        **          Dataset Enumeration Type Definitions           **
+        **  To be referenced in WADL Potentially one per EBO       **
+        *************************************************************
+    -->
+    <xsd:simpleType name="CustomerProductRelationshipDatasetType">
+        <xsd:restriction base="xsd:string">
+            <!-- Include the required values as defined in Provider Framework Schema - RequiredDatasetsType -->
+            <xsd:enumeration value="full"/>
+            <xsd:enumeration value="summary"/>
+            <!-- Add your custom enumeration values here -->
+            <xsd:enumeration value="productItemInstance"/>
+            <xsd:enumeration value="productFeature"/>
+            <xsd:enumeration value="productFeatureInstance"/>
+            <xsd:enumeration value="contact"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--
+        *************************************************************
+        **                   Element Groups                        **
+        *************************************************************
+    -->
+
+    <!--
+        *************************************************************
+        **                    Attribute Groups                     **
+        *************************************************************
+    -->
+
+    <!--
+        *************************************************************
+        **               Provider-Specific Types                   **
+        *************************************************************
+    -->
+
+</xsd:schema>
