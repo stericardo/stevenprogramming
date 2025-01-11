@@ -8,6 +8,8 @@ import java.nio.file.FileSystems;
 
 public class GenerateHadoopFile {
 
+    // Hadoop examples https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-mapreduce-examples/
+
     //472000000 lOOP = 472 MB
     //if you append ab then outome is 472 MB * 2 ALMOST 1 GB
     // Please use -Xms1024m -Xmx8096m
