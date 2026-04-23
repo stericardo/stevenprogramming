@@ -1,6 +1,6 @@
-package com.stevenprogramming.spring.rest;
+package com.ni.apps;
 
-import com.stevenprogramming.spring.rest.config.StevenEnvironmentProperties;
+import com.ni.apps.config.StevenEnvironmentProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

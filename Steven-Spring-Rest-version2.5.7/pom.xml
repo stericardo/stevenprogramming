@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.5</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.stevenprogramming.spring.rest</groupId>
+	<artifactId>steven-spring-rest-version-old</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>steven-spring-rest-version-old</name>
+	<description>Steven Spring Rest Version Old</description>
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<targetJDK>1.8</targetJDK>
+		<sourceJDK>1.8</sourceJDK>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-data-redis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.session</groupId>
+					<artifactId>spring-session-data-redis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.data</groupId>
+					<artifactId>spring-data-redis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.data</groupId>
+					<artifactId>spring-data-neo4j</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.neo4j</groupId>
+					<artifactId>neo4j-ogm-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-data-redis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.session</groupId>
+					<artifactId>spring-session-data-redis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.data</groupId>
+					<artifactId>spring-data-redis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.data</groupId>
+					<artifactId>spring-data-neo4j</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.neo4j</groupId>
+					<artifactId>neo4j-ogm-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency>
+		<!-- Caused by: java.lang.NoClassDefFoundError: org/springframework/jdbc/datasource/embedded/EmbeddedDatabaseType -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: org.springframework.hateoas.client.LinkDiscoverers -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-hateoas</artifactId>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: org.springframework.security.oauth2.client.registration.ClientRegistrationRepository -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: org.springframework.data.couchbase.config.AbstractCouchbaseDataConfiguration -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-couchbase</artifactId>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: org.springframework.session.ReactiveSessionRepository
+		 spring-session was Relocated → org.springframework.session » spring-session-core
+		 Oct 01, 2019 RELEASED
+		 -->
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-core</artifactId>
+			<version>2.2.0.RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.data</groupId>
+					<artifactId>spring-data-mongodb</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.data</groupId>
+					<artifactId>spring-data-redis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- org.springframework.batch.core.configuration.annotation.BatchConfigurer -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-batch</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.data</groupId>
+					<artifactId>spring-data-neo4j</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.neo4j</groupId>
+					<artifactId>neo4j-ogm-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: javax.json.bind.Jsonb
+		javax.json.bind.Jsonb version Jun 19, 2017-->
+		<dependency>
+			<groupId>javax.json.bind</groupId>
+			<artifactId>javax.json.bind-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: org.flywaydb.core.Flyway
+		org.flywaydb.core.Flyway Oct 30, 2019 version 6.0.8-->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+		<!-- org.jooq.DSLContext -->
+		<dependency>
+			<groupId>org.jooq</groupId>
+			<artifactId>jooq</artifactId>
+		</dependency>
+		<!-- JSF dependencies -->
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.2.14</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<!-- Tomahawk dependencies -->
+		<dependency>
+			<groupId>org.apache.myfaces.tomahawk</groupId>
+			<artifactId>tomahawk20</artifactId>
+			<version>1.1.11</version>
+		</dependency>
+
+		<!-- PrimeFaces dependencies -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>6.2</version>
+		</dependency>
+
+		<!-- For URL Rewriting for JSF 2 -->
+		<dependency>
+			<groupId>com.ocpsoft</groupId>
+			<artifactId>prettyfaces-jsf2</artifactId>
+			<version>3.3.3</version>
+		</dependency>
+
+		<!-- Needed for compile of project (com.ni.apps.wd classes use these servlet dependencies) -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun</groupId>
+			<artifactId>jce</artifactId>
+			<version>${targetJDK}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- dependencies for encoding/decoding Hex Strings -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<!-- dependencies related to REST service uptake -->
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>2.26</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.olingo</groupId>
+			<artifactId>olingo-odata2-api</artifactId>
+			<version>2.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.olingo</groupId>
+			<artifactId>olingo-odata2-core</artifactId>
+			<version>2.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- org.springframework.data.jdbc.repository.config.JdbcRepositoryConfigExtension -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jdbc</artifactId>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-resource-server</artifactId>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: de.flapdoodle.embed.process.config.IRuntimeConfig  Dec 09, 2018 -->
+		<dependency>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.process</artifactId>
+			<version>2.1.2</version>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: org.springframework.data.mongodb.MongoDbFactory -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: org.springframework.security.saml2.provider.service.registration.RelyingPartyRegistrationRepository Nov 16, 2019 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-saml2-service-provider</artifactId>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: javax.jms.ConnectionFactory -->
+		<dependency>
+			<groupId>javax.jms</groupId>
+			<artifactId>javax.jms-api</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: org.springframework.integration.gateway.GatewayProxyFactoryBean -->
+		<dependency>
+			<groupId>org.springframework.integration</groupId>
+			<artifactId>spring-integration-core</artifactId>
+		</dependency>
+		<!-- Caused by: org.springframework.web.socket.config.annotation.DelegatingWebSocketMessageBrokerConfiguration -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+		<!-- Caused by: org.springframework.amqp.rabbit.connection.ConnectionFactory -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+		<!-- Caused by: java.io.FileNotFoundException: class path resource
+		org/springframework/session/data/redis/config/annotation/web/http/RedisHttpSessionConfiguration.class -->
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-data-redis</artifactId>
+		</dependency>
+		<!-- Caused by: java.io.FileNotFoundException: class path resource
+		org/springframework/session/data/mongo/config/annotation/web/reactive/ReactiveMongoWebSessionConfiguration.class[ -->
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-data-mongodb</artifactId>
+		</dependency>
+		<!-- Caused by: java.io.FileNotFoundException: class path resource
+		[org/springframework/session/jdbc/config/annotation/web/http/JdbcHttpSessionConfiguration.class]  -->
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-jdbc</artifactId>
+		</dependency>
+		<!-- Caused by: java.io.FileNotFoundException: class path resource
+		 [org/springframework/session/hazelcast/config/annotation/web/http/HazelcastHttpSessionConfiguration.class] -->
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-hazelcast</artifactId>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: org.springframework.data.elasticsearch.core.convert.ElasticsearchConverter -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-elasticsearch</artifactId>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: freemarker.template.Configuration -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+		</dependency>
+		<!-- Added to enable @EnableJpaRepositories -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- java.lang.NoClassDefFoundError: org/apache/commons/pool2/impl/GenericObjectPoolConfig -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+		<!-- Caused by: java.lang.ClassNotFoundException: redis.clients.jedis.JedisPoolConfig -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>3.7.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!-- NI WD Library -->
+		<dependency>
+			<groupId>com.ni.apps.wd</groupId>
+			<artifactId>wd-external</artifactId>
+			<version>4.0</version>
+			<type>pom</type>
+			<exclusions>
+				<exclusion>
+					<groupId>com.ni.apps.wd</groupId>
+					<artifactId>wd-up</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- NI User Profile uptake -->
+		<dependency>
+			<groupId>com.ni.apps</groupId>
+			<artifactId>niup-api</artifactId>
+			<version>7.0.19</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ni.apps</groupId>
+			<artifactId>niup-api-impl</artifactId>
+			<version>7.0.19</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ni.apps.extra.delivery.api</groupId>
+			<artifactId>ExtraDeliveryAPI</artifactId>
+			<version>3.1.2</version>
+			<classifier>jdk1.6</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ni.apps.extra.delivery.api</groupId>
+			<artifactId>ExtraJSFDeliveryAPI</artifactId>
+			<version>3.1.2</version>
+			<classifier>jdk1.6</classifier>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ni.apps.extra.delivery.api</groupId>
+			<artifactId>ExtraWeblogicEMFCachePurger</artifactId>
+			<version>3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ni.soa</groupId>
+			<artifactId>ni-notifications-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- dependencies related to SOAP service uptake -->
+		<dependency>
+			<groupId>com.ni.apps</groupId>
+			<artifactId>NiWeblogicClientSecurity</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- dependency used for getting the psp id's basically -->
+		<dependency>
+			<groupId>com.ni.apps.wd</groupId>
+			<artifactId>wd-vcm-rest-dao-impl</artifactId>
+			<version>3.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sun.jersey</groupId>
+					<artifactId>jersey-client</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>myproducts</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.13.2</version>
+				<configuration>
+					<!-- relative to the POM file -->
+					<catalog>src/main/resources/catalog.cat</catalog>
+					<schemaDirectory>src/main/resources/schema</schemaDirectory>
+					<schemaIncludes>
+						<include>*.xsd</include>
+					</schemaIncludes>
+					<bindingDirectory>src/main/resources/bindings</bindingDirectory>
+					<bindingIncludes>
+						<include>*.xjb</include>
+					</bindingIncludes>
+					<strict>true</strict>
+					<extension>true</extension>
+					<plugins>
+						<plugin>
+							<groupId>org.jvnet.jaxb2_commons</groupId>
+							<artifactId>jaxb2-basics</artifactId>
+							<version>1.11.1</version>
+						</plugin>
+						<plugin>
+							<groupId>org.jvnet.jaxb2_commons</groupId>
+							<artifactId>jaxb2-basics-annotate</artifactId>
+							<version>1.0.3</version>
+						</plugin>
+						<plugin>
+							<groupId>com.ni.lib.jaxb.plugin</groupId>
+							<artifactId>jaxb2-namespace-prefixes</artifactId>
+							<version>1.0</version>
+						</plugin>
+					</plugins>
+					<args>
+						<arg>-Xannotate</arg>
+						<arg>-Xnamespace-prefixes</arg>
+					</args>
+				</configuration>
+				<executions>
+					<execution>
+						<id>generate</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Plugin that takes in the WSDL's to SOAP services consumed by MyProducts
+            and generates client code for interacting with them -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+						<configuration>
+							<keep>true</keep>
+							<extension>true</extension>
+							<wsdlUrls>
+								<wsdlUrl>
+									http://secant.natinst.com/NiSnGlobalWS/NiSnGlobalWsSoapHttpPort?WSDL
+								</wsdlUrl>
+								<wsdlUrl>
+									http://arcsecant.natinst.com:7777/soa-infra/services/platform/NiMetadataService/nims_client_ep?WSDL
+								</wsdlUrl>
+								<wsdlUrl>
+									https://immix-backend.natinst.com/cpac/3/CpacServicePort?wsdl
+								</wsdlUrl>
+							</wsdlUrls>
+							<target>2.1</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>

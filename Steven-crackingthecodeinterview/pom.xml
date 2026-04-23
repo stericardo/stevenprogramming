@@ -8,13 +8,13 @@
 		<version>2.6.0-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.stevenprogramming.spring.rest</groupId>
-	<artifactId>steven-spring-rest</artifactId>
+	<groupId>com.stevenprogramming.challenges</groupId>
+	<artifactId>steven-cracking-the-code-interview</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>steven-spring-rest</name>
-	<description>Steven Spring Rest</description>
+	<name>steven-cracking-the-code-interview</name>
+	<description>Steven Cracking The Code Interview</description>
 	<properties>
-		<java.version>8</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SecurityConfiguration xmlns="http://java.sun.com/xml/ns/xwss/config" dumpMessages="false">
+   <UsernameToken digestPassword="false" useNonce="false" />
+</SecurityConfiguration>

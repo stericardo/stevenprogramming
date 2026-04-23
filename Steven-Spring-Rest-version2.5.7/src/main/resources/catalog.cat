@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE catalog PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN" "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+   <system systemId="http://immix.natinst.com/ib-rest/3/meta/schema.xsd"
+    uri="http://immix.natinst.com/ib-rest/3/meta/schema.xsd?ni-api-key=880f1248-df97-4b69-80dc-ba2ba2f3ad1b" />
+   <system systemId="http://immix.natinst.com/cpr-rest/2/meta/schema.xsd" uri="cpr.xsd" />
+</catalog>

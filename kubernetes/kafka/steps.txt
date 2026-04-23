@@ -1,0 +1,22 @@
+GET IP FROM SERVICES: 
+
+root@Kubernates-master-steven:~/software/code/stevenprogramming/kubernetes/kafka# kubectl get services -n kafka
+NAME                TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+kafka-service       ClusterIP   10.97.104.79     <none>        9092/TCP         42m
+zookeeper-service   NodePort    10.104.176.120   <none>        2181:30181/TCP   45m
+
+
+10.97.104.79
+
+Setup:
+
+vi /etc/hosts
+10.97.104.79 kafka-broker
+
+02-kafka.yaml VALUE: 10.104.176.120 from SERVICES
+
+- name: KAFKA_ZOOKEEPER_CONNECT
+  value: 10.104.176.120:2181
+
+echo "hello world CESAR!" | kafkacat -P -b 10.97.104.79:9092 -t test
+kafkacat -C -b 10.97.104.79:9092 -t test

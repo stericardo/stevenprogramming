@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+ name: my-app-replica-set
+ labels:
+  app: my-app-replica-set-label
+  type: front-end-rep-set
+spec:
+ replicas: 2
+ selector:
+  matchLabels:
+   type: front-end-rep-set
+ template:
+  metadata: 
+   name: my-replicationset-app
+   labels:
+    app: my-app-replica-set-label
+    type: front-end-rep-set
+  spec:
+   containers:
+   - name: my-replication-container
+     image: busybox
+     command: ['sh', '-c', 'echo Hello world REPLICA SET .....  POD FROM Replication SET && sleep 3600']
+
+   

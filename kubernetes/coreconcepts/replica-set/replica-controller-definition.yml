@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+ name: my-app-replica-controller
+ labels:
+  app: my-app-replica-controller-label
+  type: front-end
+spec:
+ replicas: 2
+ template:
+  metadata: 
+   name: my-replication-app
+   labels:
+    app: my-app-replica-controller-label
+    type: front-end
+  spec:
+   containers:
+   - name: my-replication-container
+     image: busybox
+     command: ['sh', '-c', 'echo Hello world REPLICA CONTROLLER POD FROM Replication Controller && sleep 3600']
+
+   

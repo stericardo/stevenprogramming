@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings version="2.1" 
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:annox="http://annox.dev.java.net"
+	xmlns:namespaces="http://www.ni.com/plugins/jaxb/namespace-prefixes"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:com.fnf="http://www.fnf.com/xes">
+		
+   <jaxb:bindings>
+      <jaxb:globalBindings generateElementProperty="false"/>
+   </jaxb:bindings>
+	
+	<!-- CPR2 Custom Bindings -->
+	<!--<jaxb:bindings schemaLocation="file:///C:/Users/baljuhas/Desktop/dev-cprrest2-schema.xsd">-->
+	<jaxb:bindings schemaLocation="http://immix.natinst.com/cpr-rest/2/meta/schema.xsd">
+	       
+	    
+	    <namespaces:namespacesMetadata>
+        	<namespaces:namespaceMetadata prefix="cpr" />
+        	<namespaces:namespaceMetadata prefix="xsi" uri="http://www.w3.org/2001/XMLSchema-instance" />
+        </namespaces:namespacesMetadata>
+	    
+	<jaxb:bindings node="xsd:complexType[@name='CustomerProductRelationshipType']">
+            <annox:annotate>
+                <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="CustomerProductRelationship" />
+            </annox:annotate>
+            <jaxb:class name="CustomerProductRelationship" />
+        </jaxb:bindings>
+         
+         <jaxb:bindings node="xsd:complexType[@name='CustomerProductRelationshipCollectionType']">
+             <annox:annotate>
+                 <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="CustomerProductRelationships" />
+             </annox:annotate>
+             <jaxb:class name="CustomerProductRelationships" />
+         </jaxb:bindings>
+        
+	</jaxb:bindings>
+	
+	<!-- IB Custom Bindings -->
+	<!--<jaxb:bindings schemaLocation="file:///C:/Users/baljuhas/Desktop/dev-ibrest3-schema.xsd">-->
+	<jaxb:bindings schemaLocation="http://immix.natinst.com/ib-rest/3/meta/schema.xsd">
+        
+        <namespaces:namespacesMetadata>
+        	<namespaces:namespaceMetadata prefix="ib" />
+        </namespaces:namespacesMetadata>
+        
+        <jaxb:bindings node="xsd:complexType[@name='InstalledProductType']">
+             <annox:annotate>
+                 <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="InstalledProduct" />
+             </annox:annotate>
+             <jaxb:class name="InstalledProduct" />
+         </jaxb:bindings>
+         
+         <jaxb:bindings node="xsd:complexType[@name='InstalledProductCollectionType']">
+             <annox:annotate>
+                 <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="InstalledProducts" />
+             </annox:annotate>
+             <jaxb:class name="InstalledProducts" />
+         </jaxb:bindings>
+        
+        <jaxb:bindings node="xsd:complexType[@name='ServiceContractType']">
+             <annox:annotate>
+                 <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="ServiceContract" />
+             </annox:annotate>
+             <jaxb:class name="ServiceContract" />
+         </jaxb:bindings>
+         
+         <jaxb:bindings node="xsd:complexType[@name='ServiceContractCollectionType']">
+             <annox:annotate>
+                 <annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="ServiceContracts" />
+             </annox:annotate>
+             <jaxb:class name="ServiceContracts" />
+         </jaxb:bindings>
+        
+	</jaxb:bindings>
+	
+	<!-- Provider Framework Custom Bindings -->
+	<jaxb:bindings schemaLocation="http://www.ni.com/schemas/provider-framework/1/impl/core.xsd">
+
+        <namespaces:namespacesMetadata>
+        	<namespaces:namespaceMetadata prefix="pf" />
+        </namespaces:namespacesMetadata>
+
+	</jaxb:bindings>
+	
+</jaxb:bindings>

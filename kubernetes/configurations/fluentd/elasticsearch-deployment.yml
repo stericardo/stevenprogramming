@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: elasticsearch-deployment
+spec:
+ selector:
+  matchLabels:
+   component: elasticsearch
+   run: elasticsearch-deployment
+   app.kubernetes.io/name: elasticsearch
+ template:
+  metadata:
+   labels:
+    component: elasticsearch
+    run: elasticsearch-deployment
+    app.kubernetes.io/name: elasticsearch
+  spec:
+   securityContext:
+    runAsUser: 2000
+    fsGroup: 3000
+   containers:
+   - name: elasticsearch
+     image: docker.elastic.co/elasticsearch/elasticsearch:8.8.1
+     env:
+      - name: discovery.type
+        value: single-node
+      - name: elasticsearch_password
+        valueFrom:
+         secretKeyRef:
+           key: password
+           name: db-secret-elastic
+     ports:
+     - containerPort: 9200
+       protocol: TCP
+     resources:
+      limits:
+       cpu: 1500m
+       memory: "1024Mi"
+      requests:
+       cpu: 500m
+       memory: "256Mi"
+     volumeMounts:
+     - name: data-elasticsearch
+       mountPath: /usr/share/elasticsearch/data
+   volumes:
+   - name: data-elasticsearch
+     hostPath: 
+      path: /usr/share/elasticsearch/data
