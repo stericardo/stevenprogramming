@@ -19,7 +19,7 @@ public class PostgresSteven {
 		public static void main(String[] args){
 		
 			long startTime = System.currentTimeMillis();
-			insertDatTransaction();
+			insertDatTransactionVariables();
 			long stopTime = System.currentTimeMillis();
 			System.out.println(stopTime - startTime  + " ms = " + ( (stopTime - startTime) / 1000));
 			
@@ -36,6 +36,33 @@ public class PostgresSteven {
 						insertStmt.setString(1, "ricardostev"+idx+"@gmail.com");
 						insertStmt.setString(2, "Steven " + idx);
 						insertStmt.setString(3, "Mendez");
+						int rowsInserted = insertStmt.executeUpdate();
+						//System.out.println("Rows inserted: " + rowsInserted);
+					}
+					// STEP 3: Commit the transaction if all operations succeed
+					connection.commit();
+					
+			} catch (SQLException e) {
+				System.err.println("Database error occurred:");
+				e.printStackTrace();
+			}
+			
+		}
+		
+		public static void insertDatTransactionVariables(){
+			// 3. Establish connection and prepare statements
+			try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);) {
+					// STEP 1: Disable auto-commit to start the transaction block manually
+					connection.setAutoCommit(false); 
+					for(int idx=2_110_000; idx < 2_210_000; idx++){
+						String insertSql = "INSERT INTO users_jdbc (email, first_name, last_name) VALUES (?, ?, ?)";
+						String email = "ricardostev"+idx+"@gmail.com";
+						String firstName = "Steven " + idx;
+						String lastName = "Mendez";
+						PreparedStatement insertStmt = connection.prepareStatement(insertSql);
+						insertStmt.setString(1, email);
+						insertStmt.setString(2, firstName);
+						insertStmt.setString(3, lastName);
 						int rowsInserted = insertStmt.executeUpdate();
 						//System.out.println("Rows inserted: " + rowsInserted);
 					}
